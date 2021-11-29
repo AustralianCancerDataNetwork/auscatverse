@@ -6,4 +6,4 @@ Follow these steps:
 2. Go to [Google Colab](https://colab.research.google.com) (you will need a Google account)
 3. Upload the Python notebook and run each cell sequentially
 
-The pre-run notebook can also be viewed by clicking [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AustralianCancerDataNetwork/auscatverse/main/presentations/auscat_imaging_tools-prerun.html)!
+The pre-run notebook can also be viewed by clicking [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AustralianCancerDataNetwork/auscatverse/presentation/presentations/auscat_imaging_tools-prerun.html?token=AD4LLUUK7ILCPZCXA4S2I5TBV2HGI)!
