@@ -72,14 +72,19 @@ def function_with_types_in_docstring(param1, param2):
 
 > See [https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html) for more Google Doc string examples.
 
+## Automated Testing
+
+Currently no automated testing is required for these repositories. This will be revisited in mid to late 2022 to address where such automated testing would be useful.
+
 ## Contributing
 
 To contribute code to any of the AusCAT repositories, the following steps should be followed:
 
-1. Clone the repository locally, and create a branch off `main`. No strict rules are in place for naming of branches, but it should describe the feature or change being contributed.
-2. Commit your changes to your branch and push these to GitHub.
-3. Once ready to contribute these code to the main branch, create a pull request within the GitHub repository. Assign the appropriate reviewer(s) for this pull request. If unsure add those listed in the Contact section of that repositories README.
-4. At least one reviewer will complete the Peer Review on the code. If any issues are found they may request changes which should be addressed by the contributor. Once ready the reviewer may approve the changes
+1. Ensure a GitHub issue is assigned to you before contributing some code to an AusCAT repository. You contribution should address only the feature/bug described in that issue.
+2. Clone the repository locally, and create a branch off `main`. No strict rules are in place for naming of branches, but it should describe the feature or change being contributed.
+3. Commit your changes to your branch and push these to GitHub.
+4. Once ready to contribute these code to the main branch, create a pull request within the GitHub repository. Assign the appropriate reviewer(s) for this pull request. If unsure add those listed in the Contact section of that repositories README.
+5. At least one reviewer will complete the Peer Review on the code. If any issues are found they may request changes which should be addressed by the contributor. Once ready the reviewer may approve the changes
 
 > Note: To enable proper peer review of code, please make sure your pull requests aren't too large. As a guide, a pull request should contain a maximum of 500 new or changed lines of code. If your submission is bigger than 500 lines consider breaking this up into multiple Pull Requests. In certain circumstances larger pull requests are acceptable, such as when refactoring code (moving code from one place to another without changing its functionality).
 
