@@ -39,8 +39,6 @@ Every programming language has standard coding conventions which should be follo
 
 Comments should be used throughout the source code to describe those portions of code where the purpose is not clear from the code itself. Remember to use informative variable and function names to avoid needed excessive comments.
 
-> TODO Add an example
-
 ### Doc strings
 
 Every function should be contain a description of what it does, it's input parameters, it's output and what exceptions it might raise. When coding in Python, the Google Doc String format should be used throughout (be sure to add an extension to your favorite code editor to assist with docstring formatting).
