@@ -4,6 +4,7 @@
 
 The following repositories have been defined to hold the source code for AusCAT:
 
+- [auscatverse](https://github.com/AustralianCancerDataNetwork/auscatverse)
 - [auscat_installation](https://github.com/AustralianCancerDataNetwork/auscat_installation)
 - [auscat_etl](https://github.com/AustralianCancerDataNetwork/auscat_etl)
 - [auscat_etl_centres](https://github.com/AustralianCancerDataNetwork/auscat_etl_centres)
