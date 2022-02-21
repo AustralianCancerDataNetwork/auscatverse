@@ -17,7 +17,7 @@ Additional repositories may be created and should be discussed in the weekly Aus
 
 Each repository must contain a `README.md` in the root directory of the repository. At a minimum, this README should contain the sections:
 
-- **Overview:** Description of what kind of functions/code is stored within the respository
+- **Overview:** Description of what kind of functions/code is stored within the repository
 - **Structure:** More detailed guide to how code is stored within directory structure of repository
 - **Installation**: Instructions on how to install and required libraries/dependencies for this code. If there are any tool(s) found within the repository this section describes to a user how to install these.
 - **Getting Started:** Brief guide to how to run the core functionality found within the repository. This could contain example code snippets or command line examples.
@@ -29,7 +29,7 @@ The production ready source code is kept in the `main` branch of the repository.
 
 ## Coding Conventions
 
-Every programming language has standard coding conventions which should be followed. Code within the AusCAT repositories should adopt approriate coding conventions. For Python code these are defined below, for other programming languages the standards adopted should be clearly defined in the respoitory's README.
+Every programming language has standard coding conventions which should be followed. Code within the AusCAT repositories should adopt appropriate coding conventions. For Python code these are defined below, for other programming languages the standards adopted should be clearly defined in the repository's README.
 
 ### Python
 
@@ -88,12 +88,12 @@ To contribute code to any of the AusCAT repositories, the following steps should
 
 ## Peer Review (Pull Request) Checklist
 
-The reviewer of a pull request should provide feedback on each of the following points. When the reviewer is satifified that the submission has met the criteria they will approve the Pull Request.
+The reviewer of a pull request should provide feedback on each of the following points. When the reviewer is satisfied that the submission has met the criteria they will approve the Pull Request.
 
 1. **Submission scope:** Check that the submission is of a reasonable size. Make sure the submission isn't modifying parts of the code outside the scope of the feature/fix being implemented in this pull request.
 2. **Coding conventions:** Are the agreed upon coding conventions followed in this code?
 3. **Understandability:** Is the code easy to understand? Are variables and functions named appropriately? Are functions of a reasonable size and performing one task each?
-4. **Maintainability:** Are file paths, server IPs configurable? Are constant values decalared at the top of the file (or in a specific contants file)? No hardcoded items should exist within the code.
+4. **Maintainability:** Are file paths, server IPs configurable? Are constant values decalared at the top of the file (or in a specific constants file)? No hardcoded items should exist within the code.
 5. **Documented:** Do Doc Strings exist and are up-to-date? Is the code commented appropriately? Has accompanying documentation been provided and updated?
-6. **Security:** Are their any potential security issues within this code? Have all passwords been removed? Are IP adresses etc configurable?
+6. **Security:** Are their any potential security issues within this code? Have all passwords been removed? Are IP addresses etc configurable?
 7. **Functionality:** You don't have to actually run the code yourself, but where possible read over the code and note any potential issues where it may not function as intended.
