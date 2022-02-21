@@ -1,7 +1,5 @@
 # AusCAT Code Guidelines
 
-> ## DRAFT: These guidelines are a work in progress
-
 ## Repositories
 
 The following repositories have been defined to hold the source code for AusCAT:
