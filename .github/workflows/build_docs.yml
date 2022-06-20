@@ -20,7 +20,7 @@ jobs:
     - name: Build docs
       run: |
         sudo apt-get update -y && sudo apt-get install -y pandoc
-        sphinx-build -b html -a docs docs/site
+        sphinx-build -b html -a docs docs/site/8b2e19ef880e90b0a9f161dba1af49bb14d68068
     - name: Deploy docs
       uses: peaceiris/actions-gh-pages@v3
       with:
