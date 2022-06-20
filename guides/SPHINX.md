@@ -148,7 +148,12 @@ GitHub can build and then serve the documentation for us. Unfortunately, only th
 ```yaml
 name: Build Docs
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  pull_request:
+    branches: 
+      - main
+    types: [closed]
 
 jobs:
   build:
