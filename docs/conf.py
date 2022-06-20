@@ -60,17 +60,27 @@ html_theme = 'furo'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-# Copy all Markdown files in repo to the docs folder for rendering
-for md_file in Path(".").glob("**/*.md"):
-    print(md_file)
-    os.remove(md_file)
+# Define the file extensions we want to copy
+extensions_to_copy = ["md", "png", "jpg", "gif"]
 
-for md_file in Path("..").glob("**/*.md"):
+# Remove any leftover files from the docs directory first
+files = []
+for ext in extensions_to_copy:
+    files += Path(".").glob(f"**/*.{ext}")
+for file in files:
+    os.remove(file)
+
+# Copy in the files from the other repository directories to have them
+# be rendered by Sphinx
+files = []
+for ext in extensions_to_copy:
+    files += Path("..").glob(f"**/*.{ext}")
+for file in files:
 
     # Only do this for files not in the docs directory
-    if md_file.parts[1] == "docs":
+    if file.parts[1] == "docs":
         continue
 
-    target_file = md_file.relative_to("..")
+    target_file = file.relative_to("..")
     target_file.parent.mkdir(parents=True, exist_ok=True)
-    shutil.copy(md_file, target_file)
+    shutil.copy(file, target_file)

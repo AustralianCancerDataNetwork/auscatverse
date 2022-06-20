@@ -10,6 +10,7 @@
    :caption: Contents:
 
    guidelines/README.md
+   guides/SPHINX.md
 
 Indices and tables
 ==================
