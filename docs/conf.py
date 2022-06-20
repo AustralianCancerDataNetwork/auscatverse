@@ -10,9 +10,13 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+import shutil
+
+from pathlib import Path
+
+sys.path.insert(0, os.path.abspath('..'))
 
 
 # -- Project information -----------------------------------------------------
@@ -28,6 +32,11 @@ author = 'Ingham Medical Physics'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinx.ext.autodoc",
+    "sphinx.ext.coverage",
+    "sphinx.ext.napoleon",
+    "nbsphinx",
+    "m2r2",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -44,9 +53,24 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'furo'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+# Copy all Markdown files in repo to the docs folder for rendering
+for md_file in Path(".").glob("**/*.md"):
+    print(md_file)
+    os.remove(md_file)
+
+for md_file in Path("..").glob("**/*.md"):
+
+    # Only do this for files not in the docs directory
+    if md_file.parts[1] == "docs":
+        continue
+
+    target_file = md_file.relative_to("..")
+    target_file.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(md_file, target_file)
