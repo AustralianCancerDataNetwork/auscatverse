@@ -165,3 +165,9 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+
+docs/**/*.md
+docs/**/*.png
+docs/**/*.jpg
+docs/**/*.gif
+**/8b2e19ef880e90b0a9f161dba1af49bb14d68068
