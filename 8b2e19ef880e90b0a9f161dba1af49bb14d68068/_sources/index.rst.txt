@@ -8,12 +8,7 @@
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :hidden:
 
    guidelines/README.md
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   guides/SPHINX.md
