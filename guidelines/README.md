@@ -1,4 +1,4 @@
-# AusCAT Code Guidelines
+# AusCAT Coding Guidelines
 
 ## Repositories
 
