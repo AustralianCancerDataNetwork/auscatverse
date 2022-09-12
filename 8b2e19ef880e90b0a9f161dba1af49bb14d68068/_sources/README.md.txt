@@ -13,7 +13,7 @@ A description of projects underway within AusCAT can be found on our SharePoint:
 
 For information of typical server hardware requirements as well as Virtual Machine (VM) setup see our [infrastructure guide](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md).
 
-The [AusCAT installation step-by-step guide]() will assist you with the installation of the AusCAT platform.
+The [AusCAT installation step-by-step guide](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/README.md) will assist you with the installation of the AusCAT platform.
 
 ## Code Repositories
 
