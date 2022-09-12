@@ -27,6 +27,12 @@ To deploy and run the various components of AusCAT, code and tools are tracked a
 - [**auscat_ontology**](https://github.com/AustralianCancerDataNetwork/auscat_ontology): Contains tools and documentation for dealing with the ontologies used within AusCAT.
 - [**auscat_federated_learning**](https://github.com/AustralianCancerDataNetwork/auscat_federated_learning): The federated learning functionality is contained within this repository along with documentation and guidance on its usage.
 
+### Project repositories
+
+The following repositories contain code to running a specific project(s) within AusCAT:
+
+- [**auscat_cardiac**](https://github.com/AustralianCancerDataNetwork/auscat_cardiac): Contains code to run our cardiac substructure auto-segmentation tool and to extract and analyse the structure similarity and dosimetric metrics.
+
 ### AusCAT Code Guidelines
 
 Any and all contributions to our code repositories are appreciated. Please be sure to follow our [AusCAT coding guidelines](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guidelines/README.md) as these help us ensure a high quality standard consistently across our repositories.
