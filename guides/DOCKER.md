@@ -18,6 +18,8 @@ The AusCAT infrastructure consists of many different components, including datab
 
 By encapsulating all of these tools within Docker containers many of these logistical issues are resolved. The AusCAT development team can ensure that all Docker containers are tested and functioning in a simulation environment before the exact same containers is deployed across centres. It won't matter what operating system the host machines are running at each centre provided they can run Docker. Like this we can ensure consistent functionality across the AusCAT centres.
 
+The utilisation of Docker is expected to save time and reduce infrastructure costs when deploying and maintaining AusCAT client software. New nodes joining the AusCAT collaborations can set up the Docker pipeline on their servers, with minimal manual intervention.
+
 ## Docker Installation
 
 To harness the full benefits of Docker, ideally it should be installed on a Linux Operating System. The enables containers to optimally share the OS services with the Linux kernel. In cases where Linux can't be run directly, Docker can be installed using the Windows Subsystem for Linux.
