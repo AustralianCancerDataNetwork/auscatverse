@@ -10,7 +10,7 @@ Docker is a tool to enable packaging and deployment of software applications and
 
 Systems deployed using Docker typically consist of many containers, each responsible for one component of the system. Communication between containers is enabled via well-defined channels.
 
-The concept of Docker containers is often compared to virtual machines (VMs) since they also provide an isolated operating environment. The key difference between the two is that Docker containers are much more lightweight than VMs as they she the services of the operating system kernel, unlike VMs which each run their own.
+The concept of Docker containers is often compared to virtual machines (VMs) since they also provide an isolated operating environment. The key difference between the two is that Docker containers are much more lightweight than VMs as they share the services of the operating system kernel, unlike VMs which each run their own.
 
 ## Justification for use of Docker in AusCAT
 
