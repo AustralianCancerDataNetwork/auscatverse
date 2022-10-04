@@ -42,7 +42,7 @@ Since AusCAT Docker images will build on top of an existing image, it is essenti
 
 ### Container Deployment
 
-We utilise a tool named [Portainer](https://www.portainer.io/) (which is also deployed as a Docker image) to manage and deployment of AusCAT Docker containers at centres. This provides an easy to use interface which can be managed by a technical representative at the centre. Like this they can properly inspect the Docker images which are to be deployed (and the source code which built them on our GitHub) before clicking the button in Portainer to pull the image from DockerHub and deploy it at the centre.
+We utilise a tool named [Portainer (Community Edition)](https://www.portainer.io/) (which is also deployed as a Docker image) to manage and deployment of AusCAT Docker containers at centres. This provides an easy to use interface which can be managed by a technical representative at the centre. Like this they can properly inspect the Docker images which are to be deployed (and the source code which built them on our GitHub) before clicking the button in Portainer to pull the image from DockerHub and deploy it at the centre.
 
 ### Containers running as root
 
