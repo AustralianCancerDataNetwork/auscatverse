@@ -8,9 +8,9 @@ This document outlines a typical AusCAT setup. These requirements are flexible a
 The minimum specifications we recommend for a centre's server hardware to be installed and run in-house are:
 
 - 8 core CPU
-- 32 GB RAM
-- 2x 512GB SSD Disk (Usually faster, to run the operating system and software)
-- 2x 1TB SSD Disk (Might be slower and will store data)
+- 16 GB RAM
+- 1x 512GB SSD Disk (Usually faster, to run the operating system and software)
+- 1x 1TB SSD Disk (Might be slower and will store data)
 
 This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2019 where you can then create one or more Virtual Machines to run AusCAT.
 
