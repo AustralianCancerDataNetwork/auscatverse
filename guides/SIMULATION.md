@@ -244,6 +244,8 @@ volumes:
   n8n-data:
 ```
 
-Now wait a few minutes while the required images a pulled and the stack is deployed. Then confirm that all containers are running.
+Now wait a few minutes while the required images a pulled and the stack is deployed. You can monitor the progress of the containers in the `Services` section (left menu). Here you can see which containers are running or are still `preparing` (being pulled from Dockerhub). Once all containers are `running`, are ready to proceed with the next step.
+
+<img src="images/Portainer_3.png"  height="300px">
 
 ### Import simulation data
