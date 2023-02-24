@@ -97,6 +97,8 @@ Test out pulling an image by navigating to `Home`. Then select the `Primary` env
 
 ## AusCAT Simulation Environment Deployment
 
+### Add orthanc.json Secret
+
 Now you're ready to deploy the AusCAT simulation Docker Stack. You first need to add one Secret within Portainer, this is for the Orthanc contaniner to make the web interface accessible. To do this navigate to `Secrets` and press `Add Secret`. Create a secret with the name `orthanc.json` and add the following to the Secret content:
 
 ```json
@@ -110,108 +112,112 @@ Now you're ready to deploy the AusCAT simulation Docker Stack. You first need to
 }
 ```
 
-Save the Secret. Next navigate to `Stacks`, press `Add Stack` and enter a suitable name. In the Web editor, insert the AusCAT Simulation Docker Stack:
+Save the Secret.
+
+### Deploy the simulation Docker stack
+
+Next navigate to `Stacks`, press `Add Stack` and enter a suitable name. In the Web editor, insert the AusCAT Simulation Docker Stack:
 
 ```yaml
 version: "3.8"
 services:
-# Postgres Key database service
-keydb_server:
-    restart: always
-    # Link to the image source from DockerHub
-    image: "auscat/keydb_schema:latest"
-    # Necessary environment variables
-    environment:
-    POSTGRES_USER_FILE: /run/secrets/keydb_user # db superuser (pass in from secrets)
-    POSTGRES_PASSWORD_FILE: /run/secrets/keydb_pass # db superuser password (pass in from secrets)
-    POSTGRES_HOST: localhost # db host
-    PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
-    TZ: Australia/Sydney # your machine's timezone
-    # postgres data storage location (as a volume)
-    volumes:
-    - key-pgdata:/var/lib/postgresql/data/
-    ports:
-    - 5433:5432
+  # Postgres Key database service
+  keydb_server:
+      restart: always
+      # Link to the image source from DockerHub
+      image: "auscat/keydb_schema:latest"
+      # Necessary environment variables
+      environment:
+        POSTGRES_USER_FILE: /run/secrets/keydb_user # db superuser (pass in from secrets)
+        POSTGRES_PASSWORD_FILE: /run/secrets/keydb_pass # db superuser password (pass in from secrets)
+        POSTGRES_HOST: localhost # db host
+        PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
+        TZ: Australia/Sydney # your machine's timezone
+      # postgres data storage location (as a volume)
+      volumes:
+      - key-pgdata:/var/lib/postgresql/data/
+      ports:
+      - 5433:5432
 
-# Postgres Cat database service
-catdb_server:
-    restart: always
-    # Link to the image source from DockerHub
-    image: "auscat/catdb_schema:mosaiq" # Change tag to aria if needed
-    # Necessary environment variables
-    environment:
-    POSTGRES_USER_FILE: /run/secrets/catdb_user # db superuser (pass in from secrets)
-    POSTGRES_PASSWORD_FILE: /run/secrets/catdb_pass # db superuser password (pass in from secrets)
-    POSTGRES_HOST: localhost # db host
-    PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
-    TZ: Australia/Sydney # your machine's timezone
-    volumes:
-    - cat-pgdata:/var/lib/postgresql/data/
-    ports:
-    - 5434:5432
+  # Postgres Cat database service
+  catdb_server:
+      restart: always
+      # Link to the image source from DockerHub
+      image: "auscat/catdb_schema:mosaiq" # Change tag to aria if needed
+      # Necessary environment variables
+      environment:
+        POSTGRES_USER_FILE: /run/secrets/catdb_user # db superuser (pass in from secrets)
+        POSTGRES_PASSWORD_FILE: /run/secrets/catdb_pass # db superuser password (pass in from secrets)
+        POSTGRES_HOST: localhost # db host
+        PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
+        TZ: Australia/Sydney # your machine's timezone
+      volumes:
+      - cat-pgdata:/var/lib/postgresql/data/
+      ports:
+      - 5434:5432
 
-# PG admin service
-pgadmin4:
-    # Link to the image source from DockerHub
-    image: "dpage/pgadmin4"
-    restart: always
-    # Necessary environment variables
-    environment:
-    PGADMIN_DEFAULT_EMAIL: admin@admin.com
-    PGADMIN_DEFAULT_PASSWORD: password
-    volumes:
-    - pgadmin-data:/var/lib/pgadmin
-    ports:
-    - 5050:80
+  # PG admin service
+  pgadmin4:
+      # Link to the image source from DockerHub
+      image: "dpage/pgadmin4"
+      restart: always
+      # Necessary environment variables
+      environment:
+        PGADMIN_DEFAULT_EMAIL: admin@admin.com
+        PGADMIN_DEFAULT_PASSWORD: password
+      volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      ports:
+      - 5050:80
 
-# Orthanc service
-orthanc:
-    # Link to the image source from DockerHub
-    image: "osimis/orthanc:latest"
-    ports:
-    - 8042:8042 # Browser access port for CTP
-    - 4242:4242
-    volumes: # 1TB SSD Disk
-    - orthanc-data:/var/lib/orthanc/db # Change me
-    secrets:
-    - orthanc.json
+  # Orthanc service
+  orthanc:
+      # Link to the image source from DockerHub
+      image: "osimis/orthanc:latest"
+      ports:
+      - 8042:8042 # Browser access port for CTP
+      - 4242:4242
+      volumes: # 1TB SSD Disk
+      - orthanc-data:/var/lib/orthanc/db # Change me
+      secrets:
+      - orthanc.json
 
-# Customized CTP server
-ctp_customized:
-    # Link to the image source from DockerHub
-    image: "auscat/customized_ctp:latest"
-    depends_on:
-    - keydb_server
-    ports:
-    - 9090:9090 # Browser access port for CTP
-    - 8104:8104
-    # CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)
-    volumes:
-    - ctp-logs:/logs
+  # Customized CTP server
+  ctp_customized:
+      # Link to the image source from DockerHub
+      image: "auscat/customized_ctp:latest"
+      depends_on:
+      - keydb_server
+      ports:
+      - 9090:9090 # Browser access port for CTP
+      - 8104:8104
+      # CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)
+      volumes:
+      - ctp-logs:/logs
 
-# RDF4J framework
-rdf4j:
-    # Link to the image source from DockerHub
-    image: "auscat/rdf4j:latest"
-    ports:
-    - 8080:8080
+  # RDF4J framework
+  rdf4j:
+      # Link to the image source from DockerHub
+      image: "auscat/rdf4j:latest"
+      ports:
+      - 8080:8080
 
-# D2RQ platform
-d2rq:
-    image: "auscat/d2rq:latest"
-    depends_on:
-    - catdb_server
-    - rdf4j
-    ports:
-    - 8888:8888
-    volumes:
-    - d2rq:/home/jovyan/work
+  # D2RQ platform
+  d2rq:
+      image: "auscat/d2rq:latest"
+      depends_on:
+      - catdb_server
+      - rdf4j
+      ports:
+      - 8888:8888
+      volumes:
+      - d2rq-data:/home/jovyan/work
 
-n8n:
-    image: 'auscat/n8n:dev'
-    ports: 
-    - 5678:5678
-    environment:
+  n8n:
+      image: 'auscat/n8n:dev'
+      ports:
+      - 5678:5678
+      environment:
         PATIENT_IDS: "LUNG1-001"
         KEYDB_HOST: "keydb_server:5432"
         KEYDB_USERNAME: postgres
@@ -220,24 +226,24 @@ n8n:
         CATDB_USERNAME: postgres
         CATDB_PASSWORD: postgres
         CTP_HOST: "ctp_customized"
-    volumes:
-    - n8n:/home/node/.n8n
+      volumes:
+      - n8n-data:/home/node/.n8n
 
 secrets:
-orthanc.json:
-    external: true
+  orthanc.json:
+      external: true
 
 volumes:
-key-pgdata:
-cat-pgdata:
-ctp-customized:
-ctp-logs:
-orthanc-data:
-pgadmin-data:
-d2rq:
-n8n:
+  key-pgdata:
+  cat-pgdata:
+  ctp-customized:
+  ctp-logs:
+  orthanc-data:
+  pgadmin-data:
+  d2rq-data:
+  n8n-data:
 ```
 
-### Deploy the simulation Docker stack
+Now wait a few minutes while the required images a pulled and the stack is deployed. Then confirm that all containers are running.
 
 ### Import simulation data
