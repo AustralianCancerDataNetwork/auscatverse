@@ -2,7 +2,7 @@
 
 To enable learning, development and testing of the AusCAT system a simulation environment can be deployed which loads some public data obtained from The Cancer Imaging Archive. Within this environment the entire system can be run end-to-end to help prepare for deployment of a production ready system at participating centres/sites.
 
-> CAUTION: The simulation environment deals only with public data. Therefore some default passwords are used to enable quick and easy deployment of the simulation setup. These are not suitable for use in a production system and care should be taken to set secure passwords on a production environment.
+> CAUTION: The simulation environment deals only with public data. Therefore some default passwords are used to enable quick and easy deployment of the simulation setup. These are not suitable for use in a production system and care should be taken to set secure passwords when deployed in a production environment.
 
 ## What you'll need
 
@@ -15,9 +15,13 @@ If you require either of these please contact your AusCAT representative.
 
 ## Virtual Machine Setup
 
+This guide assumes you are using some sort of Virtual Machine (VM running an Ubuntu Operating System. In fact, the system doesn't need to be a Virtual Machine at all, it could be a desktop or laptop computer running Ubuntu.
+
+If your system is no running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the [Install Docker](#install-docker) step below to determine how to best install Docker for you operating system. Once installed you can follow the remaining instructions in the guide.
+
 ### NECTAR Cloud
 
-You may use the NECTAR cloud to setup such a Virtual Machine. Instructions can be [found here](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/NECTAR.md).
+If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be [found here](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/NECTAR.md).
 
 ## Docker + Portainer Installation
 
@@ -49,7 +53,7 @@ Next you will need add the Dockerhub registry token to Portainer so that you can
 
 ![Add Registry](images/Portainer_1.png)
 
-Test out pulling an image by navigating to `Home`. Then select the `Primary` environment and choose `Images` from the left menu. Try to pull the `auscat/default_ctp:latest` (or any other AusCAT image) from the registry you added. Confirm that the image pull successfully.
+Test out pulling an image by navigating to `Home`. Then select the `Primary` environment and choose `Images` from the left menu. Try to pull the `auscat/default_ctp:latest` (or any other AusCAT image) from the registry you added. Confirm that the image was pulled successfully.
 
 ![Pull Image](images/Portainer_2.png)
 
@@ -220,12 +224,43 @@ The `etl` Service defined in the stack deployed has an option for `SIMULATION_IM
 
 ![Access ETL Service Logs](images/Portainer_4.png)
 
-You may need to wait some time for the stack to spin up and the simulation data to download and import. Eventually you see a successful import message in the logs:
+You may need to wait some time for the stack to spin up and the simulation data to download and import. Eventually you should see a successful import message in the logs without any errors:
 
 ![Access ETL Service Success](images/Portainer_5.png)
 
-Once data is imported, you can now inspect the data imported using the PGAdmin tool, as well as CTP and Orthanc. Log in replacing the `[IP_ADDRESS]` with your VM's IP address:
+Once data is imported, you can now inspect the data using the PGAdmin tool, as well as CTP and Orthanc. Log in replacing the `[IP_ADDRESS]` with your VM's IP address:
 
-- **PGAdmin**: `http://[IP_ADDRESS]:5050`
-- **CTP**: `http://[IP_ADDRESS]:9090`
-- **Orthanc**: `http://[IP_ADDRESS]:8042`
+#### PGAdmin
+
+THe PGAdmin tool lets you explore the tabular data in the CatDB and KeyDB databases. Visit `http://[IP_ADDRESS]:5050` in your web browser. The simulation environment username and password to log in are:
+
+- Username: **admin@admin.com**
+- Password: **password**
+
+Navigate to the CatDB and inspect the `patient` table (under `CatDB->Databases->cat_db->Schemas->public->Tables`. Right click the `patient` table and choose `View/Edit Data->All Rows`:
+
+![PGAdmin patient table view](images/PGAdmin_1.png)
+
+Also explore the other tables, including those in the KeyDB to inspect the data that was imported as part of the simulation environment (note this data is quite sparse so most tables will be empty).
+
+#### CTP
+
+The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc.Visit `http://[IP_ADDRESS]:9090` in your web browser. Clight login in the top right hand corner, the simulation environment username and password to log in are:
+
+- Username: **admin**
+- Password: **123**
+
+Click `DICOM Server Import` in the left menu. Here you can see how many DICOM files the CTP recieved for anoymisation (in the screenshot below this is 377).
+
+![PGAdmin patient table view](images/CTP_1.png)
+
+#### Orthanc
+
+Orthanc is PACS which stores the anonymised DICOM data. Visit `http://[IP_ADDRESS]:8042` in your web browser. Log in using these simulation environment credentials:
+
+- Username: **admin**
+- Password: **admin**
+
+Click `All Patients` and explore the anonymised simulation DICOM data imported.
+
+![PGAdmin patient table view](images/Orthanc_1.png)
