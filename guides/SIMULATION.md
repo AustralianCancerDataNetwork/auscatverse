@@ -172,7 +172,7 @@ services:
       - d2rq-data:/home/jovyan/work
 
   etl:
-      image: 'auscat/etl:simulation'
+      image: 'auscat/etl:sim'
       ports:
       - 5678:5678
       environment:
@@ -216,6 +216,16 @@ Now wait a few minutes while the required images a pulled and the stack is deplo
 
 ### Import simulation data
 
-The `etl` Service defined in the stack deployed has an option for `SIMULATION_IMPORT_MODE` which is set to `auto`. Therefore, the script to import the simulation data should run once all Services are up and running. You can inspect the logs of the `etl` service to confirm this completed.
+The `etl` Service defined in the stack deployed has an option for `SIMULATION_IMPORT_MODE` which is set to `auto`. Therefore, the script to import the simulation data should run once all Services are up and running. You can inspect the logs of the `etl` service to confirm this completed which you can access using the icon depicted:
 
-Once data is imported, you can load
+![Access ETL Service Logs](images/Portainer_4.png)
+
+You may need to wait some time for the stack to spin up and the simulation data to download and import. Eventually you see a successful import message in the logs:
+
+![Access ETL Service Success](images/Portainer_5.png)
+
+Once data is imported, you can now inspect the data imported using the PGAdmin tool, as well as CTP and Orthanc. Log in replacing the `[IP_ADDRESS]` with your VM's IP address:
+
+- **PGAdmin**: `http://[IP_ADDRESS]:5050`
+- **CTP**: `http://[IP_ADDRESS]:9090`
+- **Orthanc**: `http://[IP_ADDRESS]:8042`
