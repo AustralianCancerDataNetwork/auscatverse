@@ -121,7 +121,7 @@ services:
   # PG admin service
   pgadmin4:
       # Link to the image source from DockerHub
-      image: "dpage/pgadmin4"
+      image: "auscat/pgadmin4"
       restart: always
       # Necessary environment variables
       environment:
