@@ -135,14 +135,12 @@ services:
   # Orthanc service
   orthanc:
       # Link to the image source from DockerHub
-      image: "osimis/orthanc:latest"
+      image: "auscat/orthanc:latest"
       ports:
       - 8042:8042 # Browser access port for CTP
       - 4242:4242
       volumes: # 1TB SSD Disk
       - orthanc-data:/var/lib/orthanc/db # Change me
-      secrets:
-      - orthanc.json
 
   # Customized CTP server
   ctp_customized:
@@ -198,10 +196,6 @@ services:
       - ctp_customized
       volumes:
       - n8n-data:/home/node/.n8n
-
-secrets:
-  orthanc.json:
-      external: true
 
 volumes:
   key-pgdata:
