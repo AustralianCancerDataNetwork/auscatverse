@@ -42,7 +42,7 @@ Wait a few minutes for you VM to be ready. Once built, you can SSH into your VM 
 
 ![Launch Instance](images/NECTAR_6.png)
 
-Then sign in with:
+Open your terminal, then sign in with:
 
 ```bash
 ssh -i ~/.ssh/your-private-ssh-key.pub ubuntu@your-vm-ip
