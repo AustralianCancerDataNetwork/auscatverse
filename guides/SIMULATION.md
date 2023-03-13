@@ -59,22 +59,7 @@ Test out pulling an image by navigating to `Home`. Then select the `Primary` env
 
 ## AusCAT Simulation Environment Deployment
 
-### Add orthanc.json Secret
-
-Now you're ready to deploy the AusCAT simulation Docker Stack. You first need to add one Secret within Portainer, this is for the Orthanc contaniner to make the web interface accessible. To do this navigate to `Secrets` and press `Add Secret`. Create a secret with the name `orthanc.json` and add the following to the Secret content:
-
-```json
-{
-    "Name" : "ORTHANC in AusCAT",
-    "RemoteAccessAllowed" : true,
-    "AuthenticationEnabled" : true,
-    "RegisteredUsers": {
-        "admin":"admin"
-    }
-}
-```
-
-Save the Secret.
+Now you're ready to deploy the AusCAT simulation Docker Stack. 
 
 ### Deploy the simulation Docker stack
 
