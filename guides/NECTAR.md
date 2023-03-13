@@ -45,7 +45,7 @@ Wait a few minutes for you VM to be ready. Once built, you can SSH into your VM 
 Open your terminal, then sign in with:
 
 ```bash
-ssh -i ~/.ssh/your-private-ssh-key.pub ubuntu@your-vm-ip
+ssh -i ~/.ssh/your-private-ssh-key ubuntu@your-vm-ip
 ```
 
 You should now be logged in to your NECTAR VM.
