@@ -31,7 +31,6 @@ recommonmark==0.7.1
 
 5. Install the requirements: `pip install -r requirements.txt`
 
-
 ## Initialise Sphinx
 
 1. Create a new directory called `docs` and change into that directory:
@@ -139,11 +138,7 @@ Build to documentation again to check that it's working. Now you can start desig
 
 ## Deploying Documentation
 
-GitHub can build and then serve the documentation for us. Unfortunately, only the Enterprise edition of GitHub allows us to properly protect private documentation. Therefore a workaround is required to password protect the Sphinx documentation ourselves. This approach is taken from [this GitHub repository](https://github.com/matteobrusa/Password-protection-for-static-pages).
-
-1. Create a new directory under `docs/site`. Create a new file in there called `index.html` and copy the contents from [here](https://raw.githubusercontent.com/matteobrusa/Password-protection-for-static-pages/master/index.html).
-
-2. Create a GitHub Action pipeline to build the documentation on GitHub by defining the following file under `.github/workflows/build_docs.yml`:
+1. Create a GitHub Action pipeline to build the documentation on GitHub by defining the following file under `.github/workflows/build_docs.yml`:
 
 ```yaml
 name: Build Docs
@@ -173,7 +168,7 @@ jobs:
     - name: Build docs
       run: |
         sudo apt-get update -y && sudo apt-get install -y pandoc
-        sphinx-build -b html -a docs docs/site/8b2e19ef880e90b0a9f161dba1af49bb14d68068
+        sphinx-build -b html -a docs docs/site
     - name: Deploy docs
       uses: peaceiris/actions-gh-pages@v3
       with:
@@ -188,14 +183,13 @@ jobs:
 5. Trigger the workflow under the Actions tab of the GitHub repository. Some further configuration may be required to see the documentation. This can be found under the repository settings under `Pages`. The following image provides an example configuration:
 ![GitHub Pages Settings!](gh-pages-settings.png)
 
-
 6. If all went well, your documentation should be ready to view.
 
 ## More Information
 
-- Sphinx: https://www.sphinx-doc.org/
-- Markdown: https://www.markdownguide.org/
-- gitignore.io: https://www.gitignore.io
+- Sphinx: <https://www.sphinx-doc.org/>
+- Markdown: <https://www.markdownguide.org/>
+- gitignore.io: <https://www.gitignore.io>
 
 ## Help and Support
 
