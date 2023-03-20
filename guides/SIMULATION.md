@@ -41,7 +41,7 @@ docker swarm init
 
 Portainer provides a web-interface to manage your Docker instance. It isn't essential but it eases the depolyment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: [https://docs.portainer.io/start/install-ce/server/swarm/linux](https://docs.portainer.io/start/install-ce/server/swarm/linux).
 
-Once installed (and running, confirm with `docker ps` command), navigate to the Portainer dashbaord in your web browser:
+Once installed (and running, confirm with `docker ps` command), navigate to the Portainer dashboard in your web browser:
 
 `http://your-vm-ip:9000`
 
@@ -193,7 +193,7 @@ volumes:
   n8n-data:
 ```
 
-Now wait a few minutes while the required images a pulled and the stack is deployed. You can monitor the progress of the containers in the `Services` section (left menu). Here you can see which containers are running or are still `preparing` (being pulled from Dockerhub). Once all containers are `running`, are ready to proceed with the next step.
+Now wait a few minutes while the required images are pulled and the stack is deployed. You can monitor the progress of the containers in the `Services` section (left menu). Here you can see which containers are running or are still `preparing` (being pulled from Dockerhub). Once all containers are `running`, you are ready to proceed with the next step.
 
 ![Check Services Running](images/Portainer_3.png)
 
@@ -211,12 +211,12 @@ Once data is imported, you can now inspect the data using the PGAdmin tool, as w
 
 #### PGAdmin
 
-THe PGAdmin tool lets you explore the tabular data in the CatDB and KeyDB databases. Visit `http://[IP_ADDRESS]:5050` in your web browser. The simulation environment username and password to log in are:
+The PGAdmin tool lets you explore the tabular data in the CatDB and KeyDB databases. Visit `http://[IP_ADDRESS]:5050` in your web browser. The simulation environment username and password to log in are:
 
 - Username: **admin@admin.com**
 - Password: **password**
 
-Navigate to the CatDB and inspect the `patient` table (under `CatDB->Databases->cat_db->Schemas->public->Tables`. Right click the `patient` table and choose `View/Edit Data->All Rows`:
+Navigate to the CatDB and inspect the `patient` table (under `CatDB->Databases->cat_db->Schemas->public->Tables`). Right click the `patient` table and choose `View/Edit Data->All Rows`:
 
 ![PGAdmin patient table view](images/PGAdmin_1.png)
 
@@ -224,12 +224,12 @@ Also explore the other tables, including those in the KeyDB to inspect the data 
 
 #### CTP
 
-The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc.Visit `http://[IP_ADDRESS]:9090` in your web browser. Clight login in the top right hand corner, the simulation environment username and password to log in are:
+The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc. Visit `http://[IP_ADDRESS]:9090` in your web browser. Click login in the top right hand corner, the simulation environment username and password to log in are:
 
 - Username: **admin**
 - Password: **123**
 
-Click `DICOM Server Import` in the left menu. Here you can see how many DICOM files the CTP recieved for anoymisation (in the screenshot below this is 377).
+Click `DICOM Server Import` in the left menu. Here you can see how many DICOM files the CTP received for anonymisation (in the screenshot below this is 377).
 
 ![PGAdmin patient table view](images/CTP_1.png)
 
