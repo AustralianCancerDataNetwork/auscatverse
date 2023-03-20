@@ -37,6 +37,12 @@ Once Docker is successfully installed, initialise a swarm which will be used in 
 docker swarm init
 ```
 
+**If you're using a NECTAR VM with multiple IP addresses assigned, use the following command instead and replace `VM_IP_ADDRESS` with the main IP address you use to connect:**
+
+```bash
+docker swarm init --advertise-addr VM_IP_ADDRESS
+```
+
 ### Install Portainer
 
 Portainer provides a web-interface to manage your Docker instance. It isn't essential but it eases the depolyment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: [https://docs.portainer.io/start/install-ce/server/swarm/linux](https://docs.portainer.io/start/install-ce/server/swarm/linux).
@@ -177,7 +183,7 @@ services:
         SIMULATION_IMPORT_MODE: auto
       depends_on:
       - catdb_server
-      - kaydb_server
+      - keydb_server
       - ctp_customized
       volumes:
       - n8n-data:/home/node/.n8n
