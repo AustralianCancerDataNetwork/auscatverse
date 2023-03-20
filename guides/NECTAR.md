@@ -24,7 +24,7 @@ Perform the following steps to setup a virtual machine on the NECTAR cloud in wh
 
     ![Select Source](images/NECTAR_3.png)
 
-6. Next select a `Flavour`. This determines the amount resources that will allocated to the VM. Choose one with a low SU/hour as this is the amount of credits that will be used within our project. If you are experimenting and don't need your VM to stay longer than 24 hours, best to select a preemptible flavour (note the yellow alert symbol) as it will be deleted automatically. Press the up arrow to allocate.
+6. Next select a `Flavour`. This determines the amount of resources that will allocated to the VM. Choose one with a low SU/hour as this is the amount of credits that will be used within our project. If you are experimenting and don't need your VM to stay longer than 24 hours, best to select a preemptible flavour (note the yellow alert symbol) as it will be deleted automatically. Press the up arrow to allocate.
 
     ![Select Flavour](images/NECTAR_4.png)
 
@@ -49,3 +49,5 @@ ssh -i ~/.ssh/your-private-ssh-key ubuntu@your-vm-ip
 ```
 
 You should now be logged in to your NECTAR VM.
+
+> Note: When NECTAR creates a Virtual Machine in certain Zones, there might be an additional IP addresses assigned to your instance for data transfer. In this case, connect to the IP Address **without** the *-data* suffix.
