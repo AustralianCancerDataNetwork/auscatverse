@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -202,7 +202,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -210,8 +210,38 @@
         <article role="main">
           <section id="metric-computation">
 <h1>Metric Computation<a class="headerlink" href="#metric-computation" title="Permalink to this heading">#</a></h1>
-<p>An example for computing radiomic and dose metrics in the simulation environment.</p>
-<p>Placeholder..</p>
+<p>An example Jupyter Notebook is provided which can be run to generate radiomic and dose metrics from the simulation environment data. Once the <a class="reference internal" href="SIMULATION.html"><span class="std std-doc">simulation environment has been deployed</span></a>, this example demonstrates how to query the CatDB for a cohort of patients, fetch their imaging data from the Orthanc, convert this to a format more suited for our research tools (NIfTI), prepare visualisation of the data and finally compute first-order radiomic features as well as Dose Volume Histograms (DVHs) and some dose metrics. These are saved off to a CSV file, ready for <a class="reference internal" href="FEDERATED_ANALYSIS.html"><span class="std std-doc">federated analysis</span></a>.</p>
+<section id="deploy-example-docker-image">
+<h2>Deploy Example Docker Image<a class="headerlink" href="#deploy-example-docker-image" title="Permalink to this heading">#</a></h2>
+<p>The easiest way to run this example is to use the Docker Image which contains the example Jupyter Notebook and everything needed to run a Jupyter instance. Modify your Simulation Docker Stack in Portainer by adding the following under <code class="docutils literal notranslate"><span class="pre">services:</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>  analysis_example:
+      image: &quot;auscat/etl:example&quot;
+      ports:
+      - 8888:8888
+      depends_on:
+      - etl
+      volumes:
+      - analysis-data:/data
+</pre></div>
+</div>
+<p>Also be sure to add the volume definition under <code class="docutils literal notranslate"><span class="pre">volumes:</span></code> at the end of the stack:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">analysis-data</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Re-deploy the stack.</p>
+</section>
+<section id="running-the-example-notebook">
+<h2>Running the Example Notebook<a class="headerlink" href="#running-the-example-notebook" title="Permalink to this heading">#</a></h2>
+<p>Once the Docker image is up and running, you can access the Jupyter instance at: <code class="docutils literal notranslate"><span class="pre">http://[YOUR-HOST-IP]:8888</span></code>. You will be prompted for a password which has been set to a default of <code class="docutils literal notranslate"><span class="pre">password</span></code> (Note using this password is only suitable in a simulation environment).</p>
+<p>Once logged in, you can navigate to <code class="docutils literal notranslate"><span class="pre">work</span></code> folder and find the <code class="docutils literal notranslate"><span class="pre">Compute_Metrics.ipynb</span></code> notebook. Open this Jupyter Notebook and follow the instructions within.</p>
+<blockquote>
+<div><p>Tip: You can quickly execute the cells within the Jupyter Notebook by pressing <code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="analysing-metrics">
+<h2>Analysing Metrics<a class="headerlink" href="#analysing-metrics" title="Permalink to this heading">#</a></h2>
+<p>The output of this example notebook is a file named <code class="docutils literal notranslate"><span class="pre">metrics.csv</span></code> which is stored in the <code class="docutils literal notranslate"><span class="pre">working</span></code> directory. This directory is mapped to the <code class="docutils literal notranslate"><span class="pre">analysis-data</span></code> volume we defined in the Docker stack above. Using this volume you can proceed with a <a class="reference internal" href="FEDERATED_ANALYSIS.html"><span class="std std-doc">federated analysis</span></a> using the metrics computed in this example.</p>
+</section>
 </section>
 
         </article>
@@ -259,8 +289,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Metric Computation</a><ul>
+<li><a class="reference internal" href="#deploy-example-docker-image">Deploy Example Docker Image</a></li>
+<li><a class="reference internal" href="#running-the-example-notebook">Running the Example Notebook</a></li>
+<li><a class="reference internal" href="#analysing-metrics">Analysing Metrics</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
