@@ -4,11 +4,11 @@ An example Jupyter Notebook is provided which can be run to generate radiomic an
 
 ## Deploy Example Docker Image
 
-The easiest way to run this example is to use the Docker Image which contains the example Jupyter Notebook and everything needed to run a Jupyter instance. Modify your Simulation Docker Stack in Portainer by adding the following under `services`:
+The easiest way to run this example is to use the Docker Image which contains the example Jupyter Notebook and everything needed to run a Jupyter instance. Modify your Simulation Docker Stack in Portainer by adding the following under `services:`:
 
 ```yaml
   analysis_example:
-      image: 'auscat/etl:example'
+      image: "auscat/etl:example"
       ports:
       - 8888:8888
       depends_on:
