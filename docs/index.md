@@ -7,16 +7,14 @@ AusCAT introduction and overview goes here...
 :caption: Getting Started
 :hidden:
 
-gettingstarted/installation
-gettingstarted/examples
+installation
+examples
 ```
 
-<!-- 
 ```{toctree}
-:caption: Development
+:caption: For Developers
 :hidden:
 
-guidelines/README
-guides/SIMULATION
-guides/SPHINX
-``` -->
+guidelines/CODING
+
+```
