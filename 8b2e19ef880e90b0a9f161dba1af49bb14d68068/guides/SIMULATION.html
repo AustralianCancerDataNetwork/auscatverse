@@ -1,0 +1,506 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
+        <title>AusCAT Simulation Environment - AusCATverse documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">AusCATverse  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">AusCATverse  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/README.html">AusCAT Coding Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPHINX.html">Sphinx Installation &amp; Setup</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="auscat-simulation-environment">
+<h1>AusCAT Simulation Environment<a class="headerlink" href="#auscat-simulation-environment" title="Permalink to this heading">#</a></h1>
+<p>To enable learning, development and testing of the AusCAT system a simulation environment can be deployed which loads some public data obtained from The Cancer Imaging Archive. Within this environment the entire system can be run end-to-end to help prepare for deployment of a production ready system at participating centres/sites.</p>
+<blockquote>
+<div><p>CAUTION: The simulation environment deals only with public data. Therefore some default passwords are used to enable quick and easy deployment of the simulation setup. These are not suitable for use in a production system and care should be taken to set secure passwords when deployed in a production environment.</p>
+</div></blockquote>
+<section id="what-you-ll-need">
+<h2>What you’ll need<a class="headerlink" href="#what-you-ll-need" title="Permalink to this heading">#</a></h2>
+<p>To complete the steps in this guide, ensure you have:</p>
+<ul class="simple">
+<li><p>AusCAT Dockerhub access token.</p></li>
+<li><p>Unversity affiliated account and access to <code class="docutils literal notranslate"><span class="pre">ACDN-AusCAT-Sim</span></code> project (if intending to use NECTAR cloud).</p></li>
+</ul>
+<p>If you require either of these please contact your AusCAT representative.</p>
+</section>
+<section id="virtual-machine-setup">
+<h2>Virtual Machine Setup<a class="headerlink" href="#virtual-machine-setup" title="Permalink to this heading">#</a></h2>
+<p>This guide assumes you are using some sort of Virtual Machine (VM running an Ubuntu Operating System). In fact, the system doesn’t need to be a Virtual Machine at all, it could be a desktop or laptop computer running Ubuntu.</p>
+<p>If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the <a class="reference external" href="#install-docker">Install Docker</a> step below to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.</p>
+<section id="nectar-cloud">
+<h3>NECTAR Cloud<a class="headerlink" href="#nectar-cloud" title="Permalink to this heading">#</a></h3>
+<p>If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/NECTAR.md">found here</a>.</p>
+</section>
+</section>
+<section id="docker-portainer-installation">
+<h2>Docker + Portainer Installation<a class="headerlink" href="#docker-portainer-installation" title="Permalink to this heading">#</a></h2>
+<p>Now that your VM is up and running, you will need to install Docker and Portainer which will enable deployment of the AusCAT system Docker stack.</p>
+<section id="id1">
+<h3>Install Docker<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The Docker documentation describes in detail how to install Docker on Ubuntu. Follow the steps here: <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>. Don’t forget to also run the Linux post-install steps: <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">https://docs.docker.com/engine/install/linux-postinstall/</a>.</p>
+<p>Once Docker is successfully installed, initialise a swarm which will be used in the next step:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>swarm<span class="w"> </span>init
+</pre></div>
+</div>
+<p><strong>If you’re using a NECTAR VM with multiple IP addresses assigned, use the following command instead and replace ``VM_IP_ADDRESS`` with the main IP address you use to connect:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>swarm<span class="w"> </span>init<span class="w"> </span>--advertise-addr<span class="w"> </span>VM_IP_ADDRESS
+</pre></div>
+</div>
+</section>
+<section id="install-portainer">
+<h3>Install Portainer<a class="headerlink" href="#install-portainer" title="Permalink to this heading">#</a></h3>
+<p>Portainer provides a web-interface to manage your Docker instance. It isn’t essential but it eases the depolyment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: <a class="reference external" href="https://docs.portainer.io/start/install-ce/server/swarm/linux">https://docs.portainer.io/start/install-ce/server/swarm/linux</a>.</p>
+<p>Once installed (and running, confirm with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command), navigate to the Portainer dashboard in your web browser:</p>
+<p><code class="docutils literal notranslate"><span class="pre">http://your-vm-ip:9000</span></code></p>
+<p>You will be prompted to create a user account the first time you visit this dashboard.</p>
+</section>
+<section id="add-auscat-docker-registry">
+<h3>Add AusCAT Docker Registry<a class="headerlink" href="#add-auscat-docker-registry" title="Permalink to this heading">#</a></h3>
+<p>Next you will need add the Dockerhub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to <code class="docutils literal notranslate"><span class="pre">Registries</span></code> in the left menu and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Registry</span></code>. Enter the credentials and token you obtained from the AusCAT team:</p>
+<a class="reference external image-reference" href="images/Portainer_1.png"><img alt="Add Registry" src="../_images/Portainer_1.png" /></a>
+<p>Test out pulling an image by navigating to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. Then select the <code class="docutils literal notranslate"><span class="pre">Primary</span></code> environment and choose <code class="docutils literal notranslate"><span class="pre">Images</span></code> from the left menu. Try to pull the <code class="docutils literal notranslate"><span class="pre">auscat/default_ctp:latest</span></code> (or any other AusCAT image) from the registry you added. Confirm that the image was pulled successfully.</p>
+<a class="reference external image-reference" href="images/Portainer_2.png"><img alt="Pull Image" src="../_images/Portainer_2.png" /></a>
+</section>
+</section>
+<section id="auscat-simulation-environment-deployment">
+<h2>AusCAT Simulation Environment Deployment<a class="headerlink" href="#auscat-simulation-environment-deployment" title="Permalink to this heading">#</a></h2>
+<p>Now you’re ready to deploy the AusCAT simulation Docker Stack.</p>
+<section id="deploy-the-simulation-docker-stack">
+<h3>Deploy the simulation Docker stack<a class="headerlink" href="#deploy-the-simulation-docker-stack" title="Permalink to this heading">#</a></h3>
+<p>Next navigate to <code class="docutils literal notranslate"><span class="pre">Stacks</span></code>, press <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Stack</span></code> and enter a suitable name. In the Web editor, insert the AusCAT Simulation Docker Stack:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Postgres Key database service</span>
+<span class="w">  </span><span class="nt">keydb_server</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/keydb_schema:latest&quot;</span>
+<span class="w">      </span><span class="c1"># Necessary environment variables</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">POSTGRES_USER_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_user</span><span class="w"> </span><span class="c1"># db superuser (pass in from secrets)</span>
+<span class="w">        </span><span class="nt">POSTGRES_PASSWORD_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_pass</span><span class="w"> </span><span class="c1"># db superuser password (pass in from secrets)</span>
+<span class="w">        </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"> </span><span class="c1"># db host</span>
+<span class="w">        </span><span class="nt">PGDATA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/postgresql/data/pgdata</span><span class="w"> </span><span class="c1"># path to postgres data</span>
+<span class="w">        </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Australia/Sydney</span><span class="w"> </span><span class="c1"># your machine&#39;s timezone</span>
+<span class="w">      </span><span class="c1"># postgres data storage location (as a volume)</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key-pgdata:/var/lib/postgresql/data/</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5433:5432</span>
+
+<span class="w">  </span><span class="c1"># Postgres Cat database service</span>
+<span class="w">  </span><span class="nt">catdb_server</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/catdb_schema:mosaiq&quot;</span><span class="w"> </span><span class="c1"># Change tag to aria if needed</span>
+<span class="w">      </span><span class="c1"># Necessary environment variables</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">POSTGRES_USER_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/catdb_user</span><span class="w"> </span><span class="c1"># db superuser (pass in from secrets)</span>
+<span class="w">        </span><span class="nt">POSTGRES_PASSWORD_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/catdb_pass</span><span class="w"> </span><span class="c1"># db superuser password (pass in from secrets)</span>
+<span class="w">        </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"> </span><span class="c1"># db host</span>
+<span class="w">        </span><span class="nt">PGDATA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/postgresql/data/pgdata</span><span class="w"> </span><span class="c1"># path to postgres data</span>
+<span class="w">        </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Australia/Sydney</span><span class="w"> </span><span class="c1"># your machine&#39;s timezone</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat-pgdata:/var/lib/postgresql/data/</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5434:5432</span>
+
+<span class="w">  </span><span class="c1"># PG admin service</span>
+<span class="w">  </span><span class="nt">pgadmin4</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/pgadmin4&quot;</span>
+<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<span class="w">      </span><span class="c1"># Necessary environment variables</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@admin.com</span>
+<span class="w">        </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin-data:/var/lib/pgadmin</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5050:80</span>
+
+<span class="w">  </span><span class="c1"># Orthanc service</span>
+<span class="w">  </span><span class="nt">orthanc</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/orthanc:latest&quot;</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8042:8042</span><span class="w"> </span><span class="c1"># Browser access port for CTP</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4242:4242</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="c1"># 1TB SSD Disk</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orthanc-data:/var/lib/orthanc/db</span><span class="w"> </span><span class="c1"># Change me</span>
+
+<span class="w">  </span><span class="c1"># Customized CTP server</span>
+<span class="w">  </span><span class="nt">ctp_customized</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/customized_ctp:latest&quot;</span>
+<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_server</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span><span class="w"> </span><span class="c1"># Browser access port for CTP</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104:8104</span>
+<span class="w">      </span><span class="c1"># CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-logs:/logs</span>
+
+<span class="w">  </span><span class="c1"># RDF4J framework</span>
+<span class="w">  </span><span class="nt">rdf4j</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/rdf4j:latest&quot;</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:8080</span>
+
+<span class="w">  </span><span class="c1"># D2RQ platform</span>
+<span class="w">  </span><span class="nt">d2rq</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/d2rq:latest&quot;</span>
+<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catdb_server</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf4j</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888:8888</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">d2rq-data:/home/jovyan/work</span>
+
+<span class="w">  </span><span class="nt">etl</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;auscat/etl:sim&#39;</span>
+<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5678:5678</span>
+<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">PATIENT_IDS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LUNG1-001</span><span class="nv"> </span><span class="s">LUNG1-002&quot;</span>
+<span class="w">        </span><span class="nt">KEYDB_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keydb_server&quot;</span>
+<span class="w">        </span><span class="nt">KEYDB_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+<span class="w">        </span><span class="nt">KEYDB_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">        </span><span class="nt">KEYDB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">        </span><span class="nt">CATDB_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;catdb_server&quot;</span>
+<span class="w">        </span><span class="nt">CATDB_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
+<span class="w">        </span><span class="nt">CATDB_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">        </span><span class="nt">CATDB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">        </span><span class="nt">CTP_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ctp_customized&quot;</span>
+<span class="w">        </span><span class="nt">CTP_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104</span>
+<span class="w">        </span><span class="nt">SIMULATION_IMPORT_MODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
+<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catdb_server</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_server</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp_customized</span>
+<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n8n-data:/home/node/.n8n</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">key-pgdata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">cat-pgdata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ctp-customized</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">ctp-logs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">orthanc-data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pgadmin-data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">d2rq-data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">n8n-data</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Now wait a few minutes while the required images are pulled and the stack is deployed. You can monitor the progress of the containers in the <code class="docutils literal notranslate"><span class="pre">Services</span></code> section (left menu). Here you can see which containers are running or are still <code class="docutils literal notranslate"><span class="pre">preparing</span></code> (being pulled from Dockerhub). Once all containers are <code class="docutils literal notranslate"><span class="pre">running</span></code>, you are ready to proceed with the next step.</p>
+<a class="reference external image-reference" href="images/Portainer_3.png"><img alt="Check Services Running" src="../_images/Portainer_3.png" /></a>
+</section>
+<section id="import-simulation-data">
+<h3>Import simulation data<a class="headerlink" href="#import-simulation-data" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">etl</span></code> Service defined in the stack deployed has an option for <code class="docutils literal notranslate"><span class="pre">SIMULATION_IMPORT_MODE</span></code> which is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>. Therefore, the script to import the simulation data should run once all Services are up and running. You can inspect the logs of the <code class="docutils literal notranslate"><span class="pre">etl</span></code> service to confirm this completed which you can access using the icon depicted:</p>
+<a class="reference external image-reference" href="images/Portainer_4.png"><img alt="Access ETL Service Logs" src="../_images/Portainer_4.png" /></a>
+<p>You may need to wait some time for the stack to spin up and the simulation data to download and import. Eventually you should see a successful import message in the logs without any errors:</p>
+<a class="reference external image-reference" href="images/Portainer_5.png"><img alt="Access ETL Service Success" src="../_images/Portainer_5.png" /></a>
+<p>Once data is imported, you can now inspect the data using the PGAdmin tool, as well as CTP and Orthanc. Log in replacing the <code class="docutils literal notranslate"><span class="pre">[IP_ADDRESS]</span></code> with your VM’s IP address:</p>
+<section id="pgadmin">
+<h4>PGAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this heading">#</a></h4>
+<p>The PGAdmin tool lets you explore the tabular data in the CatDB and KeyDB databases. Visit <code class="docutils literal notranslate"><span class="pre">http://[IP_ADDRESS]:5050</span></code> in your web browser. The simulation environment username and password to log in are:</p>
+<ul class="simple">
+<li><p>Username: <strong>admin&#64;admin.com</strong></p></li>
+<li><p>Password: <strong>password</strong></p></li>
+</ul>
+<p>Navigate to the CatDB and inspect the <code class="docutils literal notranslate"><span class="pre">patient</span></code> table (under <code class="docutils literal notranslate"><span class="pre">CatDB-&gt;Databases-&gt;cat_db-&gt;Schemas-&gt;public-&gt;Tables</span></code>). Right click the <code class="docutils literal notranslate"><span class="pre">patient</span></code> table and choose <code class="docutils literal notranslate"><span class="pre">View/Edit</span> <span class="pre">Data-&gt;All</span> <span class="pre">Rows</span></code>:</p>
+<a class="reference external image-reference" href="images/PGAdmin_1.png"><img alt="PGAdmin patient table view" src="../_images/PGAdmin_1.png" /></a>
+<p>Also explore the other tables, including those in the KeyDB to inspect the data that was imported as part of the simulation environment (note this data is quite sparse so most tables will be empty).</p>
+</section>
+<section id="ctp">
+<h4>CTP<a class="headerlink" href="#ctp" title="Permalink to this heading">#</a></h4>
+<p>The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc. Visit <code class="docutils literal notranslate"><span class="pre">http://[IP_ADDRESS]:9090</span></code> in your web browser. Click login in the top right hand corner, the simulation environment username and password to log in are:</p>
+<ul class="simple">
+<li><p>Username: <strong>admin</strong></p></li>
+<li><p>Password: <strong>123</strong></p></li>
+</ul>
+<p>Click <code class="docutils literal notranslate"><span class="pre">DICOM</span> <span class="pre">Server</span> <span class="pre">Import</span></code> in the left menu. Here you can see how many DICOM files the CTP received for anonymisation (in the screenshot below this is 377).</p>
+<a class="reference external image-reference" href="images/CTP_1.png"><img alt="PGAdmin patient table view" src="../_images/CTP_1.png" /></a>
+</section>
+<section id="orthanc">
+<h4>Orthanc<a class="headerlink" href="#orthanc" title="Permalink to this heading">#</a></h4>
+<p>Orthanc is PACS which stores the anonymised DICOM data. Visit <code class="docutils literal notranslate"><span class="pre">http://[IP_ADDRESS]:8042</span></code> in your web browser. Log in using these simulation environment credentials:</p>
+<ul class="simple">
+<li><p>Username: <strong>admin</strong></p></li>
+<li><p>Password: <strong>admin</strong></p></li>
+</ul>
+<p>Click <code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">Patients</span></code> and explore the anonymised simulation DICOM data imported.</p>
+<a class="reference external image-reference" href="images/Orthanc_1.png"><img alt="PGAdmin patient table view" src="../_images/Orthanc_1.png" /></a>
+</section>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Ingham Medical Physics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">AusCAT Simulation Environment</a><ul>
+<li><a class="reference internal" href="#what-you-ll-need">What you’ll need</a></li>
+<li><a class="reference internal" href="#virtual-machine-setup">Virtual Machine Setup</a><ul>
+<li><a class="reference internal" href="#nectar-cloud">NECTAR Cloud</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#docker-portainer-installation">Docker + Portainer Installation</a><ul>
+<li><a class="reference internal" href="#id1">Install Docker</a></li>
+<li><a class="reference internal" href="#install-portainer">Install Portainer</a></li>
+<li><a class="reference internal" href="#add-auscat-docker-registry">Add AusCAT Docker Registry</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#auscat-simulation-environment-deployment">AusCAT Simulation Environment Deployment</a><ul>
+<li><a class="reference internal" href="#deploy-the-simulation-docker-stack">Deploy the simulation Docker stack</a></li>
+<li><a class="reference internal" href="#import-simulation-data">Import simulation data</a><ul>
+<li><a class="reference internal" href="#pgadmin">PGAdmin</a></li>
+<li><a class="reference internal" href="#ctp">CTP</a></li>
+<li><a class="reference internal" href="#orthanc">Orthanc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>

@@ -294,7 +294,7 @@ Acquire::https::Proxy &quot;https://proxy_host:proxy_port/&quot;;
 </pre></div>
 </div>
 <p>Then run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
 </pre></div>
 </div>
 <p>and ensure that there are no errors.</p>
@@ -314,11 +314,11 @@ Acquire::https::Proxy &quot;https://proxy_host:proxy_port/&quot;;
 <section id="access-via-http">
 <h4>Access via HTTP<a class="headerlink" href="#access-via-http" title="Permalink to this heading">#</a></h4>
 <p>If you use Git via HTTP, you can configure the proxy via the command line:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global http.proxy http://proxy_host:proxy_port
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.proxy<span class="w"> </span>http://proxy_host:proxy_port
 </pre></div>
 </div>
 <p>You may also have to skip SSLVerify (depending on your proxy setup, if this is needed access via SSH is preferred)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git config --global http.sslVerify <span class="nb">false</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.sslVerify<span class="w"> </span><span class="nb">false</span>
 </pre></div>
 </div>
 </section>
