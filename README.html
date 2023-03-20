@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Simulation Environment Installation" href="installation.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" />
 
     <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
-        <title>AusCAT documentation</title>
+        <title>AusCATverse - AusCAT documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -123,7 +123,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">AusCAT  documentation</div></a>
+      <a href="index.html"><div class="brand">AusCAT  documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
   <span class="sidebar-brand-text">AusCAT  documentation</span>
@@ -208,13 +208,55 @@
           </label>
         </div>
         <article role="main">
-          <section id="auscat">
-<h1>AusCAT<a class="headerlink" href="#auscat" title="Permalink to this heading">#</a></h1>
-<p>AusCAT introduction and overview goes here…</p>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
+          <section id="auscatverse">
+<h1>AusCATverse<a class="headerlink" href="#auscatverse" title="Permalink to this heading">#</a></h1>
+<p>Welcome to AusCATverse, your starting point for all things AusCAT. This document is intended to point you towards relevant resource no matter your role within AusCAT.</p>
+<section id="projects">
+<h2>Projects<a class="headerlink" href="#projects" title="Permalink to this heading">#</a></h2>
+<p>A description of projects underway within AusCAT can be found on our SharePoint:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://unsw.sharepoint.com/:f:/s/AustralianCancerDataNetworkCollaboratorsARDCGrant/EhiE9qtg6LxItODFLhK9TssBRv-vlWwRFIXL3Rmc6wgi7A?e=mq0ehn">Clinical Research Projects</a></p></li>
+<li><p><a class="reference external" href="https://unsw.sharepoint.com/:f:/s/AustralianCancerDataNetworkCollaboratorsARDCGrant/EhARNYOgyb5HujqzwyccD9oB-OioqsekNyDjXQzdkSUBOA?e=p4hTRp">Tool Development Projects</a></p></li>
+</ul>
+</section>
+<section id="infrastructure">
+<h2>Infrastructure<a class="headerlink" href="#infrastructure" title="Permalink to this heading">#</a></h2>
+<p>For information of typical server hardware requirements as well as Virtual Machine (VM) setup see our <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md">infrastructure guide</a>.</p>
+<p>The <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/README.md">AusCAT installation step-by-step guide</a> will assist you with the installation of the AusCAT platform.</p>
+</section>
+<section id="code-repositories">
+<h2>Code Repositories<a class="headerlink" href="#code-repositories" title="Permalink to this heading">#</a></h2>
+<p>To deploy and run the various components of AusCAT, code and tools are tracked across a number of GitHub repositories found within the ACDN organisation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse"><strong>auscatverse</strong></a>: This repository. Used to collect documentation and guides for getting started with AusCAT.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_installation"><strong>auscat_installation</strong></a>: Collects code, tools and documentation for the installation of the AusCAT platform.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging"><strong>auscat_imaging</strong></a>: Provides functionality and documentation for working with medical images within AusCAT.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl"><strong>auscat_etl</strong></a>: Provides general tools, scripts and documentation for the Extracting, Transforming and Loading of data.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl_centres"><strong>auscat_etl_centres</strong></a>: Provides Extracting, Transforming and Loading of scripts which are specific to one or more AusCAT centres.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_ontology"><strong>auscat_ontology</strong></a>: Contains tools and documentation for dealing with the ontologies used within AusCAT.</p></li>
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_federated_learning"><strong>auscat_federated_learning</strong></a>: The federated learning functionality is contained within this repository along with documentation and guidance on its usage.</p></li>
+</ul>
+<section id="project-repositories">
+<h3>Project repositories<a class="headerlink" href="#project-repositories" title="Permalink to this heading">#</a></h3>
+<p>The following repositories contain code to running a specific project(s) within AusCAT:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_cardiac"><strong>auscat_cardiac</strong></a>: Contains code to run our cardiac substructure auto-segmentation tool and to extract and analyse the structure similarity and dosimetric metrics.</p></li>
+</ul>
+</section>
+<section id="auscat-code-guidelines">
+<h3>AusCAT Code Guidelines<a class="headerlink" href="#auscat-code-guidelines" title="Permalink to this heading">#</a></h3>
+<p>Any and all contributions to our code repositories are appreciated. Please be sure to follow our <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guidelines/README.md">AusCAT coding guidelines</a> as these help us ensure a high quality standard consistently across our repositories.</p>
+</section>
+</section>
+<section id="help-troubleshooting">
+<h2>Help &amp; Troubleshooting<a class="headerlink" href="#help-troubleshooting" title="Permalink to this heading">#</a></h2>
+<p>If you run into any difficulties at any step along the way, please join our discussion forum. Here you can post any questions you have or browse previous discussion and posts for issues (and their resolution) typically come across in AusCAT.</p>
+<section id="auscat-discussion-forum">
+<h3><a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/discussions">AusCAT Discussion Forum</a><a class="headerlink" href="#auscat-discussion-forum" title="Permalink to this heading">#</a></h3>
+<p>If you have found some specific bug/issue please report this as a GitHub issue directly, attaching it to the most relevant repository (of those listed above).</p>
+<p>Please don’t hesitate to reach out to your centre’s AusCAT contact. If you’re unsure who this is please contact <a class="reference external" href="mailto:lois&#46;holloway&#37;&#52;&#48;health&#46;nsw&#46;gov&#46;au">Lois Holloway</a> directly.</p>
+</section>
+</section>
 </section>
 
         </article>
@@ -222,15 +264,7 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="installation.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Simulation Environment Installation</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
+          
           
         </div>
         <div class="bottom-of-page">
@@ -264,7 +298,18 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">AusCAT</a><ul>
+<li><a class="reference internal" href="#">AusCATverse</a><ul>
+<li><a class="reference internal" href="#projects">Projects</a></li>
+<li><a class="reference internal" href="#infrastructure">Infrastructure</a></li>
+<li><a class="reference internal" href="#code-repositories">Code Repositories</a><ul>
+<li><a class="reference internal" href="#project-repositories">Project repositories</a></li>
+<li><a class="reference internal" href="#auscat-code-guidelines">AusCAT Code Guidelines</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#help-troubleshooting">Help &amp; Troubleshooting</a><ul>
+<li><a class="reference internal" href="#auscat-discussion-forum">AusCAT Discussion Forum</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
