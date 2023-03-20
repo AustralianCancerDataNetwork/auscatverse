@@ -21,8 +21,8 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'AusCATverse'
-copyright = '2022, Ingham Medical Physics'
+project = 'AusCAT'
+copyright = '2023, Ingham Medical Physics'
 author = 'Ingham Medical Physics'
 
 
@@ -36,7 +36,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.napoleon",
     "nbsphinx",
-    "m2r2",
+    "myst_parser",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,8 +67,10 @@ extensions_to_copy = ["md", "png", "jpg", "gif"]
 files = []
 for ext in extensions_to_copy:
     files += Path(".").glob(f"**/*.{ext}")
-for file in files:
-    os.remove(file)
+# for file in files:
+#     print(file)
+#     if str(file) == "index.md": continue
+#     os.remove(file)
 
 # Copy in the files from the other repository directories to have them
 # be rendered by Sphinx

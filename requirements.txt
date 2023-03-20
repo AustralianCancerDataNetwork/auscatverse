@@ -7,3 +7,4 @@ nbsphinx==0.8.9
 m2r2==0.3.2
 MarkupSafe==2.0.1
 recommonmark==0.7.1
+myst-parser==1.0.0

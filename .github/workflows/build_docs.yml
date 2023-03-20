@@ -1,9 +1,9 @@
 name: Build Docs
 
-on: 
+on:
   workflow_dispatch:
   pull_request:
-    branches: 
+    branches:
       - main
     types: [closed]
 
@@ -12,22 +12,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.7'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        echo "PYTHONPATH=`pwd`" >> $GITHUB_ENV
-    - name: Build docs
-      run: |
-        sudo apt-get update -y && sudo apt-get install -y pandoc
-        sphinx-build -b html -a docs docs/site/8b2e19ef880e90b0a9f161dba1af49bb14d68068
-    - name: Deploy docs
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/site
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.7"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          echo "PYTHONPATH=`pwd`" >> $GITHUB_ENV
+      - name: Build docs
+        run: |
+          sudo apt-get update -y && sudo apt-get install -y pandoc
+          sphinx-build -b html -a docs docs/site
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/site
