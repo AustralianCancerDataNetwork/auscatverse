@@ -17,7 +17,7 @@ If you require either of these please contact your AusCAT representative.
 
 This guide assumes you are using some sort of Virtual Machine (VM running an Ubuntu Operating System). In fact, the system doesn't need to be a Virtual Machine at all, it could be a desktop or laptop computer running Ubuntu.
 
-If your system is no running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the [Install Docker](#install-docker) step below to determine how to best install Docker for you operating system. Once installed you can follow the remaining instructions in the guide.
+If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the [Install Docker](#install-docker) step below to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.
 
 ### NECTAR Cloud
 
