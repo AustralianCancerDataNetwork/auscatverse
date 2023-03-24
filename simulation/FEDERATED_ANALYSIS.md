@@ -16,6 +16,7 @@ An example for performing federated analysis in the simulation environment.
         FEATURES_LIST: mean,D0,D10,D20,D30
         SERVER_HOSTNAME: 203.101.225.47
         SERVER_PORT: 8443
+        INDEXER: Contour
     volumes:
     - analysis-data:/mnt
     restart: "on-failure"
@@ -27,6 +28,7 @@ Note:
     Please note that this must be identical across all clients, with preserved ordering
 - SERVER_HOSTNAME: IP address of the machine hosting the fedearted learning server
 - SERVER_PORT: the port on which the federated learning server us running on, on the server host machine
+- INDEXER: the feature name we wish to separate by in the datafiles to run aggregated analysis by.
 - For volumes: map the `analysis-data` volume to a path in the container, under which the DATAFILE_CSV will sit
 
 4. Deploy the new (or update the existing) stack. Observe the logs of the container to see the outcome of the federated learning task.
