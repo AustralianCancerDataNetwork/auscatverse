@@ -16,7 +16,7 @@ Direct applicability of clinical trial evidence for all patients even when techn
 
 Having an AusCAT node set-up at your institution provides the opportunity to use your data as part of a broader network to answer key questions, those related to clinical questions that need breadth and depth of data and questions related to using federated learning with real world data. This includes collaborations with other clinical centres and clinical and machine learning research groups. Involvement in individual projects run on the AusCAT node will be a decision of the individual centres/nodes, it’s likely that not all centres will be involved in all projects depending on interest, data availability and resources at the time.
 
-AusCAT platform also provides data visualisation tool to allow research and institution to easily identify what data is available at their institutions using the Data availability Dashboard tool. Database online viewer PGadmin allows users to inspect what is available on the database. Orthanc server to browse DICOM patient data (dose files, RT structures, treatment imaging (CT, PET, MRI, CBCT)).
+The AusCAT platform also provides data visualisation tools to allow research and institution to easily identify what data is available at their institutions using the Data availability Dashboard. Database online viewer PGadmin allows users to inspect what is available in the database. The Orthanc server provides a front-end to browse DICOM patient data (dose files, RT structures, treatment imaging (CT, PET, MRI, CBCT)).
 
 ```{toctree}
 :caption: Getting Started
