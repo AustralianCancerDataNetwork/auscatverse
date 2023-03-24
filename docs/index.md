@@ -18,19 +18,6 @@ Having an AusCAT node set-up at your institution provides the opportunity to use
 
 AusCAT platform also provides data visualisation tool to allow research and institution to easily identify what data is available at their institutions using the Data availability Dashboard tool. Database online viewer PGadmin allows users to inspect what is available on the database. Orthanc server to browse DICOM patient data (dose files, RT structures, treatment imaging (CT, PET, MRI, CBCT)).
 
-
-## Publications:
-
-Finnegan RN, Chin V, Chlap P, Haidar A, Otton J, Dowling J, Thwaites DI, Vinod SK, Delaney GP, Holloway L. Open-source, fully-automated hybrid cardiac substructure segmentation: development and optimisation. Physical and Engineering Sciences in Medicine. 2023 Feb 13:1-7.
-
-Haidar A, Field M, Batumalai V, Cloak K, Al Mouiee D, Chlap P, Huang X, Chin V, Aly F, Carolan M, Sykes J. Standardising Breast Radiotherapy Structure Naming Conventions: A Machine Learning Approach. Cancers. 2023 Jan;15(3):564.
-
-Field M, Thwaites DI, Carolan M, Delaney GP, Lehmann J, Sykes J, Vinod S, Holloway L. Infrastructure platform for privacy-preserving distributed machine learning development of computer-assisted theragnostics in cancer. Journal of Biomedical Informatics. 2022 Oct 1;134:104181.
-
-Hansen CR, Price G, Field M, Sarup N, Zukauskaite R, Johansen J, Eriksen JG, Aly F, McPartlin A, Holloway L, Thwaites D. Open-source distributed learning validation for a larynx cancer survival model following radiotherapy. Radiotherapy and Oncology. 2022 Aug 1;173:319-26.
-
-Field M, Vinod S, Aherne N, Carolan M, Dekker A, Delaney G, Greenham S, Hau E, Lehmann J, Ludbrook J, Miller A. Implementation of the Australian Computer‐Assisted Theragnostics (AusCAT) network for radiation oncology data extraction, reporting and distributed learning. Journal of Medical Imaging and Radiation Oncology. 2021 Aug;65(5):627-36.
-
 ```{toctree}
 :caption: Getting Started
 :hidden:
