@@ -12,21 +12,6 @@ An example for performing federated analysis in the simulation environment.
     fed_analysis_client_1:
     image: auscat/fed_analysis_flwr:client
     environment:
-        DATAFILE_CSV: /PATH/TO/BINDMOUNT/"working"/ON/CONTAINER/working/metrics.csv
-        FEATURES_LIST: FEATURES,FROM,METRICS,CSV,SEPARATED,BY,COMMAS # Note this must be identical across all clients, with preserved ordering
-        SERVER_HOSTNAME: FEDERATED_LEARNING_SERVER_IP_ADDRESS
-        SERVER_PORT: FEDERATED_LEARNING_SERVER_RUNNING_PORT
-    volumes:
-    - analysis-data:/PATH/TO/BINDMOUNT/"working"/ON/CONTAINER/
-    restart: "on-failure"
-```
-
-eg.
-
-```yaml
-    fed_analysis_client_1:
-    image: auscat/fed_analysis_flwr:client
-    environment:
         DATAFILE_CSV: /mnt/working/metrics.csv
         FEATURES_LIST: mean,D0,D10,D20,D30
         SERVER_HOSTNAME: 203.101.225.47
@@ -35,6 +20,14 @@ eg.
     - analysis-data:/mnt
     restart: "on-failure"
 ```
+
+Note:
+- DATAFILE_CSV: is the path to the `metrics.csv` file in the container, after being mapped from the docker volume
+- FEATURES_LIST: comma-spearated list of features from the DATAFILE_CSV that we wish to aggregate in the federated analysis.
+    Please note that this must be identical across all clients, with preserved ordering
+- SERVER_HOSTNAME: IP address of the machine hosting the fedearted learning server
+- SERVER_PORT: the port on which the federated learning server us running on, on the server host machine
+- For volumes: map the `analysis-data` volume to a path in the container, under which the DATAFILE_CSV will sit
 
 4. Deploy the new (or update the existing) stack. Observe the logs of the container to see the outcome of the federated learning task.
 
