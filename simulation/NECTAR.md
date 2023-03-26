@@ -1,6 +1,6 @@
 # NECTAR Virtual Machine Setup
 
-You may want to setup a Virtual Machine to run in the NECTAR cloud to run the [AusCAT Simulation Environment](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/SIMULATION.md). The ACDN has a project on NECTAR cloud with some credits to run the simulation environment for development, educational and testing purposes.
+You may want to setup a Virtual Machine to run in the NECTAR cloud to run the [AusCAT Simulation Environment](SIMULATION.md). The ACDN has a project on NECTAR cloud with some credits to run the simulation environment for development, educational and testing purposes.
 
 Note that you will need a University affiliated account and access to `ACDN-AusCAT-Sim` project (if intending to use NECTAR cloud). Contact the AusCAT technical team for access to the ACDN NECTAR project.
 
@@ -36,6 +36,8 @@ Perform the following steps to setup a virtual machine on the NECTAR cloud in wh
 
 9. Generate an SSH keypair and add it to your VM instance. A detailed description on how this is done can be found [here](https://tutorials.rc.nectar.org.au/keypairs/03-ssh-keygen).
 
+> TIP: If you're using Windows and haven't get an OpenSSH client available, the easiest way to install one is via [Git for Windows](https://gitforwindows.org/). Once installed you can Open the `Git Bash` Terminal and run: ```ssh-keygen```, follow the prompts and output the public key generated into NECTAR: ```cat ~/.ssh/id_rsa.pub```
+
 10. You're now ready to Launch your Instance!
 
 Wait a few minutes for you VM to be ready. Once built, you can SSH into your VM by finding the IP address assigned:
@@ -43,6 +45,12 @@ Wait a few minutes for you VM to be ready. Once built, you can SSH into your VM 
 ![Launch Instance](images/NECTAR_6.png)
 
 Open your terminal, then sign in with:
+
+```bash
+ssh ubuntu@your-vm-ip
+```
+
+Note, if you specified a custom SSH key name, you will need to specify the private key for that pair:
 
 ```bash
 ssh -i ~/.ssh/your-private-ssh-key ubuntu@your-vm-ip
