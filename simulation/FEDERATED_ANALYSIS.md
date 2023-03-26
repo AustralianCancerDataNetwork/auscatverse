@@ -1,5 +1,6 @@
 # Federated Analysis Example
 
+## Running the Client
 An example for performing federated analysis in the simulation environment.
 
 1. Once the `compute_metrics.ipynb` has run completely and produced a `metrics.csv` file, we can proceed with the federated learning component of the example.
@@ -34,3 +35,7 @@ Note:
 4. Deploy the new (or update the existing) stack. Observe the logs of the container to see the outcome of the federated learning task.
 
 5. Great! you have now successfully run a federated learning task (potentially in collaboration with other test clients) and have setup a fully-functional AusCAT simulation environment.
+
+## Running the Server
+
+Details on running the server for federated analysis are coming soon.
