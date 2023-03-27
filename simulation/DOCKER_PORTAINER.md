@@ -76,7 +76,7 @@ curl -L https://downloads.portainer.io/ce2-17/portainer-agent-stack.yml -o porta
 docker stack deploy -c portainer-agent-stack.yml portainer
 ```
 
-Once installed (and running, confirm with `docker ps` command), navigate to the Portainer dashboard in your web browser:
+Once deployed (and running, confirm with `docker ps` command), navigate to the Portainer dashboard in your web browser:
 
 `http://your-vm-ip:9000`
 
