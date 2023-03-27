@@ -46,3 +46,11 @@ If you run into any difficulties at any step along the way, please join our disc
 If you have found some specific bug/issue please report this as a GitHub issue directly, attaching it to the most relevant repository (of those listed above).
 
 Please don't hesitate to reach out to your centre's AusCAT contact. If you're unsure who this is please contact [Lois Holloway](mailto:lois.holloway@health.nsw.gov.au) directly.
+
+### Building the docs
+
+The AusCAT documentation will build from this repository using a GitHub action. To build the documentation locally you can run the following command from the root folder of the repository:
+
+```bash
+sphinx-build -b html -a docs docs/site
+```
