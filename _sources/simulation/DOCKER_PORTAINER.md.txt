@@ -6,7 +6,7 @@ This document describes how to install Docker and Portainer on a host machine ru
 
 The Docker documentation describes in detail how to install Docker on Ubuntu: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/). The Linux post-install steps should also be performed: [https://docs.docker.com/engine/install/linux-postinstall/](https://docs.docker.com/engine/install/linux-postinstall/). The following commands are used to install Docker and allow the currently logged in user to execute Docker commands without `sudo` privileges:
 
-#### Install required packages
+### Install required packages
 
 ```bash
 sudo apt-get update
@@ -16,7 +16,7 @@ sudo apt-get install \
     gnupg
 ```
 
-#### Add Docker’s official GPG key and setup repository
+### Add Docker’s official GPG key and setup repository
 
 ```bash
 sudo mkdir -m 0755 -p /etc/apt/keyrings
@@ -27,14 +27,14 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-#### Install Docker Engine
+### Install Docker Engine
 
 ```bash
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-#### Add User to Docker Group
+### Add User to Docker Group
 
 ```bash
 sudo groupadd docker
@@ -64,7 +64,19 @@ docker swarm init --advertise-addr VM_IP_ADDRESS
 
 Portainer provides a web-interface to manage your Docker instance. It isn't essential but it eases the deployment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: [https://docs.portainer.io/start/install-ce/server/swarm/linux](https://docs.portainer.io/start/install-ce/server/swarm/linux).
 
-Once installed (and running, confirm with `docker ps` command), navigate to the Portainer dashboard in your web browser:
+### Fetch Portainer Stack
+
+```bash
+curl -L https://downloads.portainer.io/ce2-17/portainer-agent-stack.yml -o portainer-agent-stack.yml
+```
+
+### Deploy Portainer
+
+```bash
+docker stack deploy -c portainer-agent-stack.yml portainer
+```
+
+Once deployed (and running, confirm with `docker ps` command), navigate to the Portainer dashboard in your web browser:
 
 `http://your-vm-ip:9000`
 
@@ -72,7 +84,7 @@ You will be prompted to create a user account the first time you visit this dash
 
 ## Add AusCAT Docker Registry
 
-Next you will need add the Dockerhub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to `Registries` in the left menu and click `Add Registry`. Enter the credentials and token you obtained from the AusCAT team:
+Next you will need add the DockerHub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to `Registries` in the left menu and click `Add Registry`. Enter the credentials and token you obtained from the AusCAT team:
 
 ![Add Registry](images/Portainer_1.png)
 

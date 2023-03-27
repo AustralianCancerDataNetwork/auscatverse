@@ -4,7 +4,7 @@
 ```{toctree}
 :caption: Development
 
-../simulation/METRICS.md
-../simulation/FEDERATED_ANALYSIS.md
+simulation/METRICS.md
+simulation/FEDERATED_ANALYSIS.md
 
 ```

@@ -249,9 +249,8 @@ sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> <
 newgrp<span class="w"> </span>docker
 </pre></div>
 </div>
-</section>
 <section id="test-docker-installation-by-running-hello-world-image">
-<h3>Test Docker Installation by running <code class="docutils literal notranslate"><span class="pre">Hello-world</span></code> image<a class="headerlink" href="#test-docker-installation-by-running-hello-world-image" title="Permalink to this heading">#</a></h3>
+<h4>Test Docker Installation by running <code class="docutils literal notranslate"><span class="pre">Hello-world</span></code> image<a class="headerlink" href="#test-docker-installation-by-running-hello-world-image" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
 </pre></div>
 </div>
@@ -265,16 +264,29 @@ newgrp<span class="w"> </span>docker
 </div>
 </section>
 </section>
+</section>
 <section id="install-portainer">
 <h2>Install Portainer<a class="headerlink" href="#install-portainer" title="Permalink to this heading">#</a></h2>
 <p>Portainer provides a web-interface to manage your Docker instance. It isn’t essential but it eases the deployment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: <a class="reference external" href="https://docs.portainer.io/start/install-ce/server/swarm/linux">https://docs.portainer.io/start/install-ce/server/swarm/linux</a>.</p>
-<p>Once installed (and running, confirm with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command), navigate to the Portainer dashboard in your web browser:</p>
+<section id="fetch-portainer-stack">
+<h3>Fetch Portainer Stack<a class="headerlink" href="#fetch-portainer-stack" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>https://downloads.portainer.io/ce2-17/portainer-agent-stack.yml<span class="w"> </span>-o<span class="w"> </span>portainer-agent-stack.yml
+</pre></div>
+</div>
+</section>
+<section id="deploy-portainer">
+<h3>Deploy Portainer<a class="headerlink" href="#deploy-portainer" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>stack<span class="w"> </span>deploy<span class="w"> </span>-c<span class="w"> </span>portainer-agent-stack.yml<span class="w"> </span>portainer
+</pre></div>
+</div>
+<p>Once deployed (and running, confirm with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command), navigate to the Portainer dashboard in your web browser:</p>
 <p><code class="docutils literal notranslate"><span class="pre">http://your-vm-ip:9000</span></code></p>
 <p>You will be prompted to create a user account the first time you visit this dashboard. Ensure you set this immediately after deploying Portainer to avoid a timeout.</p>
 </section>
+</section>
 <section id="add-auscat-docker-registry">
 <h2>Add AusCAT Docker Registry<a class="headerlink" href="#add-auscat-docker-registry" title="Permalink to this heading">#</a></h2>
-<p>Next you will need add the Dockerhub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to <code class="docutils literal notranslate"><span class="pre">Registries</span></code> in the left menu and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Registry</span></code>. Enter the credentials and token you obtained from the AusCAT team:</p>
+<p>Next you will need add the DockerHub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to <code class="docutils literal notranslate"><span class="pre">Registries</span></code> in the left menu and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Registry</span></code>. Enter the credentials and token you obtained from the AusCAT team:</p>
 <p><img alt="Add Registry" src="../_images/Portainer_1.png" /></p>
 <p>Test out pulling an image by navigating to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. Then select the <code class="docutils literal notranslate"><span class="pre">Primary</span></code> environment and choose <code class="docutils literal notranslate"><span class="pre">Images</span></code> from the left menu. Try to pull the <code class="docutils literal notranslate"><span class="pre">auscat/default_ctp:latest</span></code> (or any other AusCAT image) from the registry you added. Confirm that the image was pulled successfully.</p>
 <p><img alt="Pull Image" src="../_images/Portainer_2.png" /></p>
@@ -348,11 +360,17 @@ newgrp<span class="w"> </span>docker
 <li><a class="reference internal" href="#install-required-packages">Install required packages</a></li>
 <li><a class="reference internal" href="#add-dockers-official-gpg-key-and-setup-repository">Add Docker’s official GPG key and setup repository</a></li>
 <li><a class="reference internal" href="#install-docker-engine">Install Docker Engine</a></li>
-<li><a class="reference internal" href="#add-user-to-docker-group">Add User to Docker Group</a></li>
+<li><a class="reference internal" href="#add-user-to-docker-group">Add User to Docker Group</a><ul>
 <li><a class="reference internal" href="#test-docker-installation-by-running-hello-world-image">Test Docker Installation by running <code class="docutils literal notranslate"><span class="pre">Hello-world</span></code> image</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#install-portainer">Install Portainer</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#install-portainer">Install Portainer</a><ul>
+<li><a class="reference internal" href="#fetch-portainer-stack">Fetch Portainer Stack</a></li>
+<li><a class="reference internal" href="#deploy-portainer">Deploy Portainer</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#add-auscat-docker-registry">Add AusCAT Docker Registry</a></li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
