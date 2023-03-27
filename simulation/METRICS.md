@@ -36,3 +36,9 @@ Once logged in, you can navigate to `work` folder and find the `Compute_Metrics.
 ## Analysing Metrics
 
 The output of this example notebook is a file named `metrics.csv` which is stored in the `working` directory. This directory is mapped to the `analysis-data` volume we defined in the Docker stack above. Using this volume you can proceed with a [federated analysis](FEDERATED_ANALYSIS.md) using the metrics computed in this example.
+
+## Troubleshooting
+
+**Problem**: The Jupyter Notebook crashed during conversion of the imaging data.
+
+**Solution**: This may happen when insufficient memory is available. Ensure you have at least 4GB RAM to run the example. Before re-running the notebook, delete the `working` folder within the `data` directory. To do this you may need to open a Terminal by choosing `New Launcher` then press `Terminal` and run `rm -r data/working`.
