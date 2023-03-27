@@ -242,6 +242,11 @@
 <h2>Analysing Metrics<a class="headerlink" href="#analysing-metrics" title="Permalink to this heading">#</a></h2>
 <p>The output of this example notebook is a file named <code class="docutils literal notranslate"><span class="pre">metrics.csv</span></code> which is stored in the <code class="docutils literal notranslate"><span class="pre">working</span></code> directory. This directory is mapped to the <code class="docutils literal notranslate"><span class="pre">analysis-data</span></code> volume we defined in the Docker stack above. Using this volume you can proceed with a <a class="reference internal" href="FEDERATED_ANALYSIS.html"><span class="std std-doc">federated analysis</span></a> using the metrics computed in this example.</p>
 </section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<p><strong>Problem</strong>: The Jupyter Notebook crashed during conversion of the imaging data.</p>
+<p><strong>Solution</strong>: This may happen when insufficient memory is available. Ensure you have at least 4GB RAM to run the example. Before re-running the notebook, delete the <code class="docutils literal notranslate"><span class="pre">working</span></code> folder within the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. To do this you may need to open a Terminal by choosing <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Launcher</span></code> then press <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> and run <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">data/working</span></code>.</p>
+</section>
 </section>
 
         </article>
@@ -305,6 +310,7 @@
 <li><a class="reference internal" href="#deploy-example-docker-image">Deploy Example Docker Image</a></li>
 <li><a class="reference internal" href="#running-the-example-notebook">Running the Example Notebook</a></li>
 <li><a class="reference internal" href="#analysing-metrics">Analysing Metrics</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>

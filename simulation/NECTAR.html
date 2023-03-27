@@ -210,7 +210,7 @@
         <article role="main">
           <section id="nectar-virtual-machine-setup">
 <h1>NECTAR Virtual Machine Setup<a class="headerlink" href="#nectar-virtual-machine-setup" title="Permalink to this heading">#</a></h1>
-<p>You may want to setup a Virtual Machine to run in the NECTAR cloud to run the <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/SIMULATION.md">AusCAT Simulation Environment</a>. The ACDN has a project on NECTAR cloud with some credits to run the simulation environment for development, educational and testing purposes.</p>
+<p>You may want to setup a Virtual Machine to run in the NECTAR cloud to run the <a class="reference internal" href="SIMULATION.html"><span class="std std-doc">AusCAT Simulation Environment</span></a>. The ACDN has a project on NECTAR cloud with some credits to run the simulation environment for development, educational and testing purposes.</p>
 <p>Note that you will need a University affiliated account and access to <code class="docutils literal notranslate"><span class="pre">ACDN-AusCAT-Sim</span></code> project (if intending to use NECTAR cloud). Contact the AusCAT technical team for access to the ACDN NECTAR project.</p>
 <section id="instance-creation-steps">
 <h2>Instance Creation Steps<a class="headerlink" href="#instance-creation-steps" title="Permalink to this heading">#</a></h2>
@@ -235,11 +235,20 @@
 <p><img alt="Select Security Groups" src="../_images/NECTAR_5.png" /></p>
 </li>
 <li><p>Generate an SSH keypair and add it to your VM instance. A detailed description on how this is done can be found <a class="reference external" href="https://tutorials.rc.nectar.org.au/keypairs/03-ssh-keygen">here</a>.</p></li>
+</ol>
+<blockquote>
+<div><p>TIP: If you’re using Windows and haven’t get an OpenSSH client available, the easiest way to install one is via <a class="reference external" href="https://gitforwindows.org/">Git for Windows</a>. Once installed you can Open the <code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">Bash</span></code> Terminal and run: <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span></code>, follow the prompts and output the public key generated into NECTAR: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_rsa.pub</span></code></p>
+</div></blockquote>
+<ol class="arabic simple" start="10">
 <li><p>You’re now ready to Launch your Instance!</p></li>
 </ol>
 <p>Wait a few minutes for you VM to be ready. Once built, you can SSH into your VM by finding the IP address assigned:</p>
 <p><img alt="Launch Instance" src="../_images/NECTAR_6.png" /></p>
 <p>Open your terminal, then sign in with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>ubuntu@your-vm-ip
+</pre></div>
+</div>
+<p>Note, if you specified a custom SSH key name, you will need to specify the private key for that pair:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-i<span class="w"> </span>~/.ssh/your-private-ssh-key<span class="w"> </span>ubuntu@your-vm-ip
 </pre></div>
 </div>

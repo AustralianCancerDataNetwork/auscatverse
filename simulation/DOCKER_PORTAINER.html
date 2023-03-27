@@ -213,7 +213,48 @@
 <p>This document describes how to install Docker and Portainer on a host machine running Ubuntu.</p>
 <section id="install-docker">
 <h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this heading">#</a></h2>
-<p>The Docker documentation describes in detail how to install Docker on Ubuntu. Follow the steps here: <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>. Don’t forget to also run the Linux post-install steps: <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">https://docs.docker.com/engine/install/linux-postinstall/</a>.</p>
+<p>The Docker documentation describes in detail how to install Docker on Ubuntu: <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a>. The Linux post-install steps should also be performed: <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/">https://docs.docker.com/engine/install/linux-postinstall/</a>. The following commands are used to install Docker and allow the currently logged in user to execute Docker commands without <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges:</p>
+<section id="install-required-packages">
+<h3>Install required packages<a class="headerlink" href="#install-required-packages" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>ca-certificates<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>gnupg
+</pre></div>
+</div>
+</section>
+<section id="add-dockers-official-gpg-key-and-setup-repository">
+<h3>Add Docker’s official GPG key and setup repository<a class="headerlink" href="#add-dockers-official-gpg-key-and-setup-repository" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-p<span class="w"> </span>/etc/apt/keyrings
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.gpg
+<span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;deb [arch=&quot;</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2">&quot; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \</span>
+<span class="s2">  &quot;</span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2">&quot; stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+</pre></div>
+</div>
+</section>
+<section id="install-docker-engine">
+<h3>Install Docker Engine<a class="headerlink" href="#install-docker-engine" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+</pre></div>
+</div>
+</section>
+<section id="add-user-to-docker-group">
+<h3>Add User to Docker Group<a class="headerlink" href="#add-user-to-docker-group" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>groupadd<span class="w"> </span>docker
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+newgrp<span class="w"> </span>docker
+</pre></div>
+</div>
+</section>
+<section id="test-docker-installation-by-running-hello-world-image">
+<h3>Test Docker Installation by running <code class="docutils literal notranslate"><span class="pre">Hello-world</span></code> image<a class="headerlink" href="#test-docker-installation-by-running-hello-world-image" title="Permalink to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</pre></div>
+</div>
 <p>Once Docker is successfully installed, initialise a swarm which will be used in the next step:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>swarm<span class="w"> </span>init
 </pre></div>
@@ -223,12 +264,13 @@
 </pre></div>
 </div>
 </section>
+</section>
 <section id="install-portainer">
 <h2>Install Portainer<a class="headerlink" href="#install-portainer" title="Permalink to this heading">#</a></h2>
-<p>Portainer provides a web-interface to manage your Docker instance. It isn’t essential but it eases the depolyment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: <a class="reference external" href="https://docs.portainer.io/start/install-ce/server/swarm/linux">https://docs.portainer.io/start/install-ce/server/swarm/linux</a>.</p>
+<p>Portainer provides a web-interface to manage your Docker instance. It isn’t essential but it eases the deployment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: <a class="reference external" href="https://docs.portainer.io/start/install-ce/server/swarm/linux">https://docs.portainer.io/start/install-ce/server/swarm/linux</a>.</p>
 <p>Once installed (and running, confirm with <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command), navigate to the Portainer dashboard in your web browser:</p>
 <p><code class="docutils literal notranslate"><span class="pre">http://your-vm-ip:9000</span></code></p>
-<p>You will be prompted to create a user account the first time you visit this dashboard.</p>
+<p>You will be prompted to create a user account the first time you visit this dashboard. Ensure you set this immediately after deploying Portainer to avoid a timeout.</p>
 </section>
 <section id="add-auscat-docker-registry">
 <h2>Add AusCAT Docker Registry<a class="headerlink" href="#add-auscat-docker-registry" title="Permalink to this heading">#</a></h2>
@@ -236,6 +278,11 @@
 <p><img alt="Add Registry" src="../_images/Portainer_1.png" /></p>
 <p>Test out pulling an image by navigating to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. Then select the <code class="docutils literal notranslate"><span class="pre">Primary</span></code> environment and choose <code class="docutils literal notranslate"><span class="pre">Images</span></code> from the left menu. Try to pull the <code class="docutils literal notranslate"><span class="pre">auscat/default_ctp:latest</span></code> (or any other AusCAT image) from the registry you added. Confirm that the image was pulled successfully.</p>
 <p><img alt="Pull Image" src="../_images/Portainer_2.png" /></p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<p><strong>Problem</strong>: Portainer is blocking setting a password due to a timeout.</p>
+<p><strong>Solution</strong>: For security reasons you must set your password immediately after deploying Portainer (Within approximately 2 minutes). If you’ve missing this Window, restart the portainer container by running the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command, finding the name of the <code class="docutils literal notranslate"><span class="pre">portainer_portainer</span></code> container and then running the command <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">restart</span> <span class="pre">[portainer_portainer.container.name]</span></code>.</p>
 </section>
 </section>
 
@@ -297,9 +344,17 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Docker &amp; Portainer</a><ul>
-<li><a class="reference internal" href="#install-docker">Install Docker</a></li>
+<li><a class="reference internal" href="#install-docker">Install Docker</a><ul>
+<li><a class="reference internal" href="#install-required-packages">Install required packages</a></li>
+<li><a class="reference internal" href="#add-dockers-official-gpg-key-and-setup-repository">Add Docker’s official GPG key and setup repository</a></li>
+<li><a class="reference internal" href="#install-docker-engine">Install Docker Engine</a></li>
+<li><a class="reference internal" href="#add-user-to-docker-group">Add User to Docker Group</a></li>
+<li><a class="reference internal" href="#test-docker-installation-by-running-hello-world-image">Test Docker Installation by running <code class="docutils literal notranslate"><span class="pre">Hello-world</span></code> image</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#install-portainer">Install Portainer</a></li>
 <li><a class="reference internal" href="#add-auscat-docker-registry">Add AusCAT Docker Registry</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 </ul>

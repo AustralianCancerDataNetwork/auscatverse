@@ -219,17 +219,20 @@
 <p>To complete the steps in this guide, ensure you have:</p>
 <ul class="simple">
 <li><p>AusCAT Dockerhub access token.</p></li>
-<li><p>Unversity affiliated account and access to <code class="docutils literal notranslate"><span class="pre">ACDN-AusCAT-Sim</span></code> project (if intending to use NECTAR cloud).</p></li>
+<li><p>University affiliated account and access to <code class="docutils literal notranslate"><span class="pre">ACDN-AusCAT-Sim</span></code> project (if intending to use NECTAR cloud).</p></li>
 </ul>
 <p>If you require either of these please contact your AusCAT representative.</p>
 </section>
 <section id="virtual-machine-setup">
 <h2>Virtual Machine Setup<a class="headerlink" href="#virtual-machine-setup" title="Permalink to this heading">#</a></h2>
 <p>This guide assumes you are using some sort of Virtual Machine (VM running an Ubuntu Operating System). In fact, the system doesn’t need to be a Virtual Machine at all, it could be a desktop or laptop computer running Ubuntu.</p>
-<p>If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the <a class="reference internal" href="#install-docker"><span class="xref myst">Install Docker</span></a> step below to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.</p>
+<p>If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in <a class="reference internal" href="DOCKER_PORTAINER.html"><span class="std std-doc">Install Docker</span></a> to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.</p>
+<blockquote>
+<div><p><strong>System Requirements</strong>: To run the simulation environment as well as the examples that follow you should have at least 4GB RAM and a 30GB Hard Disk available.</p>
+</div></blockquote>
 <section id="nectar-cloud">
 <h3>NECTAR Cloud<a class="headerlink" href="#nectar-cloud" title="Permalink to this heading">#</a></h3>
-<p>If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/simulation/NECTAR.md">found here</a>.</p>
+<p>If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be <a class="reference internal" href="NECTAR.html"><span class="std std-doc">found here</span></a>.</p>
 </section>
 </section>
 <section id="docker-portainer-installation">
@@ -242,131 +245,141 @@
 <section id="deploy-the-simulation-docker-stack">
 <h3>Deploy the simulation Docker stack<a class="headerlink" href="#deploy-the-simulation-docker-stack" title="Permalink to this heading">#</a></h3>
 <p>Next navigate to <code class="docutils literal notranslate"><span class="pre">Stacks</span></code>, press <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Stack</span></code> and enter a suitable name. In the Web editor, insert the AusCAT Simulation Docker Stack:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.8&quot;</span>
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Postgres Key database service</span>
-<span class="w">  </span><span class="nt">keydb_server</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/keydb_schema:latest&quot;</span>
-<span class="w">      </span><span class="c1"># Necessary environment variables</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">POSTGRES_USER_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_user</span><span class="w"> </span><span class="c1"># db superuser (pass in from secrets)</span>
-<span class="w">        </span><span class="nt">POSTGRES_PASSWORD_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_pass</span><span class="w"> </span><span class="c1"># db superuser password (pass in from secrets)</span>
-<span class="w">        </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"> </span><span class="c1"># db host</span>
-<span class="w">        </span><span class="nt">PGDATA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/postgresql/data/pgdata</span><span class="w"> </span><span class="c1"># path to postgres data</span>
-<span class="w">        </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Australia/Sydney</span><span class="w"> </span><span class="c1"># your machine&#39;s timezone</span>
-<span class="w">      </span><span class="c1"># postgres data storage location (as a volume)</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">key-pgdata:/var/lib/postgresql/data/</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5433:5432</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>version: &quot;3.8&quot;
+services:
+  # Postgres Key database service
+  keydb_server:
+      restart: always
+      # Link to the image source from DockerHub
+      image: &quot;auscat/keydb_schema:latest&quot;
+      # Necessary environment variables
+      environment:
+        POSTGRES_USER_FILE: /run/secrets/keydb_user # db superuser (pass in from secrets)
+        POSTGRES_PASSWORD_FILE: /run/secrets/keydb_pass # db superuser password (pass in from secrets)
+        POSTGRES_HOST: localhost # db host
+        PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
+        TZ: Australia/Sydney # your machine&#39;s timezone
+      # postgres data storage location (as a volume)
+      volumes:
+      - key-pgdata:/var/lib/postgresql/data/
+      ports:
+      - 5433:5432
 
-<span class="w">  </span><span class="c1"># Postgres Cat database service</span>
-<span class="w">  </span><span class="nt">catdb_server</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/catdb_schema:mosaiq&quot;</span><span class="w"> </span><span class="c1"># Change tag to aria if needed</span>
-<span class="w">      </span><span class="c1"># Necessary environment variables</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">POSTGRES_USER_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/catdb_user</span><span class="w"> </span><span class="c1"># db superuser (pass in from secrets)</span>
-<span class="w">        </span><span class="nt">POSTGRES_PASSWORD_FILE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/catdb_pass</span><span class="w"> </span><span class="c1"># db superuser password (pass in from secrets)</span>
-<span class="w">        </span><span class="nt">POSTGRES_HOST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span><span class="w"> </span><span class="c1"># db host</span>
-<span class="w">        </span><span class="nt">PGDATA</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/postgresql/data/pgdata</span><span class="w"> </span><span class="c1"># path to postgres data</span>
-<span class="w">        </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Australia/Sydney</span><span class="w"> </span><span class="c1"># your machine&#39;s timezone</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat-pgdata:/var/lib/postgresql/data/</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5434:5432</span>
+  # Postgres Cat database service
+  catdb_server:
+      restart: always
+      # Link to the image source from DockerHub
+      image: &quot;auscat/catdb_schema:mosaiq&quot; # Change tag to aria if needed
+      # Necessary environment variables
+      environment:
+        POSTGRES_USER_FILE: /run/secrets/catdb_user # db superuser (pass in from secrets)
+        POSTGRES_PASSWORD_FILE: /run/secrets/catdb_pass # db superuser password (pass in from secrets)
+        POSTGRES_HOST: localhost # db host
+        PGDATA: /var/lib/postgresql/data/pgdata # path to postgres data
+        TZ: Australia/Sydney # your machine&#39;s timezone
+      volumes:
+      - cat-pgdata:/var/lib/postgresql/data/
+      ports:
+      - 5434:5432
 
-<span class="w">  </span><span class="c1"># PG admin service</span>
-<span class="w">  </span><span class="nt">pgadmin4</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/pgadmin4&quot;</span>
-<span class="w">      </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
-<span class="w">      </span><span class="c1"># Necessary environment variables</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">PGADMIN_DEFAULT_EMAIL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin@admin.com</span>
-<span class="w">        </span><span class="nt">PGADMIN_DEFAULT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgadmin-data:/var/lib/pgadmin</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5050:80</span>
+  # PG admin service
+  pgadmin4:
+      # Link to the image source from DockerHub
+      image: &quot;auscat/pgadmin4&quot;
+      restart: always
+      # Necessary environment variables
+      environment:
+        PGADMIN_DEFAULT_EMAIL: admin@admin.com
+        PGADMIN_DEFAULT_PASSWORD: password
+      volumes:
+      - pgadmin-data:/var/lib/pgadmin
+      ports:
+      - 5050:80
 
-<span class="w">  </span><span class="c1"># Orthanc service</span>
-<span class="w">  </span><span class="nt">orthanc</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/orthanc:latest&quot;</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8042:8042</span><span class="w"> </span><span class="c1"># Browser access port for CTP</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4242:4242</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span><span class="w"> </span><span class="c1"># 1TB SSD Disk</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orthanc-data:/var/lib/orthanc/db</span><span class="w"> </span><span class="c1"># Change me</span>
+  # Orthanc service
+  orthanc:
+      # Link to the image source from DockerHub
+      image: &quot;auscat/orthanc:latest&quot;
+      ports:
+      - 8042:8042 # Browser access port for CTP
+      - 4242:4242
+      volumes: # 1TB SSD Disk
+      - orthanc-data:/var/lib/orthanc/db # Change me
 
-<span class="w">  </span><span class="c1"># Customized CTP server</span>
-<span class="w">  </span><span class="nt">ctp_customized</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/customized_ctp:latest&quot;</span>
-<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_server</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span><span class="w"> </span><span class="c1"># Browser access port for CTP</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104:8104</span>
-<span class="w">      </span><span class="c1"># CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-logs:/logs</span>
+  # Customized CTP server
+  ctp_customized:
+      # Link to the image source from DockerHub
+      image: &quot;auscat/customized_ctp:latest&quot;
+      depends_on:
+      - keydb_server
+      ports:
+      - 9090:9090 # Browser access port for CTP
+      - 8104:8104
+      # CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)
+      volumes:
+      - ctp-logs:/logs
 
-<span class="w">  </span><span class="c1"># RDF4J framework</span>
-<span class="w">  </span><span class="nt">rdf4j</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/rdf4j:latest&quot;</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:8080</span>
+  # RDF4J framework
+  rdf4j:
+      # Link to the image source from DockerHub
+      image: &quot;auscat/rdf4j:latest&quot;
+      ports:
+      - 8080:8080
 
-<span class="w">  </span><span class="c1"># D2RQ platform</span>
-<span class="w">  </span><span class="nt">d2rq</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/d2rq:latest&quot;</span>
-<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catdb_server</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rdf4j</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888:8888</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">d2rq-data:/home/jovyan/work</span>
+  # D2RQ platform
+  # d2rq:
+  #     image: &quot;auscat/d2rq:latest&quot;
+  #     depends_on:
+  #     - catdb_server
+  #     - rdf4j
+  #     ports:
+  #     - 8888:8888
+  #     volumes:
+  #     - d2rq-data:/home/jovyan/work
 
-<span class="w">  </span><span class="nt">etl</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;auscat/etl:sim&#39;</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5678:5678</span>
-<span class="w">      </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">PATIENT_IDS</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;LUNG1-001</span><span class="nv"> </span><span class="s">LUNG1-002&quot;</span>
-<span class="w">        </span><span class="nt">KEYDB_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;keydb_server&quot;</span>
-<span class="w">        </span><span class="nt">KEYDB_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
-<span class="w">        </span><span class="nt">KEYDB_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">        </span><span class="nt">KEYDB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">        </span><span class="nt">CATDB_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;catdb_server&quot;</span>
-<span class="w">        </span><span class="nt">CATDB_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5432</span>
-<span class="w">        </span><span class="nt">CATDB_USERNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">        </span><span class="nt">CATDB_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
-<span class="w">        </span><span class="nt">CTP_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ctp_customized&quot;</span>
-<span class="w">        </span><span class="nt">CTP_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104</span>
-<span class="w">        </span><span class="nt">SIMULATION_IMPORT_MODE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auto</span>
-<span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catdb_server</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_server</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp_customized</span>
-<span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">n8n-data:/home/node/.n8n</span>
+  etl:
+      image: &#39;auscat/etl:sim&#39;
+      ports:
+      - 5678:5678
+      environment:
+        PATIENT_IDS: &quot;LUNG1-001 LUNG1-002&quot;
+        KEYDB_HOST: &quot;keydb_server&quot;
+        KEYDB_PORT: 5432
+        KEYDB_USERNAME: postgres
+        KEYDB_PASSWORD: postgres
+        CATDB_HOST: &quot;catdb_server&quot;
+        CATDB_PORT: 5432
+        CATDB_USERNAME: postgres
+        CATDB_PASSWORD: postgres
+        CTP_HOST: &quot;ctp_customized&quot;
+        CTP_PORT: 8104
+        SIMULATION_IMPORT_MODE: auto
+      depends_on:
+      - catdb_server
+      - keydb_server
+      - ctp_customized
+      volumes:
+      - n8n-data:/home/node/.n8n
 
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">key-pgdata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">cat-pgdata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ctp-customized</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">ctp-logs</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">orthanc-data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">pgadmin-data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">d2rq-data</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">n8n-data</span><span class="p">:</span>
+  analysis_example:
+      image: &quot;auscat/etl:example&quot;
+      ports:
+      - 8888:8888
+      depends_on:
+      - etl
+      volumes:
+      - analysis-data:/data
+
+volumes:
+  key-pgdata:
+  cat-pgdata:
+  ctp-customized:
+  ctp-logs:
+  orthanc-data:
+  pgadmin-data:
+  d2rq-data:
+  n8n-data:
+  analysis-data:
 </pre></div>
 </div>
 <p>Now wait a few minutes while the required images are pulled and the stack is deployed. You can monitor the progress of the containers in the <code class="docutils literal notranslate"><span class="pre">Services</span></code> section (left menu). Here you can see which containers are running or are still <code class="docutils literal notranslate"><span class="pre">preparing</span></code> (being pulled from Dockerhub). Once all containers are <code class="docutils literal notranslate"><span class="pre">running</span></code>, you are ready to proceed with the next step.</p>

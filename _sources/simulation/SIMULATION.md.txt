@@ -9,7 +9,7 @@ To enable learning, development and testing of the AusCAT system a simulation en
 To complete the steps in this guide, ensure you have:
 
 - AusCAT Dockerhub access token.
-- Unversity affiliated account and access to `ACDN-AusCAT-Sim` project (if intending to use NECTAR cloud).
+- University affiliated account and access to `ACDN-AusCAT-Sim` project (if intending to use NECTAR cloud).
 
 If you require either of these please contact your AusCAT representative.
 
@@ -17,11 +17,13 @@ If you require either of these please contact your AusCAT representative.
 
 This guide assumes you are using some sort of Virtual Machine (VM running an Ubuntu Operating System). In fact, the system doesn't need to be a Virtual Machine at all, it could be a desktop or laptop computer running Ubuntu.
 
-If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in the [Install Docker](#install-docker) step below to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.
+If your system is not running Ubuntu, you are still able to follow this guide. However you will likely need to explore the Docker documentation in [Install Docker](DOCKER_PORTAINER.md) to determine how to best install Docker for your operating system. Once installed you can follow the remaining instructions in the guide.
+
+> **System Requirements**: To run the simulation environment as well as the examples that follow you should have at least 4GB RAM and a 30GB Hard Disk available.
 
 ### NECTAR Cloud
 
-If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be [found here](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/simulation/NECTAR.md).
+If you do not already have a Virtual Machine or alternative system in which to install this simulation environment, you may want to use the NECTAR cloud to setup such a Virtual Machine. Note that you will need a University affiliated account and access to the ACDN-AusCAT-Sim Project. Instructions can be [found here](NECTAR.md).
 
 ## Docker + Portainer Installation
 
@@ -118,15 +120,15 @@ services:
       - 8080:8080
 
   # D2RQ platform
-  d2rq:
-      image: "auscat/d2rq:latest"
-      depends_on:
-      - catdb_server
-      - rdf4j
-      ports:
-      - 8888:8888
-      volumes:
-      - d2rq-data:/home/jovyan/work
+  # d2rq:
+  #     image: "auscat/d2rq:latest"
+  #     depends_on:
+  #     - catdb_server
+  #     - rdf4j
+  #     ports:
+  #     - 8888:8888
+  #     volumes:
+  #     - d2rq-data:/home/jovyan/work
 
   etl:
       image: 'auscat/etl:sim'
@@ -152,6 +154,15 @@ services:
       volumes:
       - n8n-data:/home/node/.n8n
 
+  analysis_example:
+      image: "auscat/etl:example"
+      ports:
+      - 8888:8888
+      depends_on:
+      - etl
+      volumes:
+      - analysis-data:/data
+
 volumes:
   key-pgdata:
   cat-pgdata:
@@ -161,6 +172,7 @@ volumes:
   pgadmin-data:
   d2rq-data:
   n8n-data:
+  analysis-data:
 ```
 
 Now wait a few minutes while the required images are pulled and the stack is deployed. You can monitor the progress of the containers in the `Services` section (left menu). Here you can see which containers are running or are still `preparing` (being pulled from Dockerhub). Once all containers are `running`, you are ready to proceed with the next step.
