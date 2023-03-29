@@ -41,4 +41,4 @@ The output of this example notebook is a file named `metrics.csv` which is store
 
 **Problem**: The Jupyter Notebook crashed during conversion of the imaging data.
 
-**Solution**: This may happen when insufficient memory is available. Ensure you have at least 4GB RAM to run the example. Before re-running the notebook, delete the `working` folder within the `data` directory. To do this you may need to open a Terminal by choosing `New Launcher` then press `Terminal` and run `rm -r data/working`.
+**Solution**: This may happen when insufficient memory is available. Ensure you have at least 4GB RAM to run the example. Before re-running the notebook, delete the `working` folder within the `data` directory. To do this you may need to open a Terminal by choosing `New Launcher` then press `Terminal` and run `rm -r work/data/working`.

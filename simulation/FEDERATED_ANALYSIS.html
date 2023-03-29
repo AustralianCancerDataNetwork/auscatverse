@@ -222,10 +222,11 @@
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auscat/fed_analysis_flwr:client</span>
 <span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">DATAFILE_CSV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/working/metrics.csv</span>
-<span class="w">        </span><span class="nt">FEATURES_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mean,D0,D10,D20,D30</span>
+<span class="w">        </span><span class="nt">FEATURES_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">firstorder|Mean,D95,V5,mean</span>
 <span class="w">        </span><span class="nt">SERVER_HOSTNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">203.101.225.47</span>
 <span class="w">        </span><span class="nt">SERVER_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8443</span>
 <span class="w">        </span><span class="nt">INDEXER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Contour</span>
+<span class="w">        </span><span class="nt">AGG_METRICS_CSV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/mnt/working/agg_metrics_2.csv</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">analysis-data:/mnt</span>
 <span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;on-failure&quot;</span>
@@ -239,6 +240,7 @@ Please note that this must be identical across all clients, with preserved order
 <li><p>SERVER_HOSTNAME: IP address of the machine hosting the fedearted learning server</p></li>
 <li><p>SERVER_PORT: the port on which the federated learning server us running on, on the server host machine</p></li>
 <li><p>INDEXER: the feature name we wish to separate by in the datafiles to run aggregated analysis by.</p></li>
+<li><p>AGG_METRICS_CSV: path to the output CSV that will contain the aggregated metrics collected from the central server after completing the federated analysis task, for the client’s convenience</p></li>
 <li><p>For volumes: map the <code class="docutils literal notranslate"><span class="pre">analysis-data</span></code> volume to a path in the container, under which the DATAFILE_CSV will sit</p></li>
 </ul>
 <ol class="arabic simple" start="4">
