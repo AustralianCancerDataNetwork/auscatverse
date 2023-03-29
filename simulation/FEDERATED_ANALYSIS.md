@@ -1,6 +1,7 @@
 # Federated Analysis Example
 
 ## Running the Client
+
 An example for performing federated analysis in the simulation environment.
 
 1. Once the `compute_metrics.ipynb` has run completely and produced a `metrics.csv` file, we can proceed with the federated learning component of the example.
@@ -14,7 +15,7 @@ An example for performing federated analysis in the simulation environment.
     image: auscat/fed_analysis_flwr:client
     environment:
         DATAFILE_CSV: /mnt/working/metrics.csv
-        FEATURES_LIST: mean,D0,D10,D20,D30
+        FEATURES_LIST: firstorder|Mean,D95,V5,mean
         SERVER_HOSTNAME: 203.101.225.47
         SERVER_PORT: 8443
         INDEXER: Contour
@@ -25,6 +26,7 @@ An example for performing federated analysis in the simulation environment.
 ```
 
 Note:
+
 - DATAFILE_CSV: is the path to the `metrics.csv` file in the container, after being mapped from the docker volume
 - FEATURES_LIST: comma-spearated list of features from the DATAFILE_CSV that we wish to aggregate in the federated analysis.
     Please note that this must be identical across all clients, with preserved ordering
