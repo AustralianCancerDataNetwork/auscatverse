@@ -29,6 +29,7 @@ overview/index.md
 
 installation
 examples
+docker_template
 ```
 
 ```{toctree}
