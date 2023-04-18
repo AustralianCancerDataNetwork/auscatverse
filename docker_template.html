@@ -2,10 +2,12 @@
 <html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="#" /><link rel="search" title="Search" href="search.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Overview" href="docker_template/OVERVIEW.html" /><link rel="prev" title="Federated Analysis Example" href="simulation/FEDERATED_ANALYSIS.html" />
 
-    <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/><title>Index - AusCAT documentation</title>
-<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
+        <title>Docker Components Template - AusCAT documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
@@ -153,7 +155,7 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1 has-children"><a class="reference internal" href="installation.html">Simulation Environment Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="host.html">Host Machine Setup</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="simulation/LOCAL_MACHINE.html">Local Machine</a></li>
@@ -169,7 +171,7 @@
 <li class="toctree-l2"><a class="reference internal" href="simulation/FEDERATED_ANALYSIS.html">Federated Analysis Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="docker_template.html">Docker Components Template</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Docker Components Template</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="docker_template/OVERVIEW.html">Overview</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_template/DOCKERHUB.html">AusCAT DockerHub</a></li>
 <li class="toctree-l2"><a class="reference internal" href="docker_template/DATABASE.html">Databases</a></li>
@@ -215,10 +217,68 @@
           </label>
         </div>
         <article role="main">
-          
-<section class="genindex-section">
-  <h1 id="index">Index</h1>
-  <div class="genindex-jumpbox"></div>
+          <section id="docker-components-template">
+<h1>Docker Components Template<a class="headerlink" href="#docker-components-template" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/OVERVIEW.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/DOCKERHUB.html">AusCAT DockerHub</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/DOCKERHUB.html#what-youll-need">What you’ll need</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/DATABASE.html">Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/DATABASE.html#key-database">Key Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#docker-image">Docker Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#manage-sensitive-data-with-docker-secrets">Manage sensitive data with Docker secrets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_template/DATABASE.html#set-superuser-and-password">Set superuser and password</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/DATABASE.html#cat-database">Cat Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#id1">Docker Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#id2">Manage sensitive data with Docker secrets</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="docker_template/DATABASE.html#id3">Set superuser and password</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/DATABASE.html#pgadmin">pgAdmin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#id4">Docker Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/DATABASE.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/IMAGINGTOOL.html">DICOM-RT anonymisation and PACS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#clinical-trial-processor-ctp">Clinical Trial Processor (CTP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#quick-reference">Quick reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#docker-image">Docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#manage-sensitive-data-with-docker-secrets">Manage sensitive data with Docker secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#orthanc">Orthanc</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#id1">Docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/IMAGINGTOOL.html#manage-login-credentials-with-docker-secrets">Manage login credentials with Docker secrets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html">Data harmonisation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html#d2rq-platform">D2RQ platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html#docker-image">Docker image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html#manage-sensitive-data-with-docker-secrets">Manage sensitive data with Docker secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html#rdf4j">RDF4j</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="docker_template/ONTOLOGYTOOL.html#id1">Docker image</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker_template/TROUBLESHOOTING.html">Troubleshooting</a></li>
+</ul>
+</div>
 </section>
 
         </article>
@@ -226,8 +286,26 @@
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="docker_template/OVERVIEW.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Overview</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="simulation/FEDERATED_ANALYSIS.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Federated Analysis Example</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
