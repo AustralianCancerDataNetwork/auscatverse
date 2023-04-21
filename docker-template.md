@@ -12,7 +12,7 @@
 * Ports and network access (Specify any ports that the image exposes and any network access requirements)
 
 ## Configuration
-* Outline any configuration options that can be set when running the image (e.g., environment variables, command-line arguments, or configuration files)
+* Outline any configuration options that can be set when running the image (e.g., environment variables, command-line arguments, or configuration files), including a description of what they do and what types of values they accept
 
 * Recommended usage patterns (Give guidance on how the image should be used in different environments, such as development, testing, or production)
 
