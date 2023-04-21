@@ -32,6 +32,9 @@
 
 * Upgrading (Explain how to upgrade the Docker image on Portainer, including best practices for managing image tags and version control)
 
+* Description of base image used (and link to it on DockerHub
+
+ * Path to Dockerfile and instructions for building (if needed)
 
 ## Troubleshooting
 * Common issues (List some of the most common issues that users may encounter when working with the Docker image. This can include errors, warnings, or unexpected behaviors that users might encounter, along with explanations of what the errors mean and how to fix them.)
