@@ -36,6 +36,14 @@
 
  * Path to Dockerfile and instructions for building (if needed)
 
+## Docker Image extension (centre-varying images/project specific images)
+* Outline the potentially centre-varying images where different images/tags are appropriate (eg. the MOSAIQ vs ARIA DB variations) or the project specific images (eg. the auscat_cardiac images),or even create new images that will integrate nicely with our stack.
+
+* Contribution framework/pipeline (expand on below):
+    * Build and test image in simulation environment
+    * Create a PR to appropriate repo where the source code will sit and push the image to GHCR
+    * Once AusCAT team test image from GHCR and approve PR, push final image to the AusCAT Dockerhub 
+
 ## Troubleshooting
 * Common issues (List some of the most common issues that users may encounter when working with the Docker image. This can include errors, warnings, or unexpected behaviors that users might encounter, along with explanations of what the errors mean and how to fix them.)
 
