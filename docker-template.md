@@ -16,13 +16,7 @@
 
 * Recommended usage patterns (Give guidance on how the image should be used in different environments, such as development, testing, or production)
 
-## Access, Authentication, Secrets
-* Access controls (Describe how access to Docker containers and images is controlled, including the use of user accounts, groups, roles, or permissions)
-
-* Registry authentication (Outline how AusCAT Docker registry authentication is handled)
-
-* User authentication (Describe how Docker handles user authentication and authorization, including how users are authenticated and authorized to access Docker containers and images)
-
+## Secrets
 * Secrets (Explain how to pass sensitive data to Docker Swarm on Portainer)
 
 ## Docker Image
