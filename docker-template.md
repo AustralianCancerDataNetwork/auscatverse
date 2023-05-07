@@ -35,6 +35,9 @@
 * Description of base image used (and link to it on DockerHub
 
  * Path to Dockerfile and instructions for building (if needed)
+* Description of base image used (and link to it on DockerHub
+
+ * Path to Dockerfile and instructions for building (if needed)
 
 ## Docker Image extension (centre-varying images/project specific images)
 * Outline the potentially centre-varying images where different images/tags are appropriate (eg. the MOSAIQ vs ARIA DB variations) or the project specific images (eg. the auscat_cardiac images),or even create new images that will integrate nicely with our stack.
