@@ -41,6 +41,8 @@ eg.
 ### Oncology Information System (IOS) available at the site
 * Whether the site uses MOSAIQ, ARIA or EPIC
 * If the site uses specific scripts to import data into their AusCAT node, and state where to find these scripts (eg. link to GitHub repository)
+### PACS System available at the site
+* Name of the system
 ### Pentaho
 * Information about the Pentaho instance installed at the site (as this is not installed along with the AusCAT node and can vary between sites)
 * Filepath to the Pentaho application at the site
