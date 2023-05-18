@@ -32,6 +32,13 @@ examples
 ```
 
 ```{toctree}
+:caption: Components
+:hidden:
+
+components/imaging
+```
+
+```{toctree}
 :caption: For Developers
 :hidden:
 
