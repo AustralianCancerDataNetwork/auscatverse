@@ -41,7 +41,7 @@ eg.
 ### Docker and Docker Compose version
 Which version of Docker and Docker Compose is running at the site
 
-### Oncology Information System (IOS) available at the site
+### Oncology Information System (OIS) available at the site
 * Whether the site uses MOSAIQ, ARIA or EPIC and its version number
 * If the site uses specific scripts to import data into their AusCAT node, and state where to find these scripts (eg. link to GitHub repository)
 
