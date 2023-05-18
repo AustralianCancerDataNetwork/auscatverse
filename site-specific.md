@@ -16,24 +16,37 @@ eg.
 * The hardware that is avaliable for the AusCAT project at the site.  Preferrably a table of the following structure:
 
 eg. 
-| Machine host name             | IP Address    | Type                      | Specs                         | Contact Access                                            |
-| ---                           | ---           | ---                       | ---                           | ---                                                       |
-| name1.domain.nswhealth.net    | 10.x.x.x      | Ubuntu VM                 | CPU, Memory, disk space, GPU  | Initials of tech contact who has access to the machine    |
-| name2.domain.nswhealth.net    | 10.x.x.x      | Cloud VM Ubuntu           | CPU, Memory, disk space, GPU  | Initials of tech contact who has access to the machine    |
+| Machine host name             | IP Address    | Overall Setup Type        | Site IT Manager               | Specs                         | Contact Access                                            |
+| ---                           | ---           | ---                       | ---                           | ---                           | ---                                                       |
+| name1.domain.nswhealth.net    | 10.x.x.x      | On-Site Ubuntu VM         | On-Site CTC IT Team           | CPU, Memory, disk space, GPU  | Initials of tech contact who has access to the machine    |
+| name2.domain.nswhealth.net    | 10.x.x.x      | Azure Cloud Ubuntu VM     | On-Site CTC IT Team           | CPU, Memory, disk space, GPU  | Initials of tech contact who has access to the machine    |
 ...
 
+### Credentials
+* Description of how credentials are being tracked at the centre (eg. password manager like Lastpass/Bitwarden, password databases like KeePass)
+* The set process of how to obtain access to these manager clients (eg. who to talk to or where to find the 'Master' password) 
 
 ## Challenges
 ### Proxy issues
 * What proxy was used at that centre
 * URL whitelisting process
 * Docker specific proxy setup
+* Link to the this URL for all general proxy setup concerns (currently on GitHub [here](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md#network-proxy), but point to the eventually deployed Sphinx page that will have that info)
 
 ### Troubleshooting
 * Any particular issues unique to that centre which require attention from the centre's IT team
 * Any potential hints, or "Gotchya's" that were picked up during the setup process (to potetnially benefit future setups)
 
 ## Deployment and Project work
+### Oncology Information System (IOS) available at the site
+* Whether the site uses MOSAIQ, ARIA or EPIC
+* If the site uses specific scripts to import data into their AusCAT node, and state where to find these scripts (eg. link to GitHub repository)
+### Pentaho
+* Information about the Pentaho instance installed at the site (as this is not installed along with the AusCAT node and can vary between sites)
+* Filepath to the Pentaho application at the site
+* Filepath to the Pentaho pipeline scripts that are used to populate the different AusCAT databases.
+* Link to the this URL for general Pentaho setup (currently on GitHub [here](https://github.com/AustralianCancerDataNetwork/auscat_installation#pentaho-installation), but point to the eventually deployed Sphinx page that will have that info)
+
 ### Available AusCAT data
 * Data that exists at that centre and ready in AusCAT's data stores
 ### Deployed stacks
