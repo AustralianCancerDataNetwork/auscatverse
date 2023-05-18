@@ -38,21 +38,29 @@ eg.
 * Any potential hints, or "Gotchya's" that were picked up during the setup process (to potetnially benefit future setups)
 
 ## Deployment and Project work
+### Docker and Docker Compose version
+Which version of Docker and Docker Compose is running at the site
+
 ### Oncology Information System (IOS) available at the site
-* Whether the site uses MOSAIQ, ARIA or EPIC
+* Whether the site uses MOSAIQ, ARIA or EPIC and its version number
 * If the site uses specific scripts to import data into their AusCAT node, and state where to find these scripts (eg. link to GitHub repository)
-### PACS System available at the site
+
+### Treatment Planning System (TPS) and/or PACS System available at the site for retrieving DICOM data
 * Name of the system
+* Does it require specialised scripting to get DICOM data out of these systems into the AusCAT? If so, who are the relevant contacts for this and where can these scripts be found?
+ 
 ### Pentaho
-* Information about the Pentaho instance installed at the site (as this is not installed along with the AusCAT node and can vary between sites)
+* Information about the Pentaho instance installed at the site (as this is not installed along with the AusCAT node and can vary between sites such as Pentaho version, Java version to run Pentaho, etc...)
 * Filepath to the Pentaho application at the site
 * Filepath to the Pentaho pipeline scripts that are used to populate the different AusCAT databases.
 * Link to the this URL for general Pentaho setup (currently on GitHub [here](https://github.com/AustralianCancerDataNetwork/auscat_installation#pentaho-installation), but point to the eventually deployed Sphinx page that will have that info)
 
 ### Available AusCAT data
 * Data that exists at that centre and ready in AusCAT's data stores
+
 ### Deployed stacks
 * Could be description of proof of concept stack that was tested out at the centre
 * Description of Production version of the AusCAT stack at the centre
+
 ### Clinical Projects
 * Projects that the AusCAT stack at the centre was involved in 
