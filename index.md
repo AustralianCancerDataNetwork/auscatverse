@@ -35,7 +35,7 @@ examples
 :caption: Components
 :hidden:
 
-components/imaging
+components/IMAGING
 ```
 
 ```{toctree}
