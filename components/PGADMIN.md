@@ -2,7 +2,7 @@
 
 ## Overview
 
-[PGAdmin](https://www.pgadmin.org/) is a Graphical User Interface (GUI) web-based tool that can be used to interact with Postgres databases. It allows for viewing and inspecting what structure and data is contained within them. Using the in-built account management system, the tool can be configured to only grant access to users who have the required ethics permissions to access the database
+[PGAdmin](https://www.pgadmin.org/) is a web-based Graphical User Interface (GUI) tool that can be used to interact with Postgres databases. It allows for viewing and inspecting what structure and data is contained within them. Using the in-built account management system, the tool can be configured to only grant access to users who have the required ethics permissions to access the database.
 
 This tool is great for the following scenarios:
 - To get a quick grasp of what AusCAT data is available at your centre
@@ -35,7 +35,7 @@ In this example, we have set the tool to run on port 5050 on the host machine, a
 The 2 environment variables "PGADMIN_DEFAULT_EMAIL" and "PGADMIN_DEFAULT_PASSWORD" are used to allow a default admin user access to the tool.
 
 The Docker image `auscat/pgadmin4` is built using predefined configuration files, these are:
-- [servers.json](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/pgadmin/servers.json): this provides pgadmin in the Docker image with the appropriate connection strings to connect to the local KeyDB and CatDB databases deployed in the Docker stack. If you would like to define your own json file for more specific "out-of-the-box" configuration, you can follow the section below.
+- [servers.json](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/pgadmin/servers.json): this provides PGAdmin in the Docker image with the appropriate connection strings to connect to the local KeyDB and CatDB databases deployed in the Docker stack. If you would like to define your own JSON file for more specific "out-of-the-box" configuration, you can follow the section below.
 - [pgpass](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/pgadmin/pgpass): This defines some placeholder user logins to access the databases in PGAdmin. These are overwritten by secrets created in Portainer. Information on the secrets can be found in the below section.
 
 ## Secrets
@@ -67,14 +67,14 @@ This should take a few seconds to redeploy the container with the latest image.
 
 The following is a guide on how to build your own version of the PGAdmin tool for use in AusCAT:
 
-1. The `servers.json` file can be modified for you own use case, here is a description of what the options for each server is used for:
-   - Name: Name of the database to connect to in PGAdmin. This is merely a descriptive name for your benefit
-   - Group: The entity under which this database should be stored for PGAdmin's inner workings. This should always be set to "Servers"
-   - Port: The port on which the database server is running on the "Host" you are trying to connect to. Be default, this is 5432 as we use the Docker service hostname (either "keydb_server" or "catdb_server") and this port is (nearly) always used for hosting the postgres servers on, depending on your stack deployment. 
+1. The `servers.json` file can be modified for your own use case, here is a description of what the options for each server is used for:
+   - Name: Name of the database to connect to in PGAdmin. This is merely a descriptive name for your benefit.
+   - Group: The entity under which this database should be stored for PGAdmin's inner workings. This should always be set to "Servers".
+   - Port: The port on which the database server is running on the "Host" you are trying to connect to. By default, this is 5432 as we use the Docker service hostname (either "keydb_server" or "catdb_server") and this port is (nearly) always used for hosting the postgres servers on. Depending on your stack deployment, please modify accordingly.
    - Host: This is the hostname where the database server is running on. Again, by default this is set to either "keydb_server" or "catdb_server" but can also point to other hostnames depedning on your setup or potentially if the postgres servers run on a different VM/machines than PGAdmin.
    - Username: the username to access the database server. We have defaults set for the CatDB ("catdb_user"), but again depending on how you configure your CatDB this will most likely change, and may be of benefit to change this as well.
    - PassFile: the path to the file that will contain credentials to connect to the database. The default option is "/pgpass". We suggest to keep this option the same as the default, but to change the pgpass file that will be copied into the image when rebuilding it.
-   - Comment: A description of what this connection is. This can be set what you consider helpful to identify this connection in PGAdmin.
+   - Comment: A description of what this connection is. This can be set to what you consider helpful to identify this connection in PGAdmin.
    
    The remaining options can be left as default:
    
@@ -88,10 +88,10 @@ The following is a guide on how to build your own version of the PGAdmin tool fo
 
 2. To integrate the `server.json` and `pgpass` files with the Docker building process, a [custom entrypoint file](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/pgadmin/custom_entrypoint.sh) is used. This injects the new connection strings and dynamic Portainer credential secrets into the PGAdmin config files. If further customisation is required to config files, they should be dealt with in a similar custom entrypoint file.
 
-3. To build the new Docker image, you can use the command `docker build -t auscat/pgamin4:YOUR_TAG`, where `YOUR_TAG` is your specific tag of the image.
+3. To build the new Docker image, you can use the command `docker build -t auscat/pgadmin4:your-tag`, where `your-tag` is your specific tag of the image.
 
 4. (Recommended) Once the image has been built, attempt to test it out in the simulation environment setting with some public data in both the KeyDB and CatDB.
 
-5. (Optional) If you wish to share these images with the broader AusCAT, we recommend that you clone the `auscat_installation` repository, create a new local branch and commit/push your new changes to this branch. Finally, create a Pull request into the "main" branch with appropriate details on what has been added/changed.
+5. (Optional) If you wish to share these images with the broader AusCAT, we recommend that you clone the `auscat_installation` repository, create a new local branch and commit/push your new changes to this branch. Finally, create a Pull Request (PR) into the "main" branch with appropriate details on what has been added/changed.
 
-Once a member of the AusCAT technical team has reviewed the PR and indicated approval, then a push to the AusCAT Dockerhub account may occur for others to use.
+Once a member of the AusCAT technical team has reviewed the PR and indicated approval, a push to the AusCAT Dockerhub account may occur for others to use.
