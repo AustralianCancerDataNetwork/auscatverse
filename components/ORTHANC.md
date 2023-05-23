@@ -8,9 +8,9 @@ Orthanc is an open-source lightweight DICOM server which is used within the AusC
 - HTTP REST API to fetch data directly from scripts
 - User authentication to access web interface and API
 
-All data stored in Orthanc is anonymised. To achieve this, no imaging data is sent directly to  Orthanc in an AusCAT client setup. Instead DICOM data is sent to the [CTP](CTP.md) service which has pipelines configured to strip all identifiable information from DICOM headers and replace IDs using the key mapping defined in the [KeyDB](KEYDB.md).
+All data stored in Orthanc is anonymised. To achieve this, no imaging data is sent directly to  Orthanc. DICOM data is first sent to the [CTP](CTP.md) service which has pipelines configured to strip all identifiable information from DICOM headers and replace IDs using the data available in the [KeyDB](KEYDB.md). The anonymised DICOM data is then sent to Orthanc.
 
-Once data has been imported via CTP, this data will be stored in Orthanc ready for analysis. Usually a project to be run within AusCAT that requires imaging data will provide a script which will extract the required data from Orthanc, convert it to a format used within the project and prepare it for analysis.
+Once data has been imported via CTP, this data will be stored in Orthanc ready for analysis. Usually a project to be run within AusCAT that uses imaging data will require a script which will extract the data from Orthanc, convert it to a format used within the project and prepare it for analysis.
 
 ### Usage
 
