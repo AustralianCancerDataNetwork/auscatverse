@@ -29,11 +29,6 @@ A dummy dashboard that can be used as a template and playground for testing dash
 data avaliability at a AusCAT node, using the TCIA Head and Neck cancer PET/CT dataset [[1]](#1) as a mockup of its real data.
 
 #### Intializing the head and neck dashboard database
-
-```bash
-python manage.py migrate
-```
-
 1.  For the template Head and Neck dashboard, we assume that another container is running a simluated AusCAT CAT_DB database
     (it will mostly likely an instance of the auscat_installation image)
 
@@ -59,7 +54,17 @@ python manage.py migrate
     python manage.py runserver
     ```
 
-Once you have access to the admin panel, under the "Head and Neck" application, select Config, create a new Config and in here you
+### Running the application
+
+```bash
+python manage.py runserver
+```
+
+This will start the django server and launch the app. you can access the application using
+[http://localhost:8000](http://localhost:8000)
+
+
+Once you have access to the admin panel, under the "DATA_AVALIBILITY" application, select Config, create a new Config and in here you
 can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB).
 
 *NOTE*: For now, when using the local cat_db database deployed through docker, the following are the usual credentials:
@@ -74,15 +79,6 @@ can add the appropriate postgres database credentials (either local for developm
     }
     ```
 
-### Running the application
-
-```bash
-python manage.py runserver
-```
-
-This will start the django server and launch the app. you can access the application using
-[http://localhost:8000](http://localhost:8000)
-
 ### Non-Docker approach
 **Non-Docker approach**: This template can be ran without docker, by following these steps:
 
@@ -94,8 +90,6 @@ This will start the django server and launch the app. you can access the applica
 poetry install
 ```
 This will install the python packages into your virtual environment
-
-
 
 
 ## References
