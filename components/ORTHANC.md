@@ -52,7 +52,7 @@ Port 8042 provides access to the web interface of Orthanc as well as the HTTP RE
 
 #### 4242
 
-Port 4242 is used to accept incoming DICOM data using the DICOM communication protocol. In practice, this will only be used by CTP to transfer anonymised files to Orthanc. There is no need to map this port to the host OS, however it may be useful for debugging purposes.
+Port 4242 is used to accept incoming DICOM data using the DICOM communication protocol. In practice, this will only be used by CTP to transfer anonymised files to Orthanc. If CTP and Orthanc are deployed in separate Docker stack (e.g. running on two different Virtual Machines) then this port must also be mapped to the host to enable CTP to transfer the anonymised files to Orthanc.
 
 ## Configuration
 
@@ -107,6 +107,7 @@ orthanc:
   image: "auscat/orthanc:latest"
   ports:
   - 8042:8042
+  - 4242:4242
   volumes:
   - /path/to/host/filesystem:/var/lib/orthanc/db
   secrets:
