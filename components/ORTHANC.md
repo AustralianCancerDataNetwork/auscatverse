@@ -40,7 +40,7 @@ However if you intend using this API then it is recommended to use a tool which 
 
 ### Dependencies
 
-Within AusCAT, the Orthanc Docker container requires the CTP Docker service to run alongside it. This enables use of the pipelines defined within CTP. In principal, CTP is only needed when transferring clinical data to AusCAT. As long as the Orthanc container is running then any data stored within will be available via the web-interface or the API. However, usually you would leave Orthanc and CTP running at all times.
+Within AusCAT, the Orthanc container does not have any specific dependencies once imaging data has been transferred to it. However during the transfer of imaging data from clinical systems both the CTP Docker service and the KeyDB Docker service must be running to enable anonymisation of imaging data prior to transfer to Orthanc. Once this is complete, any data stored within Orthanc will be available via the web-interface or the API with only the Orthanc service running. However, usually  Orthanc, CTP and KeyDB would be left running at all times.
 
 ### Ports and network access
 
