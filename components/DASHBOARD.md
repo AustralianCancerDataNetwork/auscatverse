@@ -4,7 +4,7 @@
 The dashboard developed using Python (version 3.8.12), django-plotly-dash (version 1.6.6), Dash (version 1.20.0), and Django (version 3.2.13) web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
 
 ### Usage
-1.  For the template Head and Neck dashboard, we assume that another container is running a simluated AusCAT CAT_DB database (it will mostly likely an instance of the auscat_installation image)
+1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CAT_DB database (it will mostly likely an instance of the auscat_installation image)
 
 2. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. WARNING: Please make sure this scriptdoes not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
 
@@ -68,7 +68,7 @@ Alternatively, via VSCode, you can setup the development containers using the de
 3. Select the option "Open folder in container". This will then open a VSCode instance of the container and map it to your local repository. Development and launching of the dashboard can now occur in this new VSCode window.
 
 ### Non-Docker approach
-**Non-Docker approach**: This template can be ran without Docker, by following these steps:
+**Non-Docker approach**: The [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) can be ran without Docker, by following these steps:
 
 1. Install the poetry [tool](https://python-poetry.org/docs/).
 2. Create a python virtual environment and activate it.
@@ -77,9 +77,11 @@ Alternatively, via VSCode, you can setup the development containers using the de
 ```bash
 poetry install
 ```
-This will install the python packages into your virtual environment
+This will install the python packages into your virtual environment.
 
 ## Troubleshooting
+### Logs
+The dashboard container will log to the standard output as is usual with Docker. These logs can be inspected within either Portainer or terminal to determine if dashboard is reporting any errors.
 
 ## References
 <a id="1">[1]</a> 
