@@ -2,7 +2,7 @@
 
 ## Overview
 
-Orthanc is an open-source lightweight DICOM server which is used within the AusCAT framework to store anonymised imaging data at each client. Orthanc provides much of the same functionality as a standard DICOM Picture Archiving System (PACS) but with some additional features which are useful within AusCAT. Those key features are:
+[Orthanc](https://www.orthanc-server.com/) is an open-source lightweight DICOM server which is used within the AusCAT framework to store anonymised imaging data at each client. Orthanc provides much of the same functionality as a standard DICOM Picture Archiving System (PACS) but with some additional features which are useful within AusCAT. Those key features are:
 
 - Web interface to browse data available
 - HTTP REST API to fetch data directly from scripts
