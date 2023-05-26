@@ -58,7 +58,7 @@ Port 4242 is used to accept incoming DICOM data using the DICOM communication pr
 
 Orthanc requires minimal configuration. It is important to map port 8042 to the host OS. Most importantly you should map an appropriate location on the host file system to `/var/lib/orthanc/db`. This is important as the DICOM imaging data is stored at that location. If this isn't mapped properly then this data will not persist when the container is refreshed.
 
-> Important: Carefully choose an appropriate location to map to `/var/lib/orthanc/db`. Keep in mind this is storing imaging data which can grow very large. Ideally this will be mapped to a location on a disk which has at least 1TB of disk space available.
+> Important: Carefully choose an appropriate location to map to `/var/lib/orthanc/db`. Keep in mind this is storing imaging data which can grow very large. Be sure to consult the [AusCAT infrastructure guide](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md) for more information on disk space requirements.
 
 A sample Docker stack definition to deploy Orthanc is:
 
