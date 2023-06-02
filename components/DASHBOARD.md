@@ -1,7 +1,7 @@
 # Dashboard
 
 ## Overview
-The dashboard developed using Python (version 3.8.12), django-plotly-dash (version 1.6.6), Dash (version 1.20.0), and Django (version 3.2.13) web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
+The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
 
 ### Usage
 1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CAT_DB database (it will mostly likely an instance of the auscat_installation image)
@@ -24,6 +24,8 @@ The dashboard developed using Python (version 3.8.12), django-plotly-dash (versi
     ```
     This will start the django server and launch the app. you can access the application using [http://localhost:8000](http://localhost:8000)
 ### Dependencies
+Please refer to the [pyproject.toml](https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/pyproject.toml) to check the versions of dependency requirements. 
+
 #### Head and Neck (template and playground dashboard)
 A dummy dashboard that can be used as a template and playground for testing dashboard designs. It visualises and reports patient data avaliability at a AusCAT node, using the TCIA Head and Neck cancer PET/CT dataset [[1]](#1) as a mockup of its real data.
 
