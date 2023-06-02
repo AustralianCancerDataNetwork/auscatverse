@@ -4,6 +4,6 @@
 ```{toctree}
 :caption: Imaging
 
-ORTHANC.md
+dicom.md
 
 ```
