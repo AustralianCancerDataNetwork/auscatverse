@@ -72,7 +72,7 @@ Alternatively, via VSCode, you can setup the development containers using the de
 3. Select the option "Open folder in container". This will then open a VSCode instance of the container and map it to your local repository. Development and launching of the dashboard can now occur in this new VSCode window.
 
 ### Non-Docker approach
-**Non-Docker approach**: The [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) can be ran without Docker, by following these steps:
+**Non-Docker approach**: The [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) can be run without Docker, by following these steps:
 
 1. Install the poetry [tool](https://python-poetry.org/docs/).
 2. Create a python virtual environment and activate it.
