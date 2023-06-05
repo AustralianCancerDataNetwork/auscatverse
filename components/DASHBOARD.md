@@ -6,7 +6,7 @@ The dashboard developed using Python, django-plotly-dash, Dash, and Django web f
 ### Usage
 1. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. 
 
-**WARNING**: This part is till under development. Please make sure this script does not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
+> **WARNING**: This part is still under development. Please make sure this script does not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default, this does not run, but please be aware before running this script
 
 2. To initialise the Django local DB, run the command:
     ```bash
