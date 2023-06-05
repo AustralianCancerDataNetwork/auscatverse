@@ -41,7 +41,7 @@ Please refer to the [pyproject.toml](https://github.com/AustralianCancerDataNetw
 Port 8000 provides access to the web interface of the dashboard.
 
 ## Configuration 
-Typically, our Docker components are deployed efficiently using docker-compose file. 
+Typically, our Docker components are deployed efficiently using a docker-compose file. 
 
 A template docker-compose service for dashboard in development environment:
 ```yaml
