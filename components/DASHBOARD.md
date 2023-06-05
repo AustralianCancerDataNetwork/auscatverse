@@ -4,9 +4,11 @@
 The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
 
 ### Usage
-1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CAT_DB database (it will mostly likely an instance of the auscat_installation image)
+1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat_installation image)
 
-2. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. WARNING: Please make sure this scriptdoes not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
+2. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. 
+
+WARNING: This part is till under development. Please make sure this script does not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
 
 3. To initialise the Django local DB, run the command:
     ```bash
@@ -38,7 +40,7 @@ To set the connection configuration to the database by navigating to http://loca
 
 The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. <br>
 
-Once you have access to the admin panel, under the "DATA_AVALIBILITY" application, select Config, create a new Config and in here you can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB). <br>
+Once you have access to the admin panel, under the "Data_availability" application, select Config, create a new Config and in here you can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB). <br>
 
 *NOTE*: For now, when using the local cat_db database deployed through docker, the following are the usual credentials:
     
@@ -53,9 +55,9 @@ Once you have access to the admin panel, under the "DATA_AVALIBILITY" applicatio
     ```
 
 ### Docker Image
-**NOTE**: For images that exist under the premium Dockerhub account, you'll need to login into the Dockerhub account on the local machine, by running `docker login`, then enter the username and password when promted.
+**NOTE**: For images that exist under the premium Dockerhub account, you'll need to login into the Dockerhub account on the local machine, by running `docker login`, then enter the username and password when prompted.
 
-AusCAT's Orthanc image is available at: ```auscat/data_availability_dashboard``` <br>
+AusCAT's Orthanc image is available at: ```auscat/data_availability_dashboard:latest``` <br>
 The AusCAT Docker image Dockerfile is available at: https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/Dockerfile <br>
 Which can be built using the command: 
 ```
