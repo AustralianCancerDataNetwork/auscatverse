@@ -35,7 +35,9 @@ Please refer to the [pyproject.toml](https://github.com/AustralianCancerDataNetw
 
 
 ### Ports and network access
-8000 <br>
+
+8000
+
 Port 8000 provides access to the web interface of the dashboard.
 
 ## Configuration 
