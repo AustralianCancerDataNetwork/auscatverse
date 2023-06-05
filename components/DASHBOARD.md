@@ -4,38 +4,78 @@
 The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
 
 ### Usage
-1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat/catdb_schema image)
+1. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. 
 
-2. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. 
+**WARNING**: This part is till under development. Please make sure this script does not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
 
-WARNING: This part is till under development. Please make sure this script does not run a function named "create_table" unless you are absolutely sure you'd like to truncate the medical table in your database. By default this does not run, but please be aware before running this script
-
-3. To initialise the Django local DB, run the command:
+2. To initialise the Django local DB, run the command:
     ```bash
     python manage.py migrate
     ```
 
-4. Create a super user for this development dashboard by running the command and selecting the appropriate options:
+3. Create a super user for this development dashboard by running the command and selecting the appropriate options:
     ```bash
     python manage.py createsuperuser
     ```
 
-5. Run the application by using the command:
+4. Run the application by using the command:
     ```bash
     python manage.py runserver
     ```
     This will start the django server and launch the app. you can access the application using [http://localhost:8000](http://localhost:8000)
-### Dependencies
-Please refer to the [pyproject.toml](https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/pyproject.toml) to check the versions of dependency requirements. 
+
 
 #### Head and Neck (template and playground dashboard)
 A dummy dashboard that can be used as a template and playground for testing dashboard designs. It visualises and reports patient data avaliability at a AusCAT node, using the TCIA Head and Neck cancer PET/CT dataset [[1]](#1) as a mockup of its real data.
+
+For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat/catdb_schema image)
+
+### Dependencies
+Please refer to the [pyproject.toml](https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/pyproject.toml) to check the versions of dependency requirements. 
+
 
 ### Ports and network access
 8000 <br>
 Port 8000 provides access to the web interface of the dashboard.
 
 ## Configuration 
+Typically, our Docker components are deployed efficiently using docker-compose file. 
+
+A template docker-compose service for dashboard in development environment:
+```yaml
+version: "3.3"
+# Services for development purposes only
+# This is mapping the services to the localhost, assuming that the databases are
+# hosted on the host machine by default.
+
+services:
+    auscat_data_availability_dash:
+        image: auscat/data_availability_dashboard:latest
+        # if running development, then most likely postgres DBs are running 
+        # locally, so allow container to interface with localhost network
+        network_mode: "host"
+        environment:
+            PYTHONPATH: /python
+            # if running development, then most likely postgres DBs are 
+            # running locally, so redis container should also be set to interface 
+            # with localhost network
+            CELERY_HOSTNAME: localhost
+        ports:
+            - 8000:8000
+        volumes:
+            - .:/workspace
+
+    redis:
+        image: redis:latest
+        # if running development, then most likely postgres DBs are running 
+        # locally, so allow container to interface with localhost network
+        network_mode: "host"
+        volumes:
+            - redis_data:/data
+
+volumes:
+    redis_data:
+```
 To set the connection configuration to the database by navigating to http://localhost:8000/admin and login as a super user. <br>
 
 The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. <br>
