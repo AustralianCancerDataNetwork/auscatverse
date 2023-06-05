@@ -4,7 +4,7 @@
 The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node. 
 
 ### Usage
-1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat_installation image)
+1.  For the [template](https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard) Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat/catdb_schema image)
 
 2. Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py. 
 
@@ -44,15 +44,15 @@ Once you have access to the admin panel, under the "Data_availability" applicati
 
 *NOTE*: For now, when using the local cat_db database deployed through docker, the following are the usual credentials:
     
-    ```json
-    {
-        "Db name": "cat_db",
-        "Db username": "postgres",
-        "Db password": "postgres",
-        "Db servername": "127.0.0.1",
-        "Db port": "5434"
-    }
-    ```
+```json
+{
+    "Db name": "cat_db",
+    "Db username": "postgres",
+    "Db password": "postgres",
+    "Db servername": "127.0.0.1",
+    "Db port": "5434"
+}
+```
 
 ### Docker Image
 **NOTE**: For images that exist under the premium Dockerhub account, you'll need to login into the Dockerhub account on the local machine, by running `docker login`, then enter the username and password when prompted.
@@ -76,12 +76,16 @@ Alternatively, via VSCode, you can setup the development containers using the de
 
 1. Install the poetry [tool](https://python-poetry.org/docs/).
 2. Create a python virtual environment and activate it.
-3. Navigate to `dashboard/` and run:
+3. Navigate to `dashboard/` and run to install the python packages into your virtual environment:
 
 ```bash
 poetry install
 ```
-This will install the python packages into your virtual environment.
+
+4. Then to use the poetry commands to run the application:
+```bash
+poetry run python manage.py runserver
+```
 
 ## Troubleshooting
 ### Logs
