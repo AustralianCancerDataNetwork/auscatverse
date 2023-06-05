@@ -42,7 +42,7 @@ The connection configuration to the database is controlled through the admin pan
 
 Once you have access to the admin panel, under the "Data_availability" application, select Config, create a new Config and in here you can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB). <br>
 
-*NOTE*: For now, when using the local cat_db database deployed through docker, the following are the usual credentials:
+*NOTE*: For now, when using the local CatDB database deployed through Docker, the following are the usual credentials:
     
 ```json
 {
