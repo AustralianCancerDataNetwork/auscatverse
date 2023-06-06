@@ -6,7 +6,7 @@ The Postgres Key Database (KeyDB) is used to securely store the identifying info
 
 The KeyDB component has the following characteristics:
 
-- It is a relational database.
+- It is a Postgres relational database.
 - The tables contain information regarding patients demographics/identifiers cohorts, DICOM Identifiers, linkage information, etc. The schemas can be slightly different across the centres.
 - The Clinical Trial Processor (CTP) communicates with KeyDB to anonymise/de-identify patient data.
 
@@ -31,7 +31,7 @@ A template docker-compose service for KeyDB in AusCAT is as follows:
 ```
 In this example, we have set the tool to run on port 5433 on the host machine and can be accessed via the web broswer (eg. http://localhost:5433), however it can be deployed on any available port. Please confirm that the chosen port is available for use and edit accordingly in the yml configuration.
 
-The environment variable "POSTGRES_USER_FILE" is used in conjunction with "POSTGRES_PASSWORD" to set a user and its password. This variable will create the specified user with superuser power and a database with the same name. If it is not specified, then the default user `key_admin` and password `postgres` can be used. "POSTGRES_HOST" is the database host, "PGDATA" refers to the directory that contains postgres data write logs and "TZ" indicates the host machine's timezone.
+The environment variable "POSTGRES_USER_FILE" is used in conjunction with "POSTGRES_PASSWORD_FILE" to set a user and its password. This variable will create the specified user with superuser permission and a database with the same name. If it is not specified, then the default user `key_admin` and password `postgres` can be used. "POSTGRES_HOST" is the database host, "PGDATA" refers to the directory that contains postgres data write logs and "TZ" indicates the host machine's timezone.
 
 The Docker image `auscat/keydb_schema:latest` is pulled from AusCAT DockerHub repository.
 
