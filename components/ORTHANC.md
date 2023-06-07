@@ -151,7 +151,7 @@ This is usually due to the 8042 port not being accessible. Make sure you map thi
 
 ### Logs
 
-The Orthanc Docker container will log to the standard output as is usual with Docker. These logs can be inspected within Portainer to determine if Orthanc is reporting any errors.
+The Orthanc Docker container will log to the standard output as is usual with Docker. These logs can be inspected within Portainer or by using the `docker log` to determine if Orthanc is reporting any errors. More information about collecting Orthanc logs can be found [here](https://book.orthanc-server.com/faq/log.html).
 
 ### Support resources
 
