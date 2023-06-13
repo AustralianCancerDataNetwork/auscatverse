@@ -1,6 +1,6 @@
 # AusCAT
 
-![ARDC](/overview/images/ARDC.png)
+![ARDC](overview/images/ARDC.png)
 
 The Australian Computer Assisted Theragnotics (AusCAT) is a federated learning software platform that enables linking of radiation oncology treatment data and outcomes data across hospitals and with state and national registries to allow development of unique models from the combined datasets. The goal of AusCAT is to improve accessibility and governance structures to support data users including clinicians, data scientists, governments and policy makers. AusCAT streamlines data analysis, administrative, ethical, and political aspects of research, enabling learning across datasets that are otherwise difficult to merge due to size or ethical and governance challenges.
 
@@ -19,16 +19,18 @@ Having an AusCAT node set-up at your institution provides the opportunity to use
 The AusCAT platform also provides data visualisation tools to allow research and institution to easily identify what data is available at their institutions using the Data availability Dashboard. Database online viewer PGadmin allows users to inspect what is available in the database. The Orthanc server provides a front-end to browse DICOM patient data (dose files, RT structures, treatment imaging (CT, PET, MRI, CBCT)).
 
 ```{toctree}
-overview/index.md
-:hidden:
-```
-
-```{toctree}
 :caption: Getting Started
 :hidden:
 
 installation
 examples
+```
+
+```{toctree}
+:caption: Components
+:hidden:
+
+components/IMAGING
 ```
 
 ```{toctree}
