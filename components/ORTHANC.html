@@ -1,0 +1,467 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="AusCAT Coding Guidelines" href="../guidelines/CODING.html" /><link rel="prev" title="DICOM" href="dicom.html" />
+
+    <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
+        <title>Orthanc - AusCAT documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">AusCAT  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">AusCAT  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation.html">Simulation Environment Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../host.html">Host Machine Setup</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/LOCAL_MACHINE.html">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/NECTAR.html">NECTAR Virtual Machine Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/DOCKER_PORTAINER.html">Docker &amp; Portainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/SIMULATION.html">Simulation Environment Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/METRICS.html">Metric Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/FEDERATED_ANALYSIS.html">Federated Analysis Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="IMAGING.html">Imaging</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current has-children"><a class="reference internal" href="dicom.html">DICOM</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Orthanc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/CODING.html">AusCAT Coding Guidelines</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="orthanc">
+<h1>Orthanc<a class="headerlink" href="#orthanc" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.orthanc-server.com/">Orthanc</a> is an open-source lightweight DICOM server which is used within the AusCAT framework to store anonymised imaging data at each client. Orthanc provides much of the same functionality as a standard DICOM Picture Archiving System (PACS) but with some additional features which are useful within AusCAT. Those key features are:</p>
+<ul class="simple">
+<li><p>Web interface to browse data available</p></li>
+<li><p>HTTP REST API to fetch data directly from scripts</p></li>
+<li><p>User authentication to access web interface and API</p></li>
+</ul>
+<p>In the AusCAT infrastructure/project all data stored in Orthanc is anonymised. To achieve this, no imaging data is sent directly to  Orthanc. DICOM data is first sent to the <a class="reference internal" href="#CTP.md"><span class="xref myst">CTP</span></a> service which has pipelines configured to strip all identifiable information from DICOM headers and replace IDs using the data available in the <a class="reference internal" href="#KEYDB.md"><span class="xref myst">KeyDB</span></a>. The anonymised DICOM data is then sent to Orthanc.</p>
+<p>Once data has been imported via CTP, this data will be stored in Orthanc ready for analysis. Usually a project to be run within AusCAT that uses imaging data will require a script which will extract the data from Orthanc, convert it to a format used within the project and prepare it for analysis.</p>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
+<p>You can interact with Orthanc using either the web interface or a HTTP API.</p>
+<section id="web-interface">
+<h4>Web Interface<a class="headerlink" href="#web-interface" title="Permalink to this heading">#</a></h4>
+<p>The Orthanc web interface is useful to explore the data you have available and to confirm that data is arriving properly after being sent from CTP. To log in, visit the following URL, replacing the <code class="docutils literal notranslate"><span class="pre">[host-ip]</span></code> with the IP address of the system running the Orthanc Docker container:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="p">[</span><span class="n">host</span><span class="o">-</span><span class="n">ip</span><span class="p">]:</span><span class="mi">8042</span>
+</pre></div>
+</div>
+<p>After you authenticate using the configured credentials (see below) you can browse the data available. On the main screen, press the “All Patients” button to see a list of all patients which have been stored in Orthanc. You can also search for a specific patient ID, keeping in mind that these IDs are stored in their anonymised form.</p>
+<p><img alt="Orthanc home screen" src="../_images/Orthanc_1.png" /></p>
+<p>Click on a patient to browse the imaging data available.</p>
+<p><img alt="Orthanc browse patient data" src="../_images/Orthanc_2.png" /></p>
+</section>
+<section id="http-rest-api">
+<h4>HTTP REST API<a class="headerlink" href="#http-rest-api" title="Permalink to this heading">#</a></h4>
+<p>The HTTP REST API can be accessed using the same URL as the web interface. This <a class="reference external" href="https://book.orthanc-server.com/users/rest.html">API is documented thoroughly in the Orthanc documentation</a>.</p>
+<p>However if you intend using this API then it is recommended to use a tool which provides functionality to access the API via Python. <a class="reference external" href="https://pypi.org/project/pyorthanc/"><code class="docutils literal notranslate"><span class="pre">pyorthanc</span></code> is a 3rd-party Python library</a> to enable communication with Orthanc via Python scripts. Our <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/pydicer">PyDicer tool</a> which is used for DICOM data conversion and analysis is able to extract data from Orthanc using this API.</p>
+</section>
+</section>
+<section id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">#</a></h3>
+<p>Within AusCAT, the Orthanc container does not have any specific dependencies once imaging data has been transferred to it. However during the transfer of imaging data from clinical systems both the CTP Docker service and the KeyDB Docker service must be running to enable anonymisation of imaging data prior to transfer to Orthanc. Once this is complete, any data stored within Orthanc will be available via the web-interface or the API with only the Orthanc service running. However, usually  Orthanc, CTP and KeyDB would be left running at all times.</p>
+</section>
+<section id="ports-and-network-access">
+<h3>Ports and network access<a class="headerlink" href="#ports-and-network-access" title="Permalink to this heading">#</a></h3>
+<p>There are two ports which Orthanc makes available within the Docker container:</p>
+<section id="id1">
+<h4>8042<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Port 8042 provides access to the web interface of Orthanc as well as the HTTP REST API. Be sure to map this port to the host OS within your Docker stack to ensure that you can access this web interface. You will then be prompted for the username/password combination. If accessing via REST API these credentials must also be provided.</p>
+</section>
+<section id="id2">
+<h4>4242<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>Port 4242 is used to accept incoming DICOM data using the DICOM communication protocol. In practice, this will only be used by CTP to transfer anonymised files to Orthanc. If CTP and Orthanc are deployed in separate Docker stack (e.g. running on two different Virtual Machines) then this port must also be mapped to the host to enable CTP to transfer the anonymised files to Orthanc.</p>
+</section>
+</section>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
+<p>Orthanc requires minimal configuration. It is important to map port 8042 to the host OS. Most importantly you should map an appropriate location on the host file system to <code class="docutils literal notranslate"><span class="pre">/var/lib/orthanc/db</span></code>. This is important as the DICOM imaging data is stored at that location. If this isn’t mapped properly then this data will not persist when the container is refreshed.</p>
+<blockquote>
+<div><p>Important: Carefully choose an appropriate location to map to <code class="docutils literal notranslate"><span class="pre">/var/lib/orthanc/db</span></code>. Keep in mind this is storing imaging data which can grow very large. Be sure to consult the <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md">AusCAT infrastructure guide</a> for more information on disk space requirements.</p>
+</div></blockquote>
+<p>A sample Docker stack definition to deploy Orthanc is:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">orthanc</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/orthanc:latest&quot;</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8042:8042</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/host/filesystem:/var/lib/orthanc/db</span>
+</pre></div>
+</div>
+</section>
+<section id="secrets">
+<h2>Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h2>
+<p>A default <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> file is provided within the Docker image. This makes deploying the container in a simulation environment easy without requiring further configuration. The default username and password combination is:</p>
+<p>Username: <code class="docutils literal notranslate"><span class="pre">admin</span></code>
+Password: <code class="docutils literal notranslate"><span class="pre">admin</span></code></p>
+<blockquote>
+<div><p>Important: Only ever use the default username and password combination in a simulation or development environment!</p>
+</div></blockquote>
+<p>In a production deployment you should provide a secret named <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> which is mapped to <code class="docutils literal notranslate"><span class="pre">/run/secrets/orthanc.json</span></code>. You can add this using the Secrets tab in Portainer. Here is a sample structure for <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AusCAT ORTHANC server&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;RemoteAccessAllowed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;AuthenticationEnabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;RegisteredUsers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;admin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a-very-secure-password&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: The name of the Orthanc instance.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RemoteAccessAllowed</span></code>: Should be set to true to enable access to the web interface and API.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AuthenticationEnabled</span></code>: Should always be true to ensure authentication is used.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RegisteredUsers</span></code>: Provide username/password pairs which can be used to authenticate with Orthanc.</p></li>
+</ul>
+<p>A more detailed description of settings available in <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> is available <a class="reference external" href="https://hg.orthanc-server.com/orthanc/file/Orthanc-1.12.0/OrthancServer/Resources/Configuration.json">here</a>.</p>
+<p>Finally, be sure to provide the <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> secret in your Docker stack:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">orthanc</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/orthanc:latest&quot;</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8042:8042</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4242:4242</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/path/to/host/filesystem:/var/lib/orthanc/db</span>
+<span class="w">  </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orthanc.json</span>
+
+<span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">orthanc.json</span><span class="p">:</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>Important: In a production deployment always provide a custom <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> secret defining a secure password!</p>
+</div></blockquote>
+</section>
+<section id="docker-image">
+<h2>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading">#</a></h2>
+<p>AusCAT’s Orthanc image is available at: <code class="docutils literal notranslate"><span class="pre">auscat/orthanc</span></code></p>
+<p>The base image used is <code class="docutils literal notranslate"><span class="pre">osimis/orthanc</span></code> which provides all Orthanc functionality preinstalled. The only addition made in the AusCAT image is to provide a default <code class="docutils literal notranslate"><span class="pre">orthanc.json</span></code> for use in the simulation environment. The base image is available at: <a class="reference external" href="https://hub.docker.com/r/osimis/orthanc">https://hub.docker.com/r/osimis/orthanc</a></p>
+<p>The AusCAT Docker image Dockerfile is available at:
+<a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging/tree/main/orthanc">https://github.com/AustralianCancerDataNetwork/auscat_imaging/tree/main/orthanc</a></p>
+<p>Which can be built using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>auscat-imaging/orthanc
+docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>auscat/orthanc<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="data-not-arriving-in-orthanc">
+<h3>Data not arriving in Orthanc<a class="headerlink" href="#data-not-arriving-in-orthanc" title="Permalink to this heading">#</a></h3>
+<p>If you are sending data from your clinical systems through CTP it should arrive in Orthanc following anonymisation. If this is not working, first you should check that CTP has accepted the data and processed successfully (see <a class="reference internal" href="#CTP.md"><span class="xref myst">CTP documentation troubleshooting</span></a>).</p>
+<p>If CTP indicates that the data was sent on to Orthanc, then ensure that the Orthanc image is reachable from CTP. Ideally these will be deployed on the same Docker stack which should ensure that they are on the same Docker network. Make sure the name of this service in the Docker stack is <code class="docutils literal notranslate"><span class="pre">orthanc</span></code> (if not the CTP pipelines need to be updated).</p>
+<p>To test Orthanc in isolation you can map the DICOM port 4242 to the host OS and try sending some data directly to this endpoint (make sure this is some dummy/phantom data as it won’t be anonymised). If this arrives it indicates the issue is with CTP communicating with Orthanc. If this doesn’t arrive then check your network configuration to ensure you can communicate with the host IP via port 8042. You may also like to check Orthanc logs to determine if there are any errors reported.</p>
+</section>
+<section id="unable-to-access-web-interface">
+<h3>Unable to access web interface<a class="headerlink" href="#unable-to-access-web-interface" title="Permalink to this heading">#</a></h3>
+<p>This is usually due to the 8042 port not being accessible. Make sure you map this to your host OS as described in the Docker stack example above. If this still isn’t working, there may be a firewall blocking this traffic. Consult your IT networking team to help understand if special permissions need to be given within your local firewall to enable this access.</p>
+</section>
+<section id="logs">
+<h3>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">#</a></h3>
+<p>The Orthanc Docker container will log to the standard output as is usual with Docker. These logs can be inspected within Portainer or by using the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">log</span></code> to determine if Orthanc is reporting any errors. More information about collecting Orthanc logs can be found <a class="reference external" href="https://book.orthanc-server.com/faq/log.html">here</a>.</p>
+</section>
+<section id="support-resources">
+<h3>Support resources<a class="headerlink" href="#support-resources" title="Permalink to this heading">#</a></h3>
+<p>To learn more about Orthanc, they host comprehensive documentation including the Orthanc Book and Frequently Asked Questions which can be found <a class="reference external" href="https://www.orthanc-server.com/static.php?page=documentation">here</a>.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../guidelines/CODING.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">AusCAT Coding Guidelines</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="dicom.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">DICOM</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Ingham Medical Physics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Orthanc</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a><ul>
+<li><a class="reference internal" href="#usage">Usage</a><ul>
+<li><a class="reference internal" href="#web-interface">Web Interface</a></li>
+<li><a class="reference internal" href="#http-rest-api">HTTP REST API</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#ports-and-network-access">Ports and network access</a><ul>
+<li><a class="reference internal" href="#id1">8042</a></li>
+<li><a class="reference internal" href="#id2">4242</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#secrets">Secrets</a></li>
+<li><a class="reference internal" href="#docker-image">Docker Image</a></li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#data-not-arriving-in-orthanc">Data not arriving in Orthanc</a></li>
+<li><a class="reference internal" href="#unable-to-access-web-interface">Unable to access web interface</a></li>
+<li><a class="reference internal" href="#logs">Logs</a></li>
+<li><a class="reference internal" href="#support-resources">Support resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
