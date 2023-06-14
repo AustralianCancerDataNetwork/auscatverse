@@ -67,10 +67,6 @@ extensions_to_copy = ["md", "png", "jpg", "gif"]
 files = []
 for ext in extensions_to_copy:
     files += Path(".").glob(f"**/*.{ext}")
-# for file in files:
-#     print(file)
-#     if str(file) == "index.md": continue
-#     os.remove(file)
 
 # Copy in the files from the other repository directories to have them
 # be rendered by Sphinx
