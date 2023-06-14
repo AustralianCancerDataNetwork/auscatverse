@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Data Availability" href="DATAAVAILABILITY.html" /><link rel="prev" title="Orthanc" href="ORTHANC.html" />
 
     <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
-        <title>Dashboard - AusCAT documentation</title>
+        <title>Dashboards - AusCAT documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -168,17 +168,26 @@
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../simulation/METRICS.html">Metric Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../simulation/FEDERATED_ANALYSIS.html">Federated Analysis Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/FEDERATED_ANALYSIS.html">Federated Analysis</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
-<ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="IMAGING.html">Imaging</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="dicom.html">DICOM</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="TABULAR.html">Tabular Database</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="KEYDB.html">KeyDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PGADMIN.html">PGAdmin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="IMAGING.html">Imaging</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dicom.html">DICOM</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="ORTHANC.html">Orthanc</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Dashboards</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html">Data Availability</a></li>
 </ul>
 </li>
 </ul>
@@ -212,160 +221,41 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="dashboard">
-<h1>Dashboard<a class="headerlink" href="#dashboard" title="Permalink to this heading">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-<p>The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node.</p>
-<section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py.</p></li>
-</ol>
-<blockquote>
-<div><p><strong>WARNING</strong>: This part is still under development. Please make sure this script does not run a function named “create_table” unless you are absolutely sure you’d like to truncate the medical table in your database. By default, this does not run, but please be aware before running this script</p>
-</div></blockquote>
-<ol class="arabic" start="2">
-<li><p>To initialise the Django local DB, run the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
-</pre></div>
-</div>
+          <section id="dashboards">
+<h1>Dashboards<a class="headerlink" href="#dashboards" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Dashboards</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DATAAVAILABILITY.html">Data Availability</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="DATAAVAILABILITY.html#head-and-neck-template-and-playground-dashboard">Head and Neck (template and playground dashboard)</a></li>
+</ul>
 </li>
-<li><p>Create a super user for this development dashboard by running the command and selecting the appropriate options:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
-</pre></div>
-</div>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#dependencies">Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#ports-and-network-access">Ports and network access</a></li>
+</ul>
 </li>
-<li><p>Run the application by using the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
-</pre></div>
-</div>
-<p>This will start the django server and launch the app. you can access the application using <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#docker-image">Docker Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#non-docker-approach">Non-Docker approach</a></li>
+</ul>
 </li>
-</ol>
-<section id="head-and-neck-template-and-playground-dashboard">
-<h4>Head and Neck (template and playground dashboard)<a class="headerlink" href="#head-and-neck-template-and-playground-dashboard" title="Permalink to this heading">#</a></h4>
-<p>A dummy dashboard that can be used as a template and playground for testing dashboard designs. It visualises and reports patient data avaliability at a AusCAT node, using the TCIA Head and Neck cancer PET/CT dataset <a class="reference internal" href="#1"><span class="xref myst">[1]</span></a> as a mockup of its real data.</p>
-<p>For the <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard">template</a> Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat/catdb_schema image)</p>
-</section>
-</section>
-<section id="dependencies">
-<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">#</a></h3>
-<p>Please refer to the <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/pyproject.toml">pyproject.toml</a> to check the versions of dependency requirements.</p>
-</section>
-<section id="ports-and-network-access">
-<h3>Ports and network access<a class="headerlink" href="#ports-and-network-access" title="Permalink to this heading">#</a></h3>
-<p>8000</p>
-<p>Port 8000 provides access to the web interface of the dashboard.</p>
-</section>
-</section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
-<p>Typically, our Docker components are deployed efficiently using a docker-compose file.</p>
-<p>A template docker-compose service for dashboard in development environment:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.3&quot;</span>
-<span class="c1"># Services for development purposes only</span>
-<span class="c1"># This is mapping the services to the localhost, assuming that the databases are</span>
-<span class="c1"># hosted on the host machine by default.</span>
-
-<span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">auscat_data_availability_dash</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">auscat/data_availability_dashboard:latest</span>
-<span class="w">        </span><span class="c1"># if running development, then most likely postgres DBs are running </span>
-<span class="w">        </span><span class="c1"># locally, so allow container to interface with localhost network</span>
-<span class="w">        </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host&quot;</span>
-<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">PYTHONPATH</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/python</span>
-<span class="w">            </span><span class="c1"># if running development, then most likely postgres DBs are </span>
-<span class="w">            </span><span class="c1"># running locally, so redis container should also be set to interface </span>
-<span class="w">            </span><span class="c1"># with localhost network</span>
-<span class="w">            </span><span class="nt">CELERY_HOSTNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
-<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8000:8000</span>
-<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.:/workspace</span>
-
-<span class="w">    </span><span class="nt">redis</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis:latest</span>
-<span class="w">        </span><span class="c1"># if running development, then most likely postgres DBs are running </span>
-<span class="w">        </span><span class="c1"># locally, so allow container to interface with localhost network</span>
-<span class="w">        </span><span class="nt">network_mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;host&quot;</span>
-<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">redis_data:/data</span>
-
-<span class="nt">volumes</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">redis_data</span><span class="p">:</span>
-</pre></div>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="DATAAVAILABILITY.html#logs">Logs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html#references">References</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<p>To set the connection configuration to the database by navigating to http://localhost:8000/admin and login as a super user. <br></p>
-<p>The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. <br></p>
-<p>Once you have access to the admin panel, under the “Data_availability” application, select Config, create a new Config and in here you can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB). <br></p>
-<p><em>NOTE</em>: For now, when using the local CatDB database deployed through Docker, the following are the usual credentials:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Db name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cat_db&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db servername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5434&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<section id="docker-image">
-<h3>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading">#</a></h3>
-<p><strong>NOTE</strong>: For images that exist under the premium Dockerhub account, you’ll need to login into the Dockerhub account on the local machine, by running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code>, then enter the username and password when prompted.</p>
-<p>AusCAT’s Orthanc image is available at: <code class="docutils literal notranslate"><span class="pre">auscat/data_availability_dashboard:latest</span></code> <br>
-The AusCAT Docker image Dockerfile is available at: https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/dashboard/Dockerfile <br>
-Which can be built using the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">auscat_etl</span><span class="o">/</span><span class="n">dashboard</span>
-<span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
-</pre></div>
-</div>
-<p><strong>Developer Guide</strong>:
-Alternatively, via VSCode, you can setup the development containers using the defined <code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code> files and setup the application using its dockerfile-build image. This can be done by:</p>
-<ol class="arabic simple">
-<li><p>Making sure that the extension “Remote-Containers” is installed.</p></li>
-<li><p>Clicking on the bottom left corner of VSCode.</p></li>
-<li><p>Select the option “Open folder in container”. This will then open a VSCode instance of the container and map it to your local repository. Development and launching of the dashboard can now occur in this new VSCode window.</p></li>
-</ol>
-</section>
-<section id="non-docker-approach">
-<h3>Non-Docker approach<a class="headerlink" href="#non-docker-approach" title="Permalink to this heading">#</a></h3>
-<p><strong>Non-Docker approach</strong>: The <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard">template</a> can be run without Docker, by following these steps:</p>
-<ol class="arabic simple">
-<li><p>Install the poetry <a class="reference external" href="https://python-poetry.org/docs/">tool</a>.</p></li>
-<li><p>Create a python virtual environment and activate it.</p></li>
-<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dashboard/</span></code> and run to install the python packages into your virtual environment:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
-</pre></div>
-</div>
-<ol class="arabic simple" start="4">
-<li><p>Then to use the poetry commands to run the application:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
-</pre></div>
-</div>
-</section>
-</section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
-<section id="logs">
-<h3>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">#</a></h3>
-<p>The dashboard container will log to the standard output as is usual with Docker. These logs can be inspected within either Portainer or terminal to determine if dashboard is reporting any errors.</p>
-</section>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p><a id="1">[1]</a>
-Vallières, M. et al. Radiomics strategies for risk assessment of tumour failure in head-and-neck cancer.
-Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
-</section>
 </section>
 
         </article>
@@ -373,8 +263,26 @@ Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
       <footer>
         
         <div class="related-pages">
-          
-          
+          <a class="next-page" href="DATAAVAILABILITY.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Data Availability</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="ORTHANC.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Orthanc</div>
+                
+              </div>
+            </a>
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -395,45 +303,8 @@ Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer">
+    <aside class="toc-drawer no-toc">
       
-      
-      <div class="toc-sticky toc-scroll">
-        <div class="toc-title-container">
-          <span class="toc-title">
-            Contents
-          </span>
-        </div>
-        <div class="toc-tree-container">
-          <div class="toc-tree">
-            <ul>
-<li><a class="reference internal" href="#">Dashboard</a><ul>
-<li><a class="reference internal" href="#overview">Overview</a><ul>
-<li><a class="reference internal" href="#usage">Usage</a><ul>
-<li><a class="reference internal" href="#head-and-neck-template-and-playground-dashboard">Head and Neck (template and playground dashboard)</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
-<li><a class="reference internal" href="#ports-and-network-access">Ports and network access</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li><a class="reference internal" href="#docker-image">Docker Image</a></li>
-<li><a class="reference internal" href="#non-docker-approach">Non-Docker approach</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
-<li><a class="reference internal" href="#logs">Logs</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#references">References</a></li>
-</ul>
-</li>
-</ul>
-
-          </div>
-        </div>
-      </div>
       
       
     </aside>

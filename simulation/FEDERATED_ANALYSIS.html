@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Imaging" href="../components/IMAGING.html" /><link rel="prev" title="Metric Computation" href="METRICS.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Tabular Database" href="../components/TABULAR.html" /><link rel="prev" title="Metric Computation" href="METRICS.html" />
 
     <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
-        <title>Federated Analysis Example - AusCAT documentation</title>
+        <title>Federated Analysis - AusCAT documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -168,17 +168,26 @@
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="../examples.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="METRICS.html">Metric Computation</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Federated Analysis Example</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Federated Analysis</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
 <ul>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../components/IMAGING.html">Imaging</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../components/dicom.html">DICOM</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/TABULAR.html">Tabular Database</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/KEYDB.html">KeyDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/PGADMIN.html">PGAdmin</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/IMAGING.html">Imaging</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../components/dicom.html">DICOM</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../components/ORTHANC.html">Orthanc</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/DASHBOARD.html">Dashboards</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/DATAAVAILABILITY.html">Data Availability</a></li>
 </ul>
 </li>
 </ul>
@@ -218,8 +227,8 @@
           </label>
         </div>
         <article role="main">
-          <section id="federated-analysis-example">
-<h1>Federated Analysis Example<a class="headerlink" href="#federated-analysis-example" title="Permalink to this heading">#</a></h1>
+          <section id="federated-analysis">
+<h1>Federated Analysis<a class="headerlink" href="#federated-analysis" title="Permalink to this heading">#</a></h1>
 <section id="running-the-client">
 <h2>Running the Client<a class="headerlink" href="#running-the-client" title="Permalink to this heading">#</a></h2>
 <p>An example for performing federated analysis in the simulation environment.</p>
@@ -269,12 +278,12 @@ Please note that this must be identical across all clients, with preserved order
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../components/IMAGING.html">
+          <a class="next-page" href="../components/TABULAR.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Imaging</div>
+                <div class="title">Tabular Database</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -321,7 +330,7 @@ Please note that this must be identical across all clients, with preserved order
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Federated Analysis Example</a><ul>
+<li><a class="reference internal" href="#">Federated Analysis</a><ul>
 <li><a class="reference internal" href="#running-the-client">Running the Client</a></li>
 <li><a class="reference internal" href="#running-the-server">Running the Server</a></li>
 </ul>

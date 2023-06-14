@@ -30,7 +30,9 @@ examples
 :caption: Components
 :hidden:
 
+components/TABULAR
 components/IMAGING
+components/DASHBOARD
 ```
 
 ```{toctree}

@@ -1,4 +1,4 @@
-# Federated Analysis Example
+# Federated Analysis
 
 ## Running the Client
 
