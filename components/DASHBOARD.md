@@ -4,6 +4,6 @@
 ```{toctree}
 :caption: Dashboards
 
-DATAOVERVIEW.md
+DATAAVAILABILITY.md
 
 ```
