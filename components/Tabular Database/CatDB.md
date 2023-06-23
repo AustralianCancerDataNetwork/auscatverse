@@ -4,10 +4,9 @@
 
 The Postgres Cat Database (CatDB) is used to securely store the clinical information of patients at a particular site. In AusCAT, the Oncology Information System (OIS) at each clinic is queried to retrieve the relevant patient cohorts for a particular research project. The clinical features and indicators are stored in the CatDB, while the patient information that can potentially identify them are stored in the Postgres Key Database (KeyDB). Permissions to view and interact with the CatDB are restricted to the site's relevant AusCAT contacts. The patient identifier information is then anonymised in the CatDB which can then be queried downstream for AusCAT-related research projects.
 
-The CatDB component has the following characteristics:
-
-- It is a Postgres relational database.
-- The tables contain patients clinical information such as date of birth, gender, histology, dose fractions and timestamps (first fraction date, last fraction date), prescription notes, survival status, smoking history, radiomics, staging etc
+CatDB contains various tables useful for many AusCAT research projects:
+- Patient clinical and prescription (eg. birth, gender, histology, dose fractions, timestamps, etc...)
+- Aggregated tables that can be project- (eg. Radiomic data, treatment site centric measurements such as ECOG) or AusCAT centre-specific (eg. Registry outcome data)
 
 ## Configuration
 
@@ -34,8 +33,6 @@ In this example, we have set the tool to run on port 5434 on the host machine an
 
 The environment variable "POSTGRES_USER_FILE" is used in conjunction with "POSTGRES_PASSWORD_FILE" to set a user and its password. This variable will create the specified user with superuser permission and a database with the same name. If it is not specified, then the default user `key_admin` and password `postgres` can be used. "POSTGRES_HOST" is the database host, "PGDATA" refers to the directory that contains postgres data write logs and "TZ" indicates the host machine's timezone.
 
-The Docker image `auscat/catdb_schema:mosaiq` is pulled from AusCAT DockerHub repository.
-
 ## Secrets
 
 ### Set superuser and password
@@ -48,11 +45,15 @@ Under the "Secrets" section in Portainer, create the sensitive variables that re
 
 ## Docker Image
 
-We currently maintain the `auscat/catdb_schema:tag` image on our AusCAT Dockerhub account for CatDB use in our stack, where the tag can either be mosaiq or aria. An example of this would be `auscat/catdb_schema:mosaiq`. 
+We currently maintain the `auscat/catdb_schema:tag` image on our AusCAT Dockerhub account for CatDB use in our stack, where the tag can either be mosaiq or aria. 
 
 It is pulled from the official CatDB [DockerHub](https://hub.docker.com/repository/docker/auscat/catdb_schema/general) repository, developed by AusCAT.
 
-The Dockerfile can be found [here](https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/mosaiq/catdb/Dockerfile).
+For Mosaiq, the image is `auscat/catdb_schema:mosaiq` and the Dockerfile can be found [here](https://github.com/AustralianCancerDataNetwork/auscat_etl/blob/main/mosaiq/catdb/Dockerfile).
+
+For Aria, the image is `auscat/catdb_schema:aria`. The Dockerfile for Aria introduces additional instructions for copying files named "catdb_user" and "catdb_pass" to "/run/secrets" directory inside the image.
+
+The Dockerfile for Aria introduces additional instructions for copying files named "catdb_user" and "catdb_pass" to "/run/secrets" directory inside the image. It also copies SQL files named "catdb_setup.sql," "catdb_tables.sql," and "tracking_changes.sql" to the "/docker-entrypoint-initdb.d" directory. These additions ensures that the Docker image is now including secret files and additional SQL scripts for database setup.
 
 Similar to the other AusCAT Docker components and if you are using Portainer to deploy these components, upgrading the CatDB service is a straightforward process.
 
