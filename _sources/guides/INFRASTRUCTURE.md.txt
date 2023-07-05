@@ -140,9 +140,38 @@ We use [Docker](https://www.docker.com/) to deploy ready to go containers which 
 
 In some environments, such as NSW Health, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.
 
+You can setup the proxy on your VM for your local account by editing the ```~/.bash_profile``` file and adding these these lines:
+
+```bash
+export http_proxy=http://proxy_host:proxy_port
+export https_proxy=http://proxy_host:proxy_port
+export no_proxy=localhost, 127.0.0.1
+```
+
 In scenarios where this does not work, you may need to add the other proxy, with authentication to your config. In the example of installing Docker, you would modify `/etc/apt/apt.conf.d/proxy.conf` to:
 
 ```text
 Acquire::http::Proxy "http://username:password@proxy_host:proxy_port/";
 Acquire::https::Proxy "https://username:password@proxy_host:proxy_port/";
 ```
+
+
+> *NOTE: If an error of the form "```SSL routines::unexpected eof while reading```" appears when running Docker commands, you can fix this by updating the SSL package  on your VM by running:*
+> ```
+> sudo apt update && sudo apt upgrade -y
+> ```
+
+Once Docker has been installed, to access Dockerhub images, Docker proxy access must be configured. Add the following lines to the file ```/etc/systemd/system/docker.service.d/http-proxy.conf```:
+```
+[Service]
+Environment="HTTP_PROXY=http://proxy_host:proxy_port"
+Environment="HTTPS_PROXY=http://proxy_host:proxy_port"
+Environment="NO_PROXY=localhost,127.0.0.1"
+```
+
+Then restart the docker service:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+

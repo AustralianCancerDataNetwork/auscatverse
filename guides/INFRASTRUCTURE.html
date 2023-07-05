@@ -366,9 +366,33 @@ Acquire::https::Proxy &quot;https://proxy_host:proxy_port/&quot;;
 <section id="docker-installation-in-nswhealth">
 <h3>Docker installation in NSWHealth<a class="headerlink" href="#docker-installation-in-nswhealth" title="Permalink to this heading">#</a></h3>
 <p>In some environments, such as NSW Health, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.</p>
+<p>You can setup the proxy on your VM for your local account by editing the <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> file and adding these these lines:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://proxy_host:proxy_port
+<span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://proxy_host:proxy_port
+<span class="nb">export</span><span class="w"> </span><span class="nv">no_proxy</span><span class="o">=</span>localhost,<span class="w"> </span><span class="m">127</span>.0.0.1
+</pre></div>
+</div>
 <p>In scenarios where this does not work, you may need to add the other proxy, with authentication to your config. In the example of installing Docker, you would modify <code class="docutils literal notranslate"><span class="pre">/etc/apt/apt.conf.d/proxy.conf</span></code> to:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Acquire::http::Proxy &quot;http://username:password@proxy_host:proxy_port/&quot;;
 Acquire::https::Proxy &quot;https://username:password@proxy_host:proxy_port/&quot;;
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>NOTE: If an error of the form “<code class="docutils literal notranslate"><span class="pre">SSL</span> <span class="pre">routines::unexpected</span> <span class="pre">eof</span> <span class="pre">while</span> <span class="pre">reading</span></code>” appears when running Docker commands, you can fix this by updating the SSL package  on your VM by running:</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Once Docker has been installed, to access Dockerhub images, Docker proxy access must be configured. Add the following lines to the file <code class="docutils literal notranslate"><span class="pre">/etc/systemd/system/docker.service.d/http-proxy.conf</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">Environment</span><span class="o">=</span><span class="s2">&quot;HTTP_PROXY=http://proxy_host:proxy_port&quot;</span>
+<span class="n">Environment</span><span class="o">=</span><span class="s2">&quot;HTTPS_PROXY=http://proxy_host:proxy_port&quot;</span>
+<span class="n">Environment</span><span class="o">=</span><span class="s2">&quot;NO_PROXY=localhost,127.0.0.1&quot;</span>
+</pre></div>
+</div>
+<p>Then restart the docker service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
 </pre></div>
 </div>
 </section>
