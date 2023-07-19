@@ -18,6 +18,7 @@ The CTP depends on a queryable KeyDB and destination PACS which in AusCAT has be
 The CTP service is built and deployed via a docker-compose file. A template to be inserted in a docker-compose script is given below.
 
 ```yaml
+version: '3.8'
 services:
 	ctp_customized:
 	  image: "auscat/customized_ctp:latest"
@@ -29,10 +30,18 @@ services:
 	  volumes:
 	  - ctp-logs:/logs
 	  - ctp-customized:/ctp_temp
+	  secrets:
+      - keydb_ctp_pass # add Secret on Portainer (ctp_key_db_select's password)
+
+secrets:
+  keydb_ctp_pass:
+    external: true
+    file: /run/secrets/keydb_ctp_pass
 
 volumes:
 	ctp-customized:
 	ctp-logs:
+	
 ```
 
 Port 9090 is used for the web page interface and port 8104 is the chosen port for DICOM communications. When sending DICOM data via the DICOM standard protocol use port 8104.
