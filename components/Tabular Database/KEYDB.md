@@ -32,13 +32,13 @@ services:
          POSTGRES_HOST: localhost 
          PGDATA: /var/lib/postgresql/data/pgdata 
          TZ: Australia/Sydney 
-            # postgres data storage location (as a volume)
+      # Postgres data storage location (as a volume)
       volumes:
         - key-pgdata:/var/lib/postgresql/data/ 
       secrets:
-        - keydb_user # add Secret on Portainer 
-        - keydb_pass # add Secret on Portainer 
-        - keydb_ctp_pass # add Secret on Portainer (ctp_key_db_select's password)
+        - keydb_user # Add Secret on Portainer 
+        - keydb_pass # Add Secret on Portainer 
+        - keydb_ctp_pass # Add Secret on Portainer (ctp_key_db_select's password)
 
 secrets:
   keydb_user:
