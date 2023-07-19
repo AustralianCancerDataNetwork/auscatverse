@@ -17,8 +17,12 @@ Typically, our Docker components are deployed efficiently using a docker-compose
 A template docker-compose service for KeyDB in AusCAT is as follows:
 
 ```yml
+version: '3.8'
+services:
    keydb_server:
+      # Postgres Key database service
       restart: always
+      # Link to the image source from DockerHub
       image: 'auscat/keydb_schema:latest'
       ports:
          - 5433:5432
@@ -28,6 +32,25 @@ A template docker-compose service for KeyDB in AusCAT is as follows:
          POSTGRES_HOST: localhost 
          PGDATA: /var/lib/postgresql/data/pgdata 
          TZ: Australia/Sydney 
+            # postgres data storage location (as a volume)
+      volumes:
+        - key-pgdata:/var/lib/postgresql/data/ 
+      secrets:
+        - keydb_user # add Secret on Portainer 
+        - keydb_pass # add Secret on Portainer 
+        - keydb_ctp_pass # add Secret on Portainer (ctp_key_db_select's password)
+
+secrets:
+  keydb_user:
+    external: true
+  keydb_pass:
+    external: true
+  keydb_ctp_pass:
+    external: true
+    file: /run/secrets/keydb_ctp_pass
+
+volumes:
+  key-pgdata:
 ```
 In this example, we have set the tool to run on port 5433 on the host machine and can be accessed via the web broswer (eg. http://localhost:5433), however it can be deployed on any available port. Please confirm that the chosen port is available for use and edit accordingly in the yml configuration.
 
@@ -65,3 +88,4 @@ Similar to the other AusCAT Docker components and if you are using Portainer to 
 3. Click on `Deploy` and a popup will appear on the screen. Toggle the `Pull latest image` option and then click `deploy'.
 
 This should take a few seconds to redeploy the container with the latest image.
+
