@@ -175,7 +175,6 @@
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
 <ul>
 <li class="toctree-l1 has-children"><a class="reference internal" href="TABULAR.html">Tabular Database</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="KEYDB.html">KeyDB</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PGADMIN.html">PGAdmin</a></li>
 </ul>
 </li>
@@ -240,7 +239,8 @@
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <p>The CTP service is built and deployed via a docker-compose file. A template to be inserted in a docker-compose script is given below.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>services:
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>version: &#39;3.8&#39;
+services:
 	ctp_customized:
 	  image: &quot;auscat/customized_ctp:latest&quot;
 	  depends on:
@@ -251,10 +251,18 @@
 	  volumes:
 	  - ctp-logs:/logs
 	  - ctp-customized:/ctp_temp
+	  secrets:
+      - keydb_ctp_pass # add Secret on Portainer (ctp_key_db_select&#39;s password)
+
+secrets:
+  keydb_ctp_pass:
+    external: true
+    file: /run/secrets/keydb_ctp_pass
 
 volumes:
 	ctp-customized:
 	ctp-logs:
+	
 </pre></div>
 </div>
 <p>Port 9090 is used for the web page interface and port 8104 is the chosen port for DICOM communications. When sending DICOM data via the DICOM standard protocol use port 8104.</p>
