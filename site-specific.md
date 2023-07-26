@@ -24,9 +24,9 @@ eg.
 ### Site Specific Data summary 
 
 ...
-| Clinical Sites                | Available  Data   |    Data Location                                                          | 
-| ---                           | ---               | ---                                                                       |
-|Head and Neck                  | n=3000            | folder location on VM or database (Orthanc and or postgres database)      | 
+| Clinical Sites                | Available  Data   |    Data Location                                                          | Extraction Date   |
+| ---                           | ---               | ---                                                                       | ---               |
+|Head and Neck                  | n=3000            | folder location on VM or database (Orthanc and or postgres database)      | 07/2023           |
 
 
 | Project title           | Extracted Data ( clinical sites and numbers)   | Project Specific Data (Clinical site and numbers)| Linked CHeREL table (how many pts have linked data )   |Limitations | Data location |
@@ -67,12 +67,9 @@ Which version of Docker and Docker Compose is running at the site
 * Filepath to the Pentaho pipeline scripts that are used to populate the different AusCAT databases.
 * Link to the this URL for general Pentaho setup (currently on GitHub [here](https://github.com/AustralianCancerDataNetwork/auscat_installation#pentaho-installation), but point to the eventually deployed Sphinx page that will have that info)
 
-### Available AusCAT data
-* Data that exists at that centre and ready in AusCAT's data stores
+### Available Outcomes/Linked data at AusCAT centre
+* Registry/Outcomes/Linked data that exists at that centre and ready in AusCAT's data stores
 
 ### Deployed stacks
 * Could be description of proof of concept stack that was tested out at the centre
 * Description of Production version of the AusCAT stack at the centre
-
-### Clinical Projects
-* Projects that the AusCAT stack at the centre was involved in 
