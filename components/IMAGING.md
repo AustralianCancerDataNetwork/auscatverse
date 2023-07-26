@@ -5,5 +5,6 @@
 :caption: Imaging
 
 dicom.md
+CTP.md
 
 ```
