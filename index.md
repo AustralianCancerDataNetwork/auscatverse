@@ -33,6 +33,7 @@ examples
 components/TABULAR
 components/IMAGING
 components/DASHBOARD
+components/TIPS
 ```
 
 ```{toctree}
