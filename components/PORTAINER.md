@@ -1,6 +1,6 @@
 # Portainer: Tips and Tricks
 
-This guide provides a quick summary of the best way to use Portainer for AusCAT related tasks such as deployment of AusCAT Docker stacks, interactively inspecting containers and rapidly updating Docker container with the latest images.
+This guide provides a quick summary of the best way to use Portainer for AusCAT related tasks such as deployment of AusCAT Docker stacks, interactively inspecting containers and rapidly updating Docker containers with the latest images.
 ## Home Page  
 
 On the left-hand side, you can click on the `Home` button and see an overview of your environments along with vital statistics about each.
@@ -49,7 +49,7 @@ Each container comes with the option of jumping into a interactive secure shell 
 
 ## GPU configuration through Portainer
 
-A limitation with Portainer Stacks is the inability to deploy services attached to GPUs. This is problematic for AusCAT projects such as the Cardiac Dosimetry Comparison where a GPU speeds up the auto segmentation process significantly.
+A limitation with Docker Swarm Stacks used in Portainer is the inability to deploy services attached to GPUs. This is problematic for AusCAT projects such as the Cardiac Dosimetry Comparison where a GPU speeds up the auto segmentation process significantly.
 
 A work around is to get a single **container** setup with GPU utilisation, rather than configuring an entire stack as Portainer allows individual containers to be setup with one. A limitation with this is if your service requires other services to be deployed along with it to run smoothly, then you'll have a disjoint between the 2 as each will now need to be deployed separately and manually inspected to confirm that they're both running. 
 
