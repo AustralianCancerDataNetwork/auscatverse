@@ -64,7 +64,7 @@ docker swarm init --advertise-addr VM_IP_ADDRESS
 
 Portainer provides a web-interface to manage your Docker instance. It isn't essential but it eases the deployment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: [https://docs.portainer.io/start/install-ce/server/swarm/linux](https://docs.portainer.io/start/install-ce/server/swarm/linux).
 
-For tips and tricks on getting the most out of Portainer in AusCAT, you can use this (guide)[../components/PORTAINER.md].
+For tips and tricks on getting the most out of Portainer in AusCAT, you can use this [guide](../components/PORTAINER.md).
 
 ### Fetch Portainer Stack
 
