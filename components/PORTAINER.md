@@ -1,105 +1,70 @@
-# Portainer Community Edition  
+# Portainer: Tips and Tricks
 
+This guide provides a quick summary of the best way to use Portianer for AusCAT related tasks such as deployment of AusCAT Docker stacks, interactively insepcting containers and rapidly updating Docker container with the latest images.
 ## Home Page  
 
 In the left-hand side, click the `Home` button, you will see an overview of your environments along with vital statistics about each.  
 
 For example, In AusCAT, you will see a Docker icon as the primary environment, it shows the number of Docker stacks, services, containers, volumes etc., on the host machine.  
 
-Your currently selected environment will be shown by the connected Status on the right. 
+Your currently selected environment will be shown by the connected Status on the right. Typically, one environment will be configured for your AusCAT node, but mutiple instances are possible if other Docker Swarm agents are dpeloyed across different VMs at your site. We'll assume only one environemnt is configured as this is the most likely case across the AusCAt network.
 
-## Docker Swarm 
+![Portainer home screen](images/Portainer_1.png)
 
-### Dashboard  
+## Dashboard  
 
 The Docker/Swarm dashboard summarizes the Docker Swarm environment and shows the components that make up the environment. 
 
-#### Cluster information  
+## Stacks  
 
-This section shows how many nodes are in the clusters and a link to the cluster visualizer (a visual representation of the nodes in your cluster and the tasks on each node). 
+This section can be used to deploy new AusCAT stacks (for testing or production purposes), without the need for using the command line to deploy any of the AusCAT tools. 
 
-#### Summary tiles 
+### Add a new Stack 
 
-The remaining dashboard is made up of tiles showing the number of stacks, services (for Docker Swarm), containers (including health and running-status metrics), images (and how much disk space they consume), volumes and networks, and GPUs (if enabled). 
+When creating a new Stack, we typically use the `Web editor` build method which allows us to paste into the editor a Docker Compose YAML configuration of a stack we'd like to deploy. You can find the YAML template that we use for AusCAT Docker stack [here](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/docker-compose.yml), which can be copied and pasted into this editor box.
 
-### App Templates 
+> Note: We recommend saving the YAML that you use in this Portainer setup somewhere on your system (eg. on the same VM's file system or your secure shared drive), as Portainer does not persist these YAML's. Subsequently, if you do save the YAML configuration into a `.yml` file, you can use the `Upload` build method to build your stacks from that same file rather than copy/pasting it into the Web editor.
 
-An app template lets you deploy a container (or a stack of containers) to an environment with a set of predetermined configuration values while still allowing you to customize the configuration (for example, environment variables). 
+### Inspecting Stacks 
 
-### Stacks  
+Once a Stack has been deployed, monitoring its services' status is quite convinient through Portainer. Here is an example of a deployed AusCAT production stack:
 
-A stack is a collection of services, for example, in AusCAT, one stack contains multiple Docker containers.  
+![Portainer example stack](images/Portainer_2.png)
 
-#### Add a new Stack 
+From here we can quickly identify if services are running (under the Scheduling Mode column), on which ports the different services have been published and the last updated time. Also, if a service is not running (eg. replicated `0/1` Scale`), we can click on the dropdown for that service and inspect the its Logging output (highlighted in Red below) to debug the issue:
 
-Deploy a new stack from Portainer by using Web editor. From the menu select `Stacks`, click `Add stack`, give the stack a descriptive name then selects `Web editor`. We usually copy-paste the Docker stack to the web editor to define the services.  
+![Portainer logging section](images/Portainer_3.png)
 
-#### Inspect a Stack 
+### Updating Services
 
-From the menu select `Stacks` then select the stack you want to inspect. From here you can stop, delete or create a template from the stack.  
+From this Stacks section, updating services is straightforward. You can select the services that you wish to update using the checkbox on the far left of the menu and then clicking on `Update`. This will prompt you with the following:
 
-Scroll down the webpage, you will see a Services list. For example, we use Docker Swarm in the AusCAT, you can: 
+![Portainer update service](images/Portainer_4.png)
 
-* View the services that make up the stack. 
-* Check to see if they are running or stopped. 
-* See how many replicas are running on each host. 
-* Get access to logs. 
-* Inspect individual services. 
-* View service statistics. 
-* Get access to the service's console. 
+If you wish to update the service with the latest image that can be pulled from the source registry into your agent's local registry, then make sure to toggle the `Pull latest image version` option. Otherwise, if you would like to simply refresh the service's container with no image update, do not select this option.
 
-#### Edit a Stack  
+## Containers 
 
-In AusCAT, the stack was deployed using the Web Editor, you will have the option to edit your compose file manually. 
+This page shows a list of all containers on the host agent. Unlike the `Stacks` and `Services` pages, this shows all container that are running on the host, not only ones that are bundled into a Stack. This includes active containers (`running` in green), stopped containers (`exited` in red) or newly booted containers that are setting up (`created` in blue).
 
-### Services 
+Each container comes with the option of jumping into a interactive secure shell (`>_` icon under the `Quick Actions` column). This is extremely helpful for inspecting things inside of the container like mounting paths are set correctly, or inspecting data that is encapsulted within the container environment and be only be accessed from within it. By default, you login as a root user into a Bash shell with sudo permissions, but this can be configured to another user and different shell or command that exists wihtin the container (highlighted in red):
 
-This menu is only available for Docker Swarm endpoints, a service consists of an image definition and container configuration as well as instructions on how those containers will be deployed across a Swarm cluster. 
+![Portainer containers](images/Portainer_5.png)
 
-For example, you will see Stack name, Image name, Scheduling Mode, Published Ports, Last Update and Ownership.  
+## GPU configuration through Portainer
 
-Click the arrow next to service name, you will see more useful details of its status, under the `Actions` column, the first icon shows the `logs` of the service, the second icon enables you to `inspect` the service, the third icon shows some `statistics` of the service, the fourth icon enables you to interact with the container by using commands in a `console`.  
+A limitation with Portainer Stacks is the inability to deploy services attached to GPUs. This is problematic for AusCAT projects such as the Cardiac Dosimetry comparison where a GPU speeds up the auto segmentation process significantly.
 
-### Containers 
+A work around is to get a single *container* setup with GPU utilisation, rather than configuring an entire stack as Portainer allows individual containers to be setup with one. A limitation with this is if your service requires other services to be deployed along with it to run smoothly, then you'll have a disjoint between the 2 as each will now need to be deployed separately and manually inspected to confirm that they're both running. 
 
-This page shows a list of containers on the host. Containers do not hold any persistent data and therefore can be destroyed and recreated as needed. 
-
-Under the `Quick Actions` column, the first icon shows the logs of a container, the second icon enables you to inspect a container.  
-
-The Stack column shows the stack that the current contains sits in. 
-
-The Image shows the Image this container is using. A container is a runnable instance of an image. 
-
-### Images 
-
-#### Pull image  
-
-You can easily pull the image from a private Dockerhub account through this page if you correctly put the credentials in the Swarm Registries section (at the end of this document). 
-
-You can type in the docker image name and click `Pull the image`. 
-
-### Networks 
-
-### Volumes 
-
-### Configs  
-
-### Secrets 
-
-### Events 
-
-### Host 
-
-### Swarm  
-
-#### Setup 
-
-#### Registries 
-
-##### Add AusCAT Docker Registry  
-
-You will need add the DockerHub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to Registries in the left menu and click Add Registry. Enter the credentials and token you obtained from the AusCAT team. 
-
- 
-
- 
+To do this:
+- Access the `Containers` section on Portainer
+- Click on the `Add container` blue button
+- Configure your container with an approriate name, image, network ports configuration.
+> Note: All the configurations that you'll set in the YML for when you deploy your service using a stack will need to be configured in this section (eg. environment variables, secrets, volumes, networking, etc...)
+- Scroll down to the `Advanced container settings` and configure other options you need accordingly. Most likely you'll need:
+    * `Volumes`: setup any volume management that you'll need. you can configure a Docker Volume or a bind mount depending on your need service needs.
+    * `Env`: configure environment variables here.
+- For the GPU:
+    * `Runtime & Resources`: here is where the GPU utilisation is configured for the container. Toggle under the GPU heading the `Enable GPU` option, next to it you can specifiy which of the GPU's (if there are mutiple instances running) that the container may utilise. By default, the "Use all GPUs" option will be provided.
+- Once all the configuration options have been set, click on the `Deploy the container` blue button to deploy the container which can utilise the configured GPU/s.
