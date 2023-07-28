@@ -192,6 +192,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/DATAAVAILABILITY.html">Data Availability</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/TIPS.html">Tips and Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/PORTAINER.html">Portainer: Tips and Tricks</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
 <ul>
@@ -404,14 +408,14 @@ volumes:
 </pre></div>
 </div>
 <p>Now wait a few minutes while the required images are pulled and the stack is deployed. You can monitor the progress of the containers in the <code class="docutils literal notranslate"><span class="pre">Services</span></code> section (left menu). Here you can see which containers are running or are still <code class="docutils literal notranslate"><span class="pre">preparing</span></code> (being pulled from Dockerhub). Once all containers are <code class="docutils literal notranslate"><span class="pre">running</span></code>, you are ready to proceed with the next step.</p>
-<p><img alt="Check Services Running" src="../_images/Portainer_3.png" /></p>
+<p><img alt="Check Services Running" src="../_images/Portainer_31.png" /></p>
 </section>
 <section id="import-simulation-data">
 <h3>Import simulation data<a class="headerlink" href="#import-simulation-data" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">etl</span></code> Service defined in the stack deployed has an option for <code class="docutils literal notranslate"><span class="pre">SIMULATION_IMPORT_MODE</span></code> which is set to <code class="docutils literal notranslate"><span class="pre">auto</span></code>. Therefore, the script to import the simulation data should run once all Services are up and running. You can inspect the logs of the <code class="docutils literal notranslate"><span class="pre">etl</span></code> service to confirm this completed which you can access using the icon depicted:</p>
-<p><img alt="Access ETL Service Logs" src="../_images/Portainer_4.png" /></p>
+<p><img alt="Access ETL Service Logs" src="../_images/Portainer_41.png" /></p>
 <p>You may need to wait some time for the stack to spin up and the simulation data to download and import. Eventually you should see a successful import message in the logs without any errors:</p>
-<p><img alt="Access ETL Service Success" src="../_images/Portainer_5.png" /></p>
+<p><img alt="Access ETL Service Success" src="../_images/Portainer_51.png" /></p>
 <p>Once data is imported, you can now inspect the data using the PGAdmin tool, as well as CTP and Orthanc. Log in replacing the <code class="docutils literal notranslate"><span class="pre">[IP_ADDRESS]</span></code> with your VM’s IP address:</p>
 <section id="pgadmin">
 <h4>PGAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this heading">#</a></h4>

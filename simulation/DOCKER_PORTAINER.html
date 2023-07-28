@@ -192,6 +192,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../components/DATAAVAILABILITY.html">Data Availability</a></li>
 </ul>
 </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/TIPS.html">Tips and Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/PORTAINER.html">Portainer: Tips and Tricks</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
 <ul>
@@ -289,6 +293,7 @@ newgrp<span class="w"> </span>docker
 <section id="install-portainer">
 <h2>Install Portainer<a class="headerlink" href="#install-portainer" title="Permalink to this heading">#</a></h2>
 <p>Portainer provides a web-interface to manage your Docker instance. It isn’t essential but it eases the deployment process. Ensure you deploy Portainer within Docker swarm to enable additional features for service deployment. Detailed instructions can be found here: <a class="reference external" href="https://docs.portainer.io/start/install-ce/server/swarm/linux">https://docs.portainer.io/start/install-ce/server/swarm/linux</a>.</p>
+<p>For tips and tricks on getting the most out of Portainer in AusCAT, you can use this <a class="reference internal" href="../components/PORTAINER.html"><span class="std std-doc">guide</span></a>.</p>
 <section id="fetch-portainer-stack">
 <h3>Fetch Portainer Stack<a class="headerlink" href="#fetch-portainer-stack" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-L<span class="w"> </span>https://downloads.portainer.io/ce2-17/portainer-agent-stack.yml<span class="w"> </span>-o<span class="w"> </span>portainer-agent-stack.yml
@@ -308,9 +313,9 @@ newgrp<span class="w"> </span>docker
 <section id="add-auscat-docker-registry">
 <h2>Add AusCAT Docker Registry<a class="headerlink" href="#add-auscat-docker-registry" title="Permalink to this heading">#</a></h2>
 <p>Next you will need add the DockerHub registry token to Portainer so that you can fetch the required AusCAT images. Navigate to <code class="docutils literal notranslate"><span class="pre">Registries</span></code> in the left menu and click <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">Registry</span></code>. Enter the credentials and token you obtained from the AusCAT team:</p>
-<p><img alt="Add Registry" src="../_images/Portainer_1.png" /></p>
+<p><img alt="Add Registry" src="../_images/Portainer_11.png" /></p>
 <p>Test out pulling an image by navigating to <code class="docutils literal notranslate"><span class="pre">Home</span></code>. Then select the <code class="docutils literal notranslate"><span class="pre">Primary</span></code> environment and choose <code class="docutils literal notranslate"><span class="pre">Images</span></code> from the left menu. Try to pull the <code class="docutils literal notranslate"><span class="pre">auscat/default_ctp:latest</span></code> (or any other AusCAT image) from the registry you added. Confirm that the image was pulled successfully.</p>
-<p><img alt="Pull Image" src="../_images/Portainer_2.png" /></p>
+<p><img alt="Pull Image" src="../_images/Portainer_21.png" /></p>
 </section>
 <section id="troubleshooting">
 <h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
