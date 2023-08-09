@@ -2,6 +2,8 @@
 
 Welcome to AusCATverse, your starting point for all things AusCAT. This document is intended to point you towards relevant resource no matter your role within AusCAT.
 
+https://github.com/AustralianCancerDataNetwork/auscatverse/actions/workflows/build_docs/badge.svg
+
 ## Projects
 
 A description of projects underway within AusCAT can be found on our SharePoint:
