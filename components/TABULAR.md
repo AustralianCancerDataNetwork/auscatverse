@@ -7,5 +7,6 @@
 KEYDB.md
 CATDB.md
 PGADMIN.md
+PENTAHO.md
 
 ```
