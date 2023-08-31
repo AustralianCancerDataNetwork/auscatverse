@@ -115,6 +115,7 @@ orthanc:
 
 secrets:
   orthanc.json:
+    external: True
 ```
 
 > Important: In a production deployment always provide a custom `orthanc.json` secret defining a secure password!
