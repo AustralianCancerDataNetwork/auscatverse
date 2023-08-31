@@ -27,6 +27,13 @@ examples
 ```
 
 ```{toctree}
+:caption: Installation
+:hidden:
+
+guides/PRODUCTION
+```
+
+```{toctree}
 :caption: Components
 :hidden:
 
