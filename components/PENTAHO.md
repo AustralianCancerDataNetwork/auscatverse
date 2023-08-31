@@ -11,6 +11,7 @@
   eg. `C:\AusCAT\Java\` or `D:\AusCAT\Java\`
 
   * Linux: Run the following commands at terminal assuming apt has internet access:
+
     ```bash
     sudo apt-get update
     sudo apt-get install openjdk-8-jdk
@@ -36,6 +37,7 @@ Follow these steps to install Pentaho on a Windows or Linux flavoured machines:
 - To run:
     * Windows: execute the `spoon.bat` file as an administrator, to enable editing of the pipeline files in Pentaho.
     * Linux: run the following commands with sudo privileges:
+
     ```bash
     xhost + local: 
     sudo ./spoon.sh 
@@ -78,6 +80,7 @@ Given the nature of these Pentaho files, the database connection strings are emb
 
 1. Make sure you have saved your pipelines in Pentaho (essentially the KTR and KBJ files).
 2.  pull the `pentaho-remove-conn` Docker image, tagged with 'latest':
+
     ```bash
     docker pull auscat/pentaho-remove-conn:latest
     ```
@@ -85,19 +88,22 @@ Given the nature of these Pentaho files, the database connection strings are emb
 > Note: if you cannot pull this image, please refer to the Docker installation [guide](../guides/INFRASTRUCTURE.md) we prepared for AusCAT and confirm that these steps were followed when setting up Docker on your machine. You will also require access to the `auscat` DockerHub registry, please get in touch with your local AusCAT technical contact regarding this if it hasn't been setup.
 
 3. Once the image has been pulled successfully, you can run the following command to reomve the sensitive connection strings from your pipeline files:
+
     ```bash
     docker run --volume ./local/pentaho/directory/:/path/to/mount/to --env PATH_TO_PENTAHO_FILES=/path/to/your/mounted/folder auscat/pentaho-remove-conn:latest
     ```
 
 where:
-   - `--volume`: bind mounts a local directory on your machine to a path within the running `auscat/pentaho-remove-conn:latest` container.
+    - `--volume`: bind mounts a local directory on your machine to a path within the running `auscat/pentaho-remove-conn:latest` container.
 
-    * `./local/pentaho/directory/`: The local path on your machine should contain (or within its subdirectories) the pentaho pipelines to be modified. Please be careful to specify the correct local path as it will modify *ALL* pentaho files it encounters within this path.
-    * `/path/to/mount/to`: a path within the container to bind mount the local directory files to. Please make sure to *NOT* specify the `/project` directory as this will override the source code needed to modifiy the pentaho files.
+        * `./local/pentaho/directory/`: The local path on your machine should contain (or within its subdirectories) the pentaho pipelines to be modified. Please be careful to specify the correct local path as it will modify *ALL* pentaho files it encounters within this path.
+
+        * `/path/to/mount/to`: a path within the container to bind mount the local directory files to. Please make sure to *NOT* specify the `/project` directory as this will override the source code needed to modifiy the pentaho files.
 
    - `--env`: 
-    * `PATH_TO_PENTAHO_FILES`: an envrionment variable to inform the removal script where to find the path that contains the pentaho pipeline files. This should be the same value as container path we mounted the local machine paths too in the volume section above (eg. `/path/to/your/mounted/folder` should be the same as `/path/to/mount/to`).
-eg. 
+    
+        * `PATH_TO_PENTAHO_FILES`: an envrionment variable to inform the removal script where to find the path that contains the pentaho pipeline files. This should be the same value as container path we mounted the local machine paths too in the volume section above (eg. `/path/to/your/mounted/folder` should be the same as `/path/to/mount/to`).
+eg.
     ```bash
     docker run --volume ./data:/projects/data --env PATH_TO_PENTAHO_FILES=/projects/data auscat/pentaho-remove-conn:latest
     ```
