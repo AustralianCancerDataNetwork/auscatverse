@@ -172,6 +172,10 @@
 </ul>
 </li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/PRODUCTION.html">Production Deployment</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
 <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="TABULAR.html">Tabular Database</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
@@ -261,34 +265,37 @@ sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <p>Unlike the rest of the AusCAT stack, Pentaho does not have a dockerised version and must be installed as standalone application.</p>
 <p>Follow these steps to install Pentaho on a Windows or Linux flavoured machines:</p>
-<ul>
-<li><p><a class="reference external" href="https://sourceforge.net/projects/pentaho/">Download</a> the latest version of Pentaho’s Community Edition: Data Integration</p></li>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sourceforge.net/projects/pentaho/">Download</a> the latest version of Pentaho’s Community Edition: Data Integration. For Linux/Ubuntu you can download the zip file from <a class="reference external" href="https://privatefilesbucket-community-edition.s3.us-west-2.amazonaws.com/9.4.0.0-343/ce/client-tools/pdi-ce-9.4.0.0-343.zip">here</a>.</p></li>
 <li><p>Unzip to your directory of choice on system (recommend consistent folder structure)
 eg.:</p>
-<ul class="simple">
-<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">/auscat/programs/pdi</span></code></p></li>
+<ul>
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">/home/shared/pdi</span></code></p></li>
 <li><p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\AusCAT\Programs\pdi</span></code> or <code class="docutils literal notranslate"><span class="pre">D:\AusCAT\Programs\pdi</span></code></p></li>
 </ul>
 </li>
-<li><p>Copy jar files to &lt;pentaho-application-directory&gt;/lib folder: <code class="docutils literal notranslate"><span class="pre">CTP.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">util.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">jtds.jar</span></code>. These can be found <a class="reference internal" href="#"><span class="xref myst">here</span></a></p></li>
-<li><p><a class="reference external" href="https://jdbc.postgresql.org/download/">Download</a> the PostgreSQL JDBC driver for Java 8. Copy the downloaded JDBC jar file to the folder &lt;pentaho-application-directory&gt;/lib</p></li>
+<li><p>Copy jar files to <code class="docutils literal notranslate"><span class="pre">/&lt;pentaho-application-directory\&gt;/lib</span></code> folder: <code class="docutils literal notranslate"><span class="pre">CTP.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">util.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">jtds.jar</span></code>. These can be found <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl_centres/tree/main/pentaho_drivers/lib">here</a></p></li>
+<li><p><a class="reference external" href="https://jdbc.postgresql.org/download/">Download</a> the PostgreSQL JDBC driver for Java 8. Copy the downloaded JDBC jar file to the folder <code class="docutils literal notranslate"><span class="pre">/&lt;pentaho-application-directory\&gt;/lib</span></code></p></li>
 <li><p>(Optional) Increase heap space</p>
-<ul class="simple">
+<ul>
 <li><p>Edit spoon.bat (Windows) or spoon.sh (Linux). Increase PENTAHO_DI_JAVA_OPTIONS to increase memory allocation if required.</p></li>
 </ul>
 </li>
 <li><p>Add “PENTAHO_HOME” as environment variable:</p>
-<ul class="simple">
+<ul>
 <li><p>Windows: Open control panel -&gt; advanced system settings -&gt; Create new environment variable “PENTAHO_HOME”=”D:\AusCAT\Programs\pdi” as example.</p></li>
-<li><p>Linux: run the following command in your terminal: <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PENTAHO_HOME=/auscat/programs/pdi</span></code></p></li>
+<li><p>Linux: Add following line to the <code class="docutils literal notranslate"><span class="pre">/etc/environment</span></code> file: <code class="docutils literal notranslate"><span class="pre">PENTAHO_HOME=&quot;/home/shared/pdi&quot;</span></code></p></li>
 </ul>
 </li>
-<li><p>To run:</p>
-<ul class="simple">
-<li><p>Windows: execute the <code class="docutils literal notranslate"><span class="pre">spoon.bat</span></code> file as an administrator, to enable editing of the pipeline files in Pentaho.</p></li>
-<li><p>Linux: run the following commands with sudo privileges:</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xhost<span class="w"> </span>+<span class="w"> </span>local:<span class="w"> </span>
+</section>
+<section id="run-pentaho">
+<h2>Run Pentaho<a class="headerlink" href="#run-pentaho" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Windows: execute the <code class="docutils literal notranslate"><span class="pre">spoon.bat</span></code> file as an administrator, to enable editing of the pipeline files in Pentaho.</p></li>
+<li><p>Linux: run the following commands with sudo privileges:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/home/shared/pdi
+xhost<span class="w"> </span>+<span class="w"> </span>local:<span class="w"> </span>
 sudo<span class="w"> </span>./spoon.sh<span class="w"> </span>
 </pre></div>
 </div>
@@ -462,6 +469,7 @@ sudo<span class="w"> </span>./spoon.sh<span class="w"> </span>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#run-pentaho">Run Pentaho</a></li>
 <li><a class="reference internal" href="#using-pentaho">Using Pentaho</a><ul>
 <li><a class="reference internal" href="#pipeline-structure">Pipeline structure</a></li>
 <li><a class="reference internal" href="#configuring-a-pipeline">Configuring a pipeline</a><ul>
