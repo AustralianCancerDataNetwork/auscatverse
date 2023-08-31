@@ -31,7 +31,7 @@ Follow these steps to install Pentaho on a Windows or Linux flavoured machines:
   - Linux: `/home/shared/pdi`
   - Windows: `C:\AusCAT\Programs\pdi` or `D:\AusCAT\Programs\pdi`
 
-- Copy jar files to `/<pentaho-application-directory\>/lib` folder: `CTP.jar`, `util.jar`, `jtds.jar`. These can be found [here]()
+- Copy jar files to `/<pentaho-application-directory\>/lib` folder: `CTP.jar`, `util.jar`, `jtds.jar`. These can be found [here](https://github.com/AustralianCancerDataNetwork/auscat_etl_centres/tree/main/pentaho_drivers/lib)
 - [Download](https://jdbc.postgresql.org/download/) the PostgreSQL JDBC driver for Java 8. Copy the downloaded JDBC jar file to the folder `/<pentaho-application-directory\>/lib`
 - (Optional) Increase heap space
   - Edit spoon.bat (Windows) or spoon.sh (Linux). Increase PENTAHO\_DI\_JAVA\_OPTIONS to increase memory allocation if required.
