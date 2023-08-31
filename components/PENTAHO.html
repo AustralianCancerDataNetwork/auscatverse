@@ -1,0 +1,497 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Imaging" href="IMAGING.html" /><link rel="prev" title="PGAdmin" href="PGADMIN.html" />
+
+    <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
+        <title>Pentaho - AusCAT documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">AusCAT  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">AusCAT  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../installation.html">Simulation Environment Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../host.html">Host Machine Setup</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/LOCAL_MACHINE.html">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/NECTAR.html">NECTAR Virtual Machine Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/DOCKER_PORTAINER.html">Docker &amp; Portainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/SIMULATION.html">Simulation Environment Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/METRICS.html">Metric Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/FEDERATED_ANALYSIS.html">Federated Analysis</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="TABULAR.html">Tabular Database</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="KEYDB.html">KeyDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CATDB.html">CatDB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PGADMIN.html">PGAdmin</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Pentaho</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="IMAGING.html">Imaging</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="dicom.html">DICOM</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="ORTHANC.html">Orthanc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CTP.html">Clinical Trial Processor</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="DASHBOARD.html">Dashboards</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="DATAAVAILABILITY.html">Data Availability</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="TIPS.html">Tips and Tricks</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" role="switch" type="checkbox"/><label for="toctree-checkbox-8"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="PORTAINER.html">Portainer: Tips and Tricks</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">For Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../guidelines/CODING.html">AusCAT Coding Guidelines</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="pentaho">
+<h1>Pentaho<a class="headerlink" href="#pentaho" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.hitachivantara.com/en-us/products/pentaho-platform/data-integration-analytics.html">Pentaho</a> is a drag-and-drop Extract, Transform and Load (ETL) Graphical User Interface (GUI) desktop application. It is used in AusCAT to populate the KeyDB and CatDB with relevant information from a centre’s Oncology Infomration System (OIS). For example, we can create of complex data population pipelines using the GUI, with little-to-no coding background.</p>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Installation of Java 8:</p>
+<ul>
+<li><p>Windows: <a class="reference external" href="https://www.openlogic.com/openjdk-downloads">https://www.openlogic.com/openjdk-downloads</a>, select Java 8, Windows, 64bit, JDK. Choose the most recent release. Recommended to set install path in project folder:
+eg. <code class="docutils literal notranslate"><span class="pre">C:\AusCAT\Java\</span></code> or <code class="docutils literal notranslate"><span class="pre">D:\AusCAT\Java\</span></code></p></li>
+<li><p>Linux: Run the following commands at terminal assuming apt has internet access:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>openjdk-8-jdk
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>Unlike the rest of the AusCAT stack, Pentaho does not have a dockerised version and must be installed as standalone application.</p>
+<p>Follow these steps to install Pentaho on a Windows or Linux flavoured machines:</p>
+<ul>
+<li><p><a class="reference external" href="https://sourceforge.net/projects/pentaho/">Download</a> the latest version of Pentaho’s Community Edition: Data Integration</p></li>
+<li><p>Unzip to your directory of choice on system (recommend consistent folder structure)
+eg.:</p>
+<ul class="simple">
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">/auscat/programs/pdi</span></code></p></li>
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">C:\AusCAT\Programs\pdi</span></code> or <code class="docutils literal notranslate"><span class="pre">D:\AusCAT\Programs\pdi</span></code></p></li>
+</ul>
+</li>
+<li><p>Copy jar files to &lt;pentaho-application-directory&gt;/lib folder: <code class="docutils literal notranslate"><span class="pre">CTP.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">util.jar</span></code>, <code class="docutils literal notranslate"><span class="pre">jtds.jar</span></code>. These can be found <a class="reference internal" href="#"><span class="xref myst">here</span></a></p></li>
+<li><p><a class="reference external" href="https://jdbc.postgresql.org/download/">Download</a> the PostgreSQL JDBC driver for Java 8. Copy the downloaded JDBC jar file to the folder &lt;pentaho-application-directory&gt;/lib</p></li>
+<li><p>(Optional) Increase heap space</p>
+<ul class="simple">
+<li><p>Edit spoon.bat (Windows) or spoon.sh (Linux). Increase PENTAHO_DI_JAVA_OPTIONS to increase memory allocation if required.</p></li>
+</ul>
+</li>
+<li><p>Add “PENTAHO_HOME” as environment variable:</p>
+<ul class="simple">
+<li><p>Windows: Open control panel -&gt; advanced system settings -&gt; Create new environment variable “PENTAHO_HOME”=”D:\AusCAT\Programs\pdi” as example.</p></li>
+<li><p>Linux: run the following command in your terminal: <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">PENTAHO_HOME=/auscat/programs/pdi</span></code></p></li>
+</ul>
+</li>
+<li><p>To run:</p>
+<ul class="simple">
+<li><p>Windows: execute the <code class="docutils literal notranslate"><span class="pre">spoon.bat</span></code> file as an administrator, to enable editing of the pipeline files in Pentaho.</p></li>
+<li><p>Linux: run the following commands with sudo privileges:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xhost<span class="w"> </span>+<span class="w"> </span>local:<span class="w"> </span>
+sudo<span class="w"> </span>./spoon.sh<span class="w"> </span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="using-pentaho">
+<h2>Using Pentaho<a class="headerlink" href="#using-pentaho" title="Permalink to this heading">#</a></h2>
+<p>Once you have installed Pentaho, you are able to start creating or modifying pipelines to load data into the AusCAT databases.</p>
+<section id="pipeline-structure">
+<h3>Pipeline structure<a class="headerlink" href="#pipeline-structure" title="Permalink to this heading">#</a></h3>
+<p>Pentaho has 2 main files that are used to build pipelines:</p>
+<ul class="simple">
+<li><p>Job files (*.kjb): these files define what is to be executed within a pipeline. It is made up of ETL transformation steps where each step defines what needs to be excuted at that stage. These steps are linked sequentially with a start and and end step. The 2 main examples of kjb files we have in AusCAT are:</p>
+<ul>
+<li><p>Populating the KeyDB end to end</p></li>
+<li><p>Populating the CatDB end to end</p></li>
+</ul>
+</li>
+<li><p>ETL transformations files (*.ktr): these files are saved instances of the ETL transformations that, when combined, make up a job file. Within these files, we define a mini-pipeline made up of atomic steps that relates to a particular part of the population process. The following is an example <code class="docutils literal notranslate"><span class="pre">ktr</span></code> for populating the <code class="docutils literal notranslate"><span class="pre">Patient</span></code> table in the KeyDB (eg. <code class="docutils literal notranslate"><span class="pre">get_patient_table.ktr</span></code>) being made up of atomic steps:</p>
+<ul>
+<li><p>asserting the <code class="docutils literal notranslate"><span class="pre">patient</span></code> table exists in the KeyDB</p></li>
+<li><p>getting each unique MRN from the centre’s OIS</p></li>
+<li><p>extracting patient information from the OIS for each unique MRN</p></li>
+<li><p>transforming the data fields to be consistent (eg. capitalising names)</p></li>
+<li><p>inserting these patient details along with an anonymised centre-specific patient identifier into the <code class="docutils literal notranslate"><span class="pre">patient</span></code> table</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="configuring-a-pipeline">
+<h3>Configuring a pipeline<a class="headerlink" href="#configuring-a-pipeline" title="Permalink to this heading">#</a></h3>
+<section id="mosaiq-aria-based-centres">
+<h4>MOSAIQ/ARIA based centres<a class="headerlink" href="#mosaiq-aria-based-centres" title="Permalink to this heading">#</a></h4>
+<p>We highly recommend that you work off of the template job files we have prepared for MOSAIQ or ARIA based centres. These templates contain template ETL transformations that will need very little manual intervention from you to configure it to run at your AusCAT node. Example things that will/may need updating in the templates:</p>
+<ul class="simple">
+<li><p>Database connections: these are used by Pentaho to connect to different databases used in the pipelines. These are your centre’s OIS databases and your AusCAT nodes KeyDB/CatDB. to edit these connections, on the left sidebar there is a “Database Connections” section. Create new database connections for PostgreSQL KeyDB and source OIS databases (either MOSAIQ or ARIA).  Please contact your AusCAT technical contact if you do not have records of your AusCAT node’s databases</p></li>
+</ul>
+<blockquote>
+<div><p>Tip: After creating the connections right-click each connection and select “Share” to make this connection available to all ETL transformation files associated with the job.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Individual steps within ETL transformations: these could be data fields that are referenced in your OIS database when retrieving data from it. For example, we made the assumption that for all MOSAIQ or all ARIA centres, table and column names will be identical. For the most part this is true, but some centres may change this. This will require knowledge of  potential variations may have occured in your centre’s OIS and coordination with an AusCAT technical contact to modify the pipelines for your particular centre.</p></li>
+</ul>
+</section>
+<section id="modifying-and-version-tracking-for-pipelines">
+<h4>Modifying and version tracking for pipelines<a class="headerlink" href="#modifying-and-version-tracking-for-pipelines" title="Permalink to this heading">#</a></h4>
+<p>You can modify your pipelines using pentaho. We recommend using version control to keep a copy of these pipelines as they are elaborate and will require much work to build from scratch if no backups are maintained.</p>
+<p>Given the nature of these Pentaho files, the database connection strings are embedded within these files which means maintaining on a platform on gitHub will require some manual intervention to make sure no sensitive information for a particular site is shared with the wider network (eg. OIS Database names/IP’s/usernames/password). To ensure such outcoms are avoided, we recommend the following steps when maintaining your pipelines:</p>
+<blockquote>
+<div><p>Note: this connection string removal process means that you will need to manually add back in the connection strings when you want to rerun the pipelines (as of writing this document). Plans to have an automated process of injection will be considered at a later date…</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Make sure you have saved your pipelines in Pentaho (essentially the KTR and KBJ files).</p></li>
+<li><p>Pull the <code class="docutils literal notranslate"><span class="pre">pentaho-remove-conn</span></code> Docker image, tagged with ‘latest’:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>auscat/pentaho-remove-conn:latest
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: if you cannot pull this image, please refer to the Docker installation <a class="reference internal" href="../guides/INFRASTRUCTURE.html"><span class="std std-doc">guide</span></a> we prepared for AusCAT and confirm that these steps were followed when setting up Docker on your machine. You will also require access to the <code class="docutils literal notranslate"><span class="pre">auscat</span></code> DockerHub registry, please get in touch with your local AusCAT technical contact regarding this if it hasn’t been setup.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p>Once the image has been pulled successfully, you can run the following command to reomve the sensitive connection strings from your pipeline files:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--volume<span class="w"> </span>./local/pentaho/directory/:/path/to/mount/to<span class="w"> </span>--env<span class="w"> </span><span class="nv">PATH_TO_PENTAHO_FILES</span><span class="o">=</span>/path/to/your/mounted/folder<span class="w"> </span>auscat/pentaho-remove-conn:latest
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--volume</span></code>: bind mounts a local directory on your machine to a path within the running <code class="docutils literal notranslate"><span class="pre">auscat/pentaho-remove-conn:latest</span></code> container.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">./local/pentaho/directory/</span></code>: The local path on your machine should contain (or within its subdirectories) the pentaho pipelines to be modified. Please be careful to specify the correct local path as it will modify <em>ALL</em> pentaho files it encounters within this path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/path/to/mount/to</span></code>: a path within the container to bind mount the local directory files to. Please make sure to <em>NOT</em> specify the <code class="docutils literal notranslate"><span class="pre">/project</span></code> directory as this will override the source code needed to modifiy the pentaho files.</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--env</span></code>:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">PATH_TO_PENTAHO_FILES</span></code>: an envrionment variable to inform the removal script where to find the path that contains the pentaho pipeline files. This should be the same value as container path we mounted the local machine paths too in the volume section above (eg. <code class="docutils literal notranslate"><span class="pre">/path/to/your/mounted/folder</span></code> should be the same as <code class="docutils literal notranslate"><span class="pre">/path/to/mount/to</span></code>).</p></li>
+</ul>
+</li>
+</ul>
+<p>eg.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--volume<span class="w"> </span>./data:/projects/data<span class="w"> </span>--env<span class="w"> </span><span class="nv">PATH_TO_PENTAHO_FILES</span><span class="o">=</span>/projects/data<span class="w"> </span>auscat/pentaho-remove-conn:latest
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>If the output of the above command is <code class="docutils literal notranslate"><span class="pre">Done!</span></code>, then the script has run sucessfully and has stripped the sensitive connection strings from the pentaho pipeline files.</p></li>
+<li><p>You can now commit and push these changes to GitHub (for most AusCAT centres, this is being tracked in the <a class="reference internal" href="#%60https://github.com/AustralianCancerDataNetwork/auscat_etl_centres%60"><span class="xref myst">auscat_etl_centres</span></a> repo)</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
+<section id="cannot-save-pipeline-files-when-editing-in-pentaho">
+<h3>Cannot save pipeline files when editing in Pentaho<a class="headerlink" href="#cannot-save-pipeline-files-when-editing-in-pentaho" title="Permalink to this heading">#</a></h3>
+<p>This may be due to a permissions issue where the pipeline files are located in a path that your user does not have write access to.</p>
+<p>To solve this, please make sure you run Pentaho as an Administrator/Superuser:</p>
+<ul>
+<li><p>For Windows, right click on the <code class="docutils literal notranslate"><span class="pre">spoon.bat</span></code> file and select <code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">as</span> <span class="pre">Administrator</span></code></p></li>
+<li><p>For Linux based systems, run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>xhost<span class="w"> </span>+<span class="w"> </span>local:
+<span class="w">    </span>sudo<span class="w"> </span>./spoon.sh
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="IMAGING.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Imaging</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="PGADMIN.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">PGAdmin</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Ingham Medical Physics
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Pentaho</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#using-pentaho">Using Pentaho</a><ul>
+<li><a class="reference internal" href="#pipeline-structure">Pipeline structure</a></li>
+<li><a class="reference internal" href="#configuring-a-pipeline">Configuring a pipeline</a><ul>
+<li><a class="reference internal" href="#mosaiq-aria-based-centres">MOSAIQ/ARIA based centres</a></li>
+<li><a class="reference internal" href="#modifying-and-version-tracking-for-pipelines">Modifying and version tracking for pipelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#cannot-save-pipeline-files-when-editing-in-pentaho">Cannot save pipeline files when editing in Pentaho</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
