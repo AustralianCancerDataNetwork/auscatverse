@@ -138,7 +138,7 @@ services:
         PATIENT_IDS: "LUNG1-001 LUNG1-002"
         KEYDB_HOST: "keydb_server"
         KEYDB_PORT: 5432
-        KEYDB_USERNAME: postgres
+        KEYDB_USERNAME: key_admin
         KEYDB_PASSWORD: postgres
         CATDB_HOST: "catdb_server"
         CATDB_PORT: 5432
@@ -154,14 +154,14 @@ services:
       volumes:
       - n8n-data:/home/node/.n8n
 
-  analysis_example:
-      image: "auscat/etl:example"
-      ports:
-      - 8888:8888
-      depends_on:
-      - etl
-      volumes:
-      - analysis-data:/data
+  analysis_example:
+      image: "auscat/etl:example"
+      ports:
+      - 8888:8888
+      depends_on:
+      - etl
+      volumes:
+      - analysis-data:/data
 
 volumes:
   key-pgdata:
@@ -195,7 +195,7 @@ Once data is imported, you can now inspect the data using the PGAdmin tool, as w
 
 The PGAdmin tool lets you explore the tabular data in the CatDB and KeyDB databases. Visit `http://[IP_ADDRESS]:5050` in your web browser. The simulation environment username and password to log in are:
 
-- Username: **admin@admin.com**
+- Username: **<admin@admin.com>**
 - Password: **password**
 
 Navigate to the CatDB and inspect the `patient` table (under `CatDB->Databases->cat_db->Schemas->public->Tables`). Right click the `patient` table and choose `View/Edit Data->All Rows`:
