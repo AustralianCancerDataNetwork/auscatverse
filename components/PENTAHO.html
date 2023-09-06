@@ -382,6 +382,9 @@ sudo<span class="w"> </span>./spoon.sh<span class="w"> </span>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>--volume<span class="w"> </span>./data:/projects/data<span class="w"> </span>--env<span class="w"> </span><span class="nv">PATH_TO_PENTAHO_FILES</span><span class="o">=</span>/projects/data<span class="w"> </span>auscat/pentaho-remove-conn:latest
 </pre></div>
 </div>
+<blockquote>
+<div><p>Note: If errors are encountered regarding the local pentaho pipelines directory, use absolute path.</p>
+</div></blockquote>
 <ol class="arabic simple" start="4">
 <li><p>If the output of the above command is <code class="docutils literal notranslate"><span class="pre">Done!</span></code>, then the script has run sucessfully and has stripped the sensitive connection strings from the pentaho pipeline files.</p></li>
 <li><p>You can now commit and push these changes to GitHub (for most AusCAT centres, this is being tracked in the <a class="reference internal" href="#%60https://github.com/AustralianCancerDataNetwork/auscat_etl_centres%60"><span class="xref myst">auscat_etl_centres</span></a> repo)</p></li>
