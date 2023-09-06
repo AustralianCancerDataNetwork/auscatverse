@@ -123,6 +123,7 @@ eg.
 ```bash
 docker run --volume ./data:/projects/data --env PATH_TO_PENTAHO_FILES=/projects/data auscat/pentaho-remove-conn:latest
 ```
+> Note: If errors are encountered regarding the local pentaho pipelines directory, use absolute path.
 
 4. If the output of the above command is `Done!`, then the script has run sucessfully and has stripped the sensitive connection strings from the pentaho pipeline files.
 
