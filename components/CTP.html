@@ -251,44 +251,46 @@
 <section id="configuration">
 <h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
 <p>The CTP service is built and deployed via a docker-compose file. A template to be inserted in a docker-compose script is given below.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>version: &#39;3.8&#39;
-services:
-	ctp_customized:
-	  image: &quot;auscat/customized_ctp:latest&quot;
-	  depends on:
-	  - keydb_server
-	  ports:
-	  - 9090:9090
-	  - 8104:8104
-	  volumes:
-	  - ctp-logs:/logs
-	  - ctp-customized:/ctp_temp
-	  secrets:
-      - keydb_ctp_pass # add Secret on Portainer (ctp_key_db_select&#39;s password)
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.8&#39;</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">ctp_customized</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/customized_ctp:latest&quot;</span>
+<span class="w">   </span><span class="nt">depends on</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_server</span>
+<span class="w">   </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104:8104</span>
+<span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-logs:/logs</span>
+<span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-customized:/ctp_temp</span>
+<span class="w">   </span><span class="nt">secrets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_ctp_pass</span><span class="w"> </span><span class="c1"># add Secret on Portainer (ctp_key_db_select&#39;s password)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp_admin_pass</span><span class="w"> </span><span class="c1"># add Secret on Portainer (admin&#39;s password for CTP web GUI)</span>
 
-secrets:
-  keydb_ctp_pass:
-    external: true
-    file: /run/secrets/keydb_ctp_pass
+<span class="nt">secrets</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keydb_ctp_pass</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_ctp_pass</span>
+<span class="w">  </span><span class="nt">ctp_admin_pass</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/ctp_admin_pass</span>
 
-volumes:
-	ctp-customized:
-	ctp-logs:
-	
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">ctp-customized</span><span class="p">:</span>
+<span class="w"> </span><span class="nt">ctp-logs</span><span class="p">:</span>
+<span class="w"> </span>
 </pre></div>
 </div>
 <p>Port 9090 is used for the web page interface and port 8104 is the chosen port for DICOM communications. When sending DICOM data via the DICOM standard protocol use port 8104.</p>
 <p>The volumes for <code class="docutils literal notranslate"><span class="pre">logs</span></code> and <code class="docutils literal notranslate"><span class="pre">ctp_temp</span></code> are used for traceability and debugging. Logs are recommended viewing when DICOM files are not passing through the anonymizer. It is recommended to store the volume linked to ctp_temp where there is sufficient disk space. If CTP is a bottleneck ctp_temp will grow siginificantly in size when performing large batch data exports.</p>
+<p>Once CTP is running you can log into the web interface (running on port 9090 by default) using the username <code class="docutils literal notranslate"><span class="pre">admin</span></code> and the password specified in the <code class="docutils literal notranslate"><span class="pre">ctp_admin_pass</span></code> secret. By default a password of <code class="docutils literal notranslate"><span class="pre">admin</span></code> is used, but this should overriden using a secret in a production environment.</p>
 </section>
 <section id="secrets">
 <h2>Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h2>
-<p>The docker image requires 4 secrets to be set in Portainer for CTP to operate:</p>
+<p>The docker image requires the following secrets to be set in Portainer for CTP to operate:</p>
 <ul class="simple">
-<li><p>sqlQuery: This is the query that will execute to retrieve a replacement identifier from KeyDB (default: <code class="docutils literal notranslate"><span class="pre">&quot;SELECT</span> <span class="pre">distinct</span> <span class="pre">patient_id</span> <span class="pre">AS</span> <span class="pre">replacement</span> <span class="pre">FROM</span> <span class="pre">key_value</span> <span class="pre">WHERE</span> <span class="pre">key_value</span> <span class="pre">=</span> <span class="pre">'##original##'&quot;</span></code>)</p></li>
-<li><p>host: IP address or domain name hosting the KeyDB</p></li>
-<li><p>port: Port that KeyDB database is running on (default: 5432)</p></li>
-<li><p>databaseName: Name of database (default: keydb)</p></li>
-<li><p>username: User for connecting to KeyDB</p></li>
+<li><p>keydb_ctp_pass: The password to used for authenticating against the KeyDB</p></li>
+<li><p>ctp_admin_pass: The password the admin user should use to login to the CTP web interface.</p></li>
 </ul>
 </section>
 <section id="docker-images-and-template-docker-compose">

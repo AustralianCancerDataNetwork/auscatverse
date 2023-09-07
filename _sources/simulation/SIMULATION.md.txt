@@ -112,24 +112,6 @@ services:
       volumes:
       - ctp-logs:/logs
 
-  # RDF4J framework
-  rdf4j:
-      # Link to the image source from DockerHub
-      image: "auscat/rdf4j:latest"
-      ports:
-      - 8080:8080
-
-  # D2RQ platform
-  # d2rq:
-  #     image: "auscat/d2rq:latest"
-  #     depends_on:
-  #     - catdb_server
-  #     - rdf4j
-  #     ports:
-  #     - 8888:8888
-  #     volumes:
-  #     - d2rq-data:/home/jovyan/work
-
   etl:
       image: 'auscat/etl:sim'
       ports:
@@ -209,7 +191,7 @@ Also explore the other tables, including those in the KeyDB to inspect the data 
 The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc. Visit `http://[IP_ADDRESS]:9090` in your web browser. Click login in the top right hand corner, the simulation environment username and password to log in are:
 
 - Username: **admin**
-- Password: **123**
+- Password: **admin**
 
 Click `DICOM Server Import` in the left menu. Here you can see how many DICOM files the CTP received for anonymisation (in the screenshot below this is 377).
 

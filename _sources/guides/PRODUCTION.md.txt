@@ -82,11 +82,12 @@ sudo mkdir /data/logs
 
 ### Configure KeyDB Secrets
 
-Next configure the following secrets in Portainer. Be sure to assign secure passwords to `keydb_pass` and `keydb_ctp_pass`. As you assign these, be sure to store these passwords in your password manager.
+Next configure the following secrets in Portainer. Be sure to assign secure passwords to `keydb_pass`, `keydb_ctp_pass` and `ctp_admin_pass`. As you assign these, be sure to store these passwords in your password manager.
 
 - keydb_user
 - keydb_pass
 - keydb_ctp_pass
+- ctp_admin_pass
 
 ### Deploy KeyVM Docker Stack
 

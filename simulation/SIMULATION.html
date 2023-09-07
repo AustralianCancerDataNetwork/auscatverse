@@ -349,24 +349,6 @@
 <span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-logs:/logs</span>
 
-<span class="w">  </span><span class="c1"># RDF4J framework</span>
-<span class="w">  </span><span class="nt">rdf4j</span><span class="p">:</span>
-<span class="w">      </span><span class="c1"># Link to the image source from DockerHub</span>
-<span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;auscat/rdf4j:latest&quot;</span>
-<span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8080:8080</span>
-
-<span class="w">  </span><span class="c1"># D2RQ platform</span>
-<span class="w">  </span><span class="c1"># d2rq:</span>
-<span class="w">  </span><span class="c1">#     image: &quot;auscat/d2rq:latest&quot;</span>
-<span class="w">  </span><span class="c1">#     depends_on:</span>
-<span class="w">  </span><span class="c1">#     - catdb_server</span>
-<span class="w">  </span><span class="c1">#     - rdf4j</span>
-<span class="w">  </span><span class="c1">#     ports:</span>
-<span class="w">  </span><span class="c1">#     - 8888:8888</span>
-<span class="w">  </span><span class="c1">#     volumes:</span>
-<span class="w">  </span><span class="c1">#     - d2rq-data:/home/jovyan/work</span>
-
 <span class="w">  </span><span class="nt">etl</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;auscat/etl:sim&#39;</span>
 <span class="w">      </span><span class="nt">ports</span><span class="p">:</span>
@@ -438,7 +420,7 @@
 <p>The CTP accepts incoming DICOM files for anonymisation before sending them to the Orthanc. Visit <code class="docutils literal notranslate"><span class="pre">http://[IP_ADDRESS]:9090</span></code> in your web browser. Click login in the top right hand corner, the simulation environment username and password to log in are:</p>
 <ul class="simple">
 <li><p>Username: <strong>admin</strong></p></li>
-<li><p>Password: <strong>123</strong></p></li>
+<li><p>Password: <strong>admin</strong></p></li>
 </ul>
 <p>Click <code class="docutils literal notranslate"><span class="pre">DICOM</span> <span class="pre">Server</span> <span class="pre">Import</span></code> in the left menu. Here you can see how many DICOM files the CTP received for anonymisation (in the screenshot below this is 377).</p>
 <p><img alt="PGAdmin patient table view" src="../_images/CTP_1.png" /></p>
