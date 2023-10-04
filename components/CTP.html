@@ -260,20 +260,24 @@
 <span class="w">   </span><span class="nt">ports</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">9090:9090</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8104:8104</span>
+<span class="w">   </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">ORTHANC_HOSTNAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orthanc.hostname.address.url</span>
+<span class="w">    </span><span class="nt">ORTHANC_PORT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4242</span><span class="w"> </span><span class="c1"># 4242 is the default that is being used in the auscat/orthanc:latest image</span>
 <span class="w">   </span><span class="nt">volumes</span><span class="p">:</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-logs:/logs</span>
 <span class="w">   </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp-customized:/ctp_temp</span>
 <span class="w">   </span><span class="nt">secrets</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_ctp_pass</span><span class="w"> </span><span class="c1"># add Secret on Portainer (ctp_key_db_select&#39;s password)</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp_admin_pass</span><span class="w"> </span><span class="c1"># add Secret on Portainer (admin&#39;s password for CTP web GUI)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_user</span><span class="w">      </span><span class="c1"># add Secret on Portainer (a KeyDB PostgreSQL user username)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keydb_pass</span><span class="w">      </span><span class="c1"># add Secret on Portainer (a KeyDB PostgreSQL user password)</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ctp_admin_pass</span><span class="w">  </span><span class="c1"># add Secret on Portainer (admin&#39;s password for CTP web GUI)</span>
 
 <span class="nt">secrets</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">keydb_ctp_pass</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">keydb_user</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/keydb_ctp_pass</span>
+<span class="w">  </span><span class="nt">keydb_pass</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">ctp_admin_pass</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/run/secrets/ctp_admin_pass</span>
 
 <span class="nt">volumes</span><span class="p">:</span>
 <span class="w"> </span><span class="nt">ctp-customized</span><span class="p">:</span>
@@ -285,18 +289,33 @@
 <p>The volumes for <code class="docutils literal notranslate"><span class="pre">logs</span></code> and <code class="docutils literal notranslate"><span class="pre">ctp_temp</span></code> are used for traceability and debugging. Logs are recommended viewing when DICOM files are not passing through the anonymizer. It is recommended to store the volume linked to ctp_temp where there is sufficient disk space. If CTP is a bottleneck ctp_temp will grow siginificantly in size when performing large batch data exports.</p>
 <p>Once CTP is running you can log into the web interface (running on port 9090 by default) using the username <code class="docutils literal notranslate"><span class="pre">admin</span></code> and the password specified in the <code class="docutils literal notranslate"><span class="pre">ctp_admin_pass</span></code> secret. By default a password of <code class="docutils literal notranslate"><span class="pre">admin</span></code> is used, but this should overriden using a secret in a production environment.</p>
 </section>
+<section id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading">#</a></h2>
+<p>The following must be configured for the CTP Docker service to run:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ORTHANC_HOSTNAME</span></code>: this must contain the hostname of the <strong>VM</strong> that is running the AusCAT Orthanc Docker service. This allows CTP to move the anonoymised DICOM objects to your intended Orthanc server.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ORTHANC_PORT</span></code>: this must contain the DICOM port that the AusCAT Orthanc service is listening on for the hostname name mentioned above.</p></li>
+</ul>
+<blockquote>
+<div><p>Note: if you’re running the Orthanc Server in a Docker container, please make sure to refer to the VM hostname and the VM port it is listening on for both the <code class="docutils literal notranslate"><span class="pre">ORTHANC_HOSTNAME</span></code> and <code class="docutils literal notranslate"><span class="pre">ORTHANC_PORT</span></code> respectively (and not to the internal Docker service name and container port!). If you are unsure, please refer to the Orthanc <a class="reference internal" href="ORTHANC.html"><span class="std std-doc">documentation</span></a> for more information.</p>
+</div></blockquote>
+</section>
 <section id="secrets">
 <h2>Secrets<a class="headerlink" href="#secrets" title="Permalink to this heading">#</a></h2>
 <p>The docker image requires the following secrets to be set in Portainer for CTP to operate:</p>
 <ul class="simple">
-<li><p>keydb_ctp_pass: The password to used for authenticating against the KeyDB</p></li>
+<li><p>keydb_user: A KeyDB user username used for authenticating against the KeyDB</p></li>
+<li><p>keydb_pass: A KeyDB user password for the above username, used for authenticating against the KeyDB</p></li>
 <li><p>ctp_admin_pass: The password the admin user should use to login to the CTP web interface.</p></li>
 </ul>
 </section>
 <section id="docker-images-and-template-docker-compose">
 <h2>Docker images and template docker-compose<a class="headerlink" href="#docker-images-and-template-docker-compose" title="Permalink to this heading">#</a></h2>
-<p>For CTP two docker images are maintained within repository auscat_imaging and on the project DockerHub repository. These are <code class="docutils literal notranslate"><span class="pre">auscat/customized_ctp</span></code> and <code class="docutils literal notranslate"><span class="pre">auscat/default_ctp</span></code>.</p>
-<p>Docker file to build customized CTP is <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging/blob/main/ctp-customized/Dockerfile">here</a> and default CTP <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging/blob/main/ctp-default/Dockerfile">here</a></p>
+<p>For CTP two docker images are maintained within repository auscat_imaging and on the project DockerHub repository. These are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">auscat/customized_ctp:latest</span></code>: this is the main image that is being used currently in AusCAT, as it contains additional dyanmic functionaility for handling configuration issues. Its Dockerfile is contained <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging/blob/main/ctp-customized/Dockerfile">here</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">auscat/default_ctp:latest</span></code>: this is the initial image that was being used in AusCAT. This will most likely be archived in the near future, but for now ignore this image (unless you are interested in using a default version of the CTP program, that has no other additional functionaility described above). Its Dockerfile is contained <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_imaging/blob/main/ctp-default/Dockerfile">here</a>.</p></li>
+</ul>
 </section>
 </section>
 
@@ -360,6 +379,7 @@
 <li><a class="reference internal" href="#">Clinical Trial Processor</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#configuration">Configuration</a></li>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
 <li><a class="reference internal" href="#secrets">Secrets</a></li>
 <li><a class="reference internal" href="#docker-images-and-template-docker-compose">Docker images and template docker-compose</a></li>
 </ul>
