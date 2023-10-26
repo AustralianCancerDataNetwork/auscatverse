@@ -30,7 +30,7 @@ examples
 :caption: Installation
 :hidden:
 
-guidies/INFRASTRUCTURE
+guides/INFRASTRUCTURE
 guides/PRODUCTION
 guides/AUTH
 ```
