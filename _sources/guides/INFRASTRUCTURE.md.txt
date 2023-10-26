@@ -134,7 +134,7 @@ git config --global http.sslVerify false
 
 ## Docker
 
-We use [Docker](https://www.docker.com/) to deploy ready to go containers which run the AusCAT software. Follow [these instructions to install Docker](https://docs.docker.com/engine/install/ubuntu/) within your Ubuntu virtual machine.
+We use [Docker](https://www.docker.com/) to deploy ready to go containers which run the AusCAT software. Follow [these instructions to install Docker](https://docs.docker.com/engine/install/ubuntu/) within your Ubuntu virtual machine. We also have a guide for installing Docker in a simulation (not suitable for production)  environment which can be found [here](../simulation/DOCKER_PORTAINER.md#install-docker).
 
 ### Docker installation in NSWHealth
 
