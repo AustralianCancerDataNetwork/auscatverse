@@ -31,6 +31,7 @@ examples
 :hidden:
 
 guides/PRODUCTION
+guides/AUTH
 ```
 
 ```{toctree}

@@ -2,6 +2,10 @@
 
 Welcome to AusCATverse, your starting point for all things AusCAT. This document is intended to point you towards relevant resource no matter your role within AusCAT.
 
+## Technical Documentation
+
+You can access more "Getting Started" and technical information for AusCAT [here](https://australiancancerdatanetwork.github.io/auscatverse/).
+
 ## Projects
 
 A description of projects underway within AusCAT can be found on our SharePoint:
