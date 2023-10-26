@@ -9,7 +9,7 @@ To fulfil AusCAT ethics requirements, the following roles have been defined:
 - **Researcher**: Academic/clinical researchers conducting projects using AusCAT data.
 - **Technical Staff**: Staff members approved to work at each node who assist with setup of AusCAT infrastructure.
 - **Local hospital project lead**: The primary contact at each individual hospital/node participating in AusCAT.
-- **Principal Investigator**: The Principal Investigator as stated in AusCAT ethics (Prof. Lois Holloway).
+- **Principal Investigator**: The Principal Investigator as stated in AusCAT ethics (currently Prof. Lois Holloway).
 
 ## Components
 
