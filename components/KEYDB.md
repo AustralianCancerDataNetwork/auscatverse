@@ -88,4 +88,3 @@ Similar to the other AusCAT Docker components and if you are using Portainer to 
 3. Click on `Deploy` and a popup will appear on the screen. Toggle the `Pull latest image` option and then click `deploy'.
 
 This should take a few seconds to redeploy the container with the latest image.
-

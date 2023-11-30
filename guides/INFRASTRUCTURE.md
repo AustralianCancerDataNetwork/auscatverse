@@ -51,17 +51,13 @@ As a minimum, the following is suggested:
 
 Many organisations are now enabling use of cloud resources (such as Azure or AWS) within their internal network.
 
-For NSWHealth organisations this is already possible and has been partially tested. If you'd like to learn about the process of obtaining a self-managed cloud instance you can [follow the instructions on SARA](https://sara.health.nsw.gov.au/customerportal?id=kb_article_view&sysparm_article=KB0010171&sys_kb_id=0e3631291b48781008fdc95c274bcb44&spa=1).
-
-For organisation outside of NSWHealth it's best to discuss cloud options with your IT department.
+If you are unsure about cloud solutions, it's best to discuss this with your IT department.
 
 Virtual Machine setup in the cloud is somewhat more complicated than when hosting the infrastructure in-house. This is because certain cloud resources can be quite costly, so multiple VMs with differing resources can be setup on only turned on when needed.
 
 ## Network Proxy
 
 To streamline installation and deployment of the AusCAT tools, your will require access to certain locations via your organisations proxy.
-
-If your centre is governed by NSWHealth, this has already been enabled, contact your AusCAT centre's representative for proxy details.
 
 Otherwise you will need to request the following locations to be whitelisted for your server within your organisation:
 
@@ -136,9 +132,9 @@ git config --global http.sslVerify false
 
 We use [Docker](https://www.docker.com/) to deploy ready to go containers which run the AusCAT software. Follow [these instructions to install Docker](https://docs.docker.com/engine/install/ubuntu/) within your Ubuntu virtual machine. We also have a guide for installing Docker in a simulation (not suitable for production)  environment which can be found [here](../simulation/DOCKER_PORTAINER.md#install-docker).
 
-### Docker installation in NSWHealth
+### Docker installation in secure environments
 
-In some environments, such as NSW Health, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.
+In some secure and locked-down environments, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.
 
 You can setup the proxy on your VM for your local account by editing the ```~/.bash_profile``` file and adding these these lines:
 
