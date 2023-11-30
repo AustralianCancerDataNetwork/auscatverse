@@ -295,14 +295,12 @@
 <section id="cloud-solution">
 <h2>Cloud Solution<a class="headerlink" href="#cloud-solution" title="Permalink to this heading">#</a></h2>
 <p>Many organisations are now enabling use of cloud resources (such as Azure or AWS) within their internal network.</p>
-<p>For NSWHealth organisations this is already possible and has been partially tested. If you’d like to learn about the process of obtaining a self-managed cloud instance you can <a class="reference external" href="https://sara.health.nsw.gov.au/customerportal?id=kb_article_view&amp;amp;sysparm_article=KB0010171&amp;amp;sys_kb_id=0e3631291b48781008fdc95c274bcb44&amp;amp;spa=1">follow the instructions on SARA</a>.</p>
-<p>For organisation outside of NSWHealth it’s best to discuss cloud options with your IT department.</p>
+<p>If you are unsure about cloud solutions, it’s best to discuss this with your IT department.</p>
 <p>Virtual Machine setup in the cloud is somewhat more complicated than when hosting the infrastructure in-house. This is because certain cloud resources can be quite costly, so multiple VMs with differing resources can be setup on only turned on when needed.</p>
 </section>
 <section id="network-proxy">
 <h2>Network Proxy<a class="headerlink" href="#network-proxy" title="Permalink to this heading">#</a></h2>
 <p>To streamline installation and deployment of the AusCAT tools, your will require access to certain locations via your organisations proxy.</p>
-<p>If your centre is governed by NSWHealth, this has already been enabled, contact your AusCAT centre’s representative for proxy details.</p>
 <p>Otherwise you will need to request the following locations to be whitelisted for your server within your organisation:</p>
 <ul class="simple">
 <li><p>Ubuntu</p>
@@ -376,9 +374,9 @@ Acquire::https::Proxy &quot;https://proxy_host:proxy_port/&quot;;
 <section id="docker">
 <h2>Docker<a class="headerlink" href="#docker" title="Permalink to this heading">#</a></h2>
 <p>We use <a class="reference external" href="https://www.docker.com/">Docker</a> to deploy ready to go containers which run the AusCAT software. Follow <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/">these instructions to install Docker</a> within your Ubuntu virtual machine. We also have a guide for installing Docker in a simulation (not suitable for production)  environment which can be found <a class="reference internal" href="../simulation/DOCKER_PORTAINER.html#install-docker"><span class="std std-ref">here</span></a>.</p>
-<section id="docker-installation-in-nswhealth">
-<h3>Docker installation in NSWHealth<a class="headerlink" href="#docker-installation-in-nswhealth" title="Permalink to this heading">#</a></h3>
-<p>In some environments, such as NSW Health, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.</p>
+<section id="docker-installation-in-secure-environments">
+<h3>Docker installation in secure environments<a class="headerlink" href="#docker-installation-in-secure-environments" title="Permalink to this heading">#</a></h3>
+<p>In some secure and locked-down environments, there may be more than one proxy available. One proxy may not required authentication, but it will be more restrictive in what traffic can get through. This is the proxy where ideally the URLs listed above would be whitelisted.</p>
 <p>You can setup the proxy on your VM for your local account by editing the <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> file and adding these these lines:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">http_proxy</span><span class="o">=</span>http://proxy_host:proxy_port
 <span class="nb">export</span><span class="w"> </span><span class="nv">https_proxy</span><span class="o">=</span>http://proxy_host:proxy_port
@@ -488,7 +486,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
 </ul>
 </li>
 <li><a class="reference internal" href="#docker">Docker</a><ul>
-<li><a class="reference internal" href="#docker-installation-in-nswhealth">Docker installation in NSWHealth</a></li>
+<li><a class="reference internal" href="#docker-installation-in-secure-environments">Docker installation in secure environments</a></li>
 </ul>
 </li>
 </ul>

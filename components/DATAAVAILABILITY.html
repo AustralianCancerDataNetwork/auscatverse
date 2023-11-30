@@ -245,13 +245,54 @@
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p>The dashboard developed using Python, django-plotly-dash, Dash, and Django web framework aims to provide data visualization interfaces. It offers a user-friendly interface that enables users to input custom queries through the interface and explore patient data availability at an AusCAT node.</p>
-<section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">#</a></h3>
+<section id="project-structure">
+<h3>Project Structure<a class="headerlink" href="#project-structure" title="Permalink to this heading">#</a></h3>
+<section id="initial-setup-of-the-dashboard">
+<h4>Initial setup of the dashboard<a class="headerlink" href="#initial-setup-of-the-dashboard" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
-<li><p>Since this is a locally-run database (for development purposes), the data can be imported into the database by running the script data_availability/data/import_csv_into_postgres.py.</p></li>
+<li><p>To initialise the dashboard database, you can run the command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>migrate
+</pre></div>
+</div>
+<p>This will initialise the database based off of the models we’ve created for this project. The main models to ensure the dashboard runs accurately:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Config</span></code>: used to configure dashboard instances for your server. Multiple dashboards can exist where different insights can be generated, a unique URL is given and the source SQL database that the dashbaord visualises can be configured.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Feature</span></code>: used to define the different features you’d like to visualise on the dashboard. These are assigned to a specific <code class="docutils literal notranslate"><span class="pre">Config</span></code> and can be exported/imported as a JSON file for flexible management of features for your dashboard, as well as easy distribution if you’d like to replicate features accross different servers (ie. across different AusCAT centres).</p></li>
+</ul>
+<ol class="arabic" start="2">
+<li><p>Create a super user by running the command and selecting the appropriate options:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This user will have access to the admin interface where the previously mentioned models can be created, as well as managing user account management.</p>
+<ol class="arabic" start="3">
+<li><p>The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. To set this, run the following command, navigate to <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/admin</span></code> and login as a super user:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This will start the django server and launch the app. you can access the application using
+<a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
+<ol class="arabic simple" start="4">
+<li><p>Once you have access to the admin panel, under the <code class="docutils literal notranslate"><span class="pre">data_availability</span></code> application, select <code class="docutils literal notranslate"><span class="pre">Config</span></code> and create a new instance. You can add the appropriate database credentials, as well as the SQL data query to extract the features you’d like to visualise on the dashboard and give this dashboard instance a unique URL. As mentioned, you can create multiple instances on your server.</p></li>
+<li><p>You can create the features to be visualised by selecting the <code class="docutils literal notranslate"><span class="pre">Feature</span></code> application on the main admin page.</p></li>
 </ol>
 <blockquote>
-<div><p><strong>WARNING</strong>: This part is still under development. Please make sure this script does not run a function named “create_table” unless you are absolutely sure you’d like to truncate the medical table in your database. By default, this does not run, but please be aware before running this script</p>
+<div><p>Note: please ensure that you create at least <em>one</em> filter feaeture and <em>one</em> non-filter feature. A log will be produced on the server side when you first run it to remind you of this.</p>
+</div></blockquote>
+</section>
+<section id="simulation">
+<h4>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h4>
+<p>You can also run this dashboard using some artificial data:</p>
+<ol class="arabic simple">
+<li><p>Assuming you have a local database running to collect the artifical data, the data can be imported into the database by running the script <code class="docutils literal notranslate"><span class="pre">data_availability/data/import_csv_into_postgres.py</span></code>.</p></li>
+</ol>
+<blockquote>
+<div><p>WARNING: Please make sure this script does not run a function named <code class="docutils literal notranslate"><span class="pre">create_table</span></code> unless you are absolutely sure that you’d like to truncate the <code class="docutils literal notranslate"><span class="pre">medical</span></code> table in your database. By default this does not run, but please be aware before running this script</p>
 </div></blockquote>
 <ol class="arabic" start="2">
 <li><p>To initialise the Django local DB, run the command:</p>
@@ -264,17 +305,12 @@
 </pre></div>
 </div>
 </li>
-<li><p>Run the application by using the command:</p>
+<li><p>The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. To set this, run the following command, navigate to http://localhost:8080/admin and login as a super user:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
 </pre></div>
 </div>
-<p>This will start the django server and launch the app. you can access the application using <a class="reference external" href="http://localhost:8000">http://localhost:8000</a></p>
 </li>
 </ol>
-<section id="head-and-neck-template-and-playground-dashboard">
-<h4>Head and Neck (template and playground dashboard)<a class="headerlink" href="#head-and-neck-template-and-playground-dashboard" title="Permalink to this heading">#</a></h4>
-<p>A dummy dashboard that can be used as a template and playground for testing dashboard designs. It visualises and reports patient data avaliability at a AusCAT node, using the TCIA Head and Neck cancer PET/CT dataset <a class="reference internal" href="#1"><span class="xref myst">[1]</span></a> as a mockup of its real data.</p>
-<p>For the <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard">template</a> Head and Neck dashboard, we assume that another container is running a simluated AusCAT CatDB database (it will mostly likely an instance of the auscat/catdb_schema image)</p>
 </section>
 </section>
 <section id="dependencies">
@@ -328,16 +364,6 @@
 <p>To set the connection configuration to the database by navigating to <a class="reference external" href="http://localhost:8000/admin">http://localhost:8000/admin</a> and login as a super user. <br></p>
 <p>The connection configuration to the database is controlled through the admin panel interface. Utlimately, this can be defined to point to real AusCAT databases for actual dashboard implementations. By default, this is not set. <br></p>
 <p>Once you have access to the admin panel, under the “Data_availability” application, select Config, create a new Config and in here you can add the appropriate postgres database credentials (either local for development or a live AusCAT postgres DB). <br></p>
-<p><em>NOTE</em>: For now, when using the local CatDB database deployed through Docker, the following are the usual credentials:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;Db name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cat_db&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db servername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;Db port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5434&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
 <section id="docker-image">
 <h3>Docker Image<a class="headerlink" href="#docker-image" title="Permalink to this heading">#</a></h3>
 <p><strong>NOTE</strong>: For images that exist under the premium Dockerhub account, you’ll need to login into the Dockerhub account on the local machine, by running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code>, then enter the username and password when prompted.</p>
@@ -349,30 +375,31 @@ Which can be built using the command:</p>
 </pre></div>
 </div>
 <p><strong>Developer Guide</strong>:
-Alternatively, via VSCode, you can setup the development containers using the defined <code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code> files and setup the application using its dockerfile-build image. This can be done by:</p>
+<strong>NOTE</strong>: For images that exist under the premium Dockerhub account, you’ll need to login into the Dockerhub account on the local machine, by running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">login</span></code>, then enter the username and password when promted.</p>
+<p><strong>Docker</strong>
+The template can be deployed using docker. Via VSCode, you can setup the development containers
+using the defined <code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code> files and setup the application using its dockerfile-build image. This can be done
+by:</p>
 <ol class="arabic simple">
 <li><p>Making sure that the extension “Remote-Containers” is installed.</p></li>
-<li><p>Clicking on the bottom left corner of VSCode.</p></li>
-<li><p>Select the option “Open folder in container”. This will then open a VSCode instance of the container and map it to your local repository. Development and launching of the dashboard can now occur in this new VSCode window.</p></li>
+<li><p>Clicking on the bottom left green corner of VSC.</p></li>
+<li><p>Select the option “Open folder in container”. This will then open a VSC instance of the container and map it to your local repository.
+Development and launching of the dashboard can now occur in this new VSC window.</p></li>
 </ol>
-</section>
-<section id="non-docker-approach">
-<h3>Non-Docker approach<a class="headerlink" href="#non-docker-approach" title="Permalink to this heading">#</a></h3>
-<p><strong>Non-Docker approach</strong>: The <a class="reference external" href="https://github.com/AustralianCancerDataNetwork/auscat_etl/tree/main/dashboard">template</a> can be run without Docker, by following these steps:</p>
+<p>Alternatively, you can spin up the containers by running the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p><strong>Non-Docker approach</strong>: This template can be ran without docker, by following these steps:</p>
 <ol class="arabic simple">
 <li><p>Install the poetry <a class="reference external" href="https://python-poetry.org/docs/">tool</a>.</p></li>
 <li><p>Create a python virtual environment and activate it.</p></li>
-<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dashboard/</span></code> and run to install the python packages into your virtual environment:</p></li>
+<li><p>Navigate to <code class="docutils literal notranslate"><span class="pre">dashboard/</span></code> and run:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 </pre></div>
 </div>
-<ol class="arabic simple" start="4">
-<li><p>Then to use the poetry commands to run the application:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>manage.py<span class="w"> </span>runserver
-</pre></div>
-</div>
+<p>This will install the python packages into your virtual environment</p>
 </section>
 </section>
 <section id="troubleshooting">
@@ -381,12 +408,6 @@ Alternatively, via VSCode, you can setup the development containers using the de
 <h3>Logs<a class="headerlink" href="#logs" title="Permalink to this heading">#</a></h3>
 <p>The dashboard container will log to the standard output as is usual with Docker. These logs can be inspected within either Portainer or terminal to determine if dashboard is reporting any errors.</p>
 </section>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p><a id="1">[1]</a>
-Vallières, M. et al. Radiomics strategies for risk assessment of tumour failure in head-and-neck cancer.
-Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
 </section>
 </section>
 
@@ -449,8 +470,9 @@ Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
             <ul>
 <li><a class="reference internal" href="#">Data Availability</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a><ul>
-<li><a class="reference internal" href="#usage">Usage</a><ul>
-<li><a class="reference internal" href="#head-and-neck-template-and-playground-dashboard">Head and Neck (template and playground dashboard)</a></li>
+<li><a class="reference internal" href="#project-structure">Project Structure</a><ul>
+<li><a class="reference internal" href="#initial-setup-of-the-dashboard">Initial setup of the dashboard</a></li>
+<li><a class="reference internal" href="#simulation">Simulation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#dependencies">Dependencies</a></li>
@@ -459,14 +481,12 @@ Sci Rep 7, 10117 (2017). doi: 10.1038/s41598-017-10371-5</p>
 </li>
 <li><a class="reference internal" href="#configuration">Configuration</a><ul>
 <li><a class="reference internal" href="#docker-image">Docker Image</a></li>
-<li><a class="reference internal" href="#non-docker-approach">Non-Docker approach</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li><a class="reference internal" href="#logs">Logs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#references">References</a></li>
 </ul>
 </li>
 </ul>
