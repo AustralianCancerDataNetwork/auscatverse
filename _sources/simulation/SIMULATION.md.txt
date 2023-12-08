@@ -108,6 +108,9 @@ services:
       ports:
       - 9090:9090 # Browser access port for CTP
       - 8104:8104
+      environment:
+        ORTHANC_HOSTNAME: orthanc
+        ORTHANC_PORT: 4242
       # CTP logs storage location (CTP logs usually bind mount to your filesystem to access easily on your machine)
       volumes:
       - ctp-logs:/logs
