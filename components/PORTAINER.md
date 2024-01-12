@@ -64,3 +64,11 @@ To do this:
 - For the GPU:
     * `Runtime & Resources`: here is where the GPU utilisation is configured for the container. Toggle under the GPU heading the `Enable GPU` option, next to it you can specifiy which of the GPU's (if there are mutiple instances running) that the container may utilise. By default, the "Use all GPUs" option will be provided.
 - Once all the configuration options have been set, click on the `Deploy the container` blue button to deploy the container which can utilise the configured GPU/s.
+
+## Updating Secrets
+
+When utilising Secrets for your Docker Stacks that you have created through Portainer, you may find that passwords or other sensitivie info need to change and recongifured. To update pre existing Secrets in Portainer:
+    1. Stop the relevant Docker Stack (individual Services) that make use of the secret. A Stop will suffice, no need to delete the stack (and you probably wouldn't want to delete your Stack/Services in any case...).
+    2. Delete the relecant secret from the Secrets section in Portainer. You can't edit an existing one, so you will need to delete the current secret.
+    3. Create a new Secret with the same name you are using in the previous verion, with the new secret value you wish to use.
+    4. Restart your Stack or Service/s and the new Secret shall be reconfigured for use in your relevant containers.
