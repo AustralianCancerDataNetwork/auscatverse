@@ -3,7 +3,7 @@
 ## Machine setup
 The AusCAT architecture can be summed up in the following diagram:
 
-![alt text](<workflow-flowchart.png>)
+![alt text](./workflow-flowchart.png)
 
 Essentially, your AusCAT node is made up of 2 main servers and/or virtual machines (VM's). We highly recommend creating 2 physically separate servers and/or VM's; one for handling and storing the patient identifiable information and another for handling the deidentified information. The reason being that the identifiable stores must not be accessed by anyone other than the specified data custodian at your particular centre and to limit any potential leakage of data to users who are not permitted to access it. 
 
