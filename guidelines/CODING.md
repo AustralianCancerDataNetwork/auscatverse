@@ -71,7 +71,7 @@ def function_with_types_in_docstring(param1, param2):
 
 ## Automated Testing
 
-Currently no automated testing is required for these repositories. This will be revisited in mid to late 2022 to address where such automated testing would be useful.
+Currently no automated testing is required for these repositories. This will be revisited in the future to address where such automated testing would be useful.
 
 ## Contributing
 
