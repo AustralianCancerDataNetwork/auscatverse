@@ -3,6 +3,7 @@
 This document outlines a typical AusCAT setup. These requirements are flexible and the system can be run outside of these recommendations. For more information please discuss with your centre's AusCAT contact.
 
 ## Server Hardware
+> Note: please read the machine setup and workflow [guide](WORKFLOW.md) first before continuing with this guide, to understand the machines required for an AusCAT node.
 
 ### Minimal Specs 
 The minimum specifications we recommend for a centre's server hardware to be installed and run in-house are:

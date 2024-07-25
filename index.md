@@ -22,6 +22,7 @@ The AusCAT platform also provides data visualisation tools to allow research and
 :caption: Getting Started
 :hidden:
 
+guides/WORKFLOW
 installation
 examples
 ```
