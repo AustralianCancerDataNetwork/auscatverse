@@ -73,6 +73,9 @@ Otherwise you will need to request the following locations to be whitelisted for
 - Docker
   - *.docker.io
   - *.docker.com
+- Portainer
+  - *.portainer.io
+  - *.portainer.com
 - GitHub
   - *.github.com
   - *.github.io
