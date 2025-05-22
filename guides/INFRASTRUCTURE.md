@@ -15,7 +15,7 @@ This specification outlines the **recommended entry-level or minimum hardware** 
 | **RAM** | 32 GB DDR4 or DDR5 | Crucial Pro|
 | **Primary Storage (OS & Software)** | 1x 1 TB NVMe SSD | Samsung 980 Pro|
 | **Data Storage** | 1x 2 TB SSD| Seagate IronWolf|
-| **GPU** | A CUDA-enable GPU, suitable for computationally intensive medical imaging tasks is highly recommended| NVIDIA RTX A4000 |
+| **GPU** | A CUDA-enable GPU, suitable for computationally intensive medical imaging tasks is highly recommended| NVIDIA RTX 4090 |
 | **Host OS** | Preferred for long-term security and virtualization support | Microsoft Windows Server 2022 |
 
 > **Typical cost** (note this can vary significantly over time and by vendor): **$3,000–$5,000 AUD**

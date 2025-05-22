@@ -1,6 +1,6 @@
 # AusCAT Node Setup Summary
 
-This page provides a **summary of the steps** for establishing an **AusCAT node** at a new hospital, clinical centre, or registry, after being approved as a site in the ethics protocol and has received local governance approvals. Detailed instructions for each step are available in separate pages, which can be accessed through the links provided below.
+This page provides a **summary of the steps** for establishing an **AusCAT node** at a new hospital, clinical centre, or registry, after being approved as a site in the ethics protocol and has received local governance approvals. This guide outlines an overview of the core steps involved in setting up the required infrastructure, deploying the system, and importing data. Detailed instructions for each step are available in separate pages, which can be accessed through the links provided below.
 
 ---
 
@@ -12,7 +12,7 @@ As a first step, visit the [Infrastructure Requirements](./INFRASTRUCTURE.md) pa
 
 ## 2. Production Deployment
 
-Once the hardware and server operating system (e.g., **Windows Server 2022**) are ready, navigate to the [Production Deployment Guide](./PRODUCTION.md) for detailed steps on deploying an AusCAT node in a production setting. This includes the following components:
+Once the hardware and server OS (e.g., **Windows Server 2022**) are ready, the next step is to deploy an AusCAT node in a production environment. This includes the following components:
 
 ### 2a. VM Setup
 - Install **two VMs** on the server:
@@ -31,12 +31,14 @@ Once the hardware and server operating system (e.g., **Windows Server 2022**) ar
 
 ### 2d. Pentaho Installation
 - Install **Pentaho**, a data integration tool, on the **KeyDB VM**.
-- Detailed installation steps can be found [here](../components/PENTAHO.md).
+- Detailed installation steps can be found in the [Pentaho Configuration Guide](../components/PENTAHO.md).
 
 ### 2e. Configure and Deploy CatVM Docker Stack
 - On the **CatDB VM**, configure **CatDB secrets** and deploy the [CatDB](../components/CATDB.md) Docker stack.
 - Use the **CatDB stack template** provided [here](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/docker-compose-cat.yml).
 - Test the deployment to confirm the stack is running correctly.
+
+For detailed steps, refer to the [Production Deployment Guide](./PRODUCTION.md).
 
 ---
 
@@ -52,7 +54,7 @@ Ensure that proper authentication is configured for **Pentaho** to connect to th
 | SQL Queries | xxx.xxx.xxx.xxx (Reporting Server) | 1433 | xxx.xxx.xxx.xxx (KeyDB) | 104 | TCP | Yes |
 
 ### 3a. Clinical Data
-- Once the Pentaho connection is established, navigate to the [Pentaho Configuration Guide](../components/PENTAHO.md) for details on running pipelines to populate the research database with clinical data items.
+- Once the Pentaho connection is established, navigate to the Pentaho Configuration Guide for details on running pipelines to populate the research databases with clinical data items.
 
 ### 3b. Imaging Data
 - After initial clinical data is imported, DICOM imaging data for those patients can be sent to the **Orthanc** server for storage and later processing.

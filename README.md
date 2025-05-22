@@ -18,6 +18,10 @@ For information of typical server hardware requirements as well as Virtual Machi
 
 Please follow the Simulation Environment [guide](./simulation/SIMULATION.md) to get setup with a sandbox environment for an ausCAT node, followed by the Production deployment [guide](./guides/PRODUCTION.md) to setup a production grade environment.
 
+> **ℹ️ Quick Start:**  
+> For a concise, step-by-step summary on setting up a typical AusCAT node, [please refer to this guide](./guides/SUMMARY-STEPS.md).
+
+
 ## Code Repositories
 
 To deploy and run the various components of AusCAT, code and tools are tracked across a number of GitHub repositories found within the ACDN organisation:
