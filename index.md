@@ -31,6 +31,7 @@ examples
 :caption: Installation
 :hidden:
 
+guides/SUMMARY-STEPS
 guides/INFRASTRUCTURE
 guides/PRODUCTION
 guides/AUTH
