@@ -16,7 +16,11 @@ A description of projects underway within AusCAT can be found on our SharePoint:
 
 For information of typical server hardware requirements as well as Virtual Machine (VM) setup see our [infrastructure guide](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guides/INFRASTRUCTURE.md).
 
-The [AusCAT installation step-by-step guide](https://github.com/AustralianCancerDataNetwork/auscat_installation/blob/main/README.md) will assist you with the installation of the AusCAT platform.
+Please follow the Simulation Environment [guide](./simulation/SIMULATION.md) to get setup with a sandbox environment for an ausCAT node, followed by the Production deployment [guide](./guides/PRODUCTION.md) to setup a production grade environment.
+
+> **ℹ️ Quick Start:**  
+> For a concise, step-by-step summary on setting up a typical AusCAT node, [please refer to this guide](./guides/SUMMARY-STEPS.md).
+
 
 ## Code Repositories
 
@@ -38,7 +42,7 @@ The following repositories contain code to running a specific project(s) within 
 
 ### AusCAT Code Guidelines
 
-Any and all contributions to our code repositories are appreciated. Please be sure to follow our [AusCAT coding guidelines](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guidelines/README.md) as these help us ensure a high quality standard consistently across our repositories.
+Any and all contributions to our code repositories are appreciated. Please be sure to follow our [AusCAT coding guidelines](https://github.com/AustralianCancerDataNetwork/auscatverse/blob/main/guidelines/CODING.md) as these help us ensure a high quality standard consistently across our repositories.
 
 ## Help & Troubleshooting
 

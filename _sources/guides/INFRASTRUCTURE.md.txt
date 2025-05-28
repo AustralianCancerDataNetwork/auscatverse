@@ -3,47 +3,59 @@
 This document outlines a typical AusCAT setup. These requirements are flexible and the system can be run outside of these recommendations. For more information please discuss with your centre's AusCAT contact.
 
 ## Server Hardware
+> Note: please read the machine setup and workflow [guide](WORKFLOW.md) first before continuing with this guide, to understand the machines required for an AusCAT node.
 
-### Minimal Specs 
-The minimum specifications we recommend for a centre's server hardware to be installed and run in-house are:
+### Minimal Specs (Updated 2025)
 
-- 8 core CPU
-- 16 GB RAM
-- 1x 512GB SSD Disk (Usually faster, to run the operating system and software)
-- 1x 1TB SSD Disk (Might be slower and will store data)
+This specification outlines the **recommended entry-level or minimum hardware** for centres participating in AusCAT projects. The setup is suitable for running virtual machines that handle data processing, conversion, segmentation, and other machine learning tasks. 
 
-This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2019 where you can then create one or more Virtual Machines to run AusCAT.
+| **Component** | **Recommendation** | **Vendor Example** |
+|---------------|---------------------|-------------|
+| **CPU** | 12 cores | Intel Core i7-14700 (20 threads)|
+| **RAM** | 32 GB DDR4 or DDR5 | Crucial Pro|
+| **Primary Storage (OS & Software)** | 1x 1 TB NVMe SSD | Samsung 980 Pro|
+| **Data Storage** | 1x 2 TB SSD| Seagate IronWolf|
+| **GPU** | A CUDA-enable GPU, suitable for computationally intensive medical imaging tasks is highly recommended| NVIDIA RTX 4090 |
+| **Host OS** | Preferred for long-term security and virtualization support | Microsoft Windows Server 2022 |
 
-### Optimal Specs
+> **Typical cost** (note this can vary significantly over time and by vendor): **$3,000–$5,000 AUD**
+
+---
+
+### Optimal Specs (Updated 2025)
+
 A typical centre's server hardware to be installed and run in-house has approximately the following specification:
 
-- 24 core CPU (e.g. 2x Intel Xeon Silver 4214R @2.4Ghz 12 Cores)
-- 128-256GB RAM
-- 2x 512GB SSD Disk (Usually faster, to run the operating system and software)
-- 4x 4TB SSD Disk (Might be slower and will store data)
-- 1x NVIDIA Quadro RTX 6000-8000 (Optional GPU, required for deep-learning/auto-segmentation projects)
+| **Component** | **Recommendation** | **Vendor Example** |
+|---------------|---------------------|---------------------|
+| **CPU** | 24 cores (dual CPU setup @2.4Ghz 12 Cores) | 2x Intel Xeon Silver 4314 |
+| **RAM** | 128–256 GB ECC DDR4/DDR5 | Kingston Server Premier |
+| **Primary Storage (OS & Software)** | 2x 2 TB NVMe SSD (RAID 1) | Samsung 980 Pro |
+| **Data Storage** | 4x 8 TB SATA SSD OR 8x 4 TB HDD (RAID 5/6) | Seagate Exos |
+| **GPU** | High-end CUDA-enabled GPU for large-scale deep learning | NVIDIA RTX 6000 Ada Generation |
+| **Host OS** | Recommended for security, virtualization, and lifecycle | Microsoft Windows Server 2022 |
 
-Typical cost (note this can vary significantly over time): $20,000-$30,000
+> **Typical cost** (note this can vary significantly over time): **$20,000–$30,000 AUD**
 
-This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2019 where you can then create one or more Virtual Machines to run AusCAT.
+This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2022 where you can then create one or more Virtual Machines to run AusCAT services.
 
-## Virtual Machine
+---
 
-A Virtual Machine with the following specifications is typically recommended:
+## Virtual Machine (VM) Configuration
 
-- 24 virtual CPU Cores
-- 128GB RAM
-- 1x fixed size 256GB virtual disk (stored on the faster SSD)
-- 1x dynamically expanding virtual disk (stored on the slower SSD)
-- Operating System: Install Ubuntu Desktop 22.04 on the Virtual Machine (Desktop edition is chosen to provide a GUI for certain applications)
+The server will host **one or more Ubuntu-based VMs** that will run the AusCAT pipelines and tools (e.g., data setup, pre-processing, analytics etc.). The following specifications are typically recommended:
 
-As a minimum, the following is suggested:
+| **Component** | **Minimum-Specs VM** | **Optimised VM** |
+|---------------|---------------------|------------------|
+| **vCPUs** | 4/8 virtual CPU Cores | 24 virtual CPU Cores |
+| **RAM** | 8/16 GB *(depends on server capacity)* | 64–128 GB *(depends on server capacity)* |
+| **Primary Disk** | 128–256 GB *(fixed size, stored on the faster SSD)* | 512 GB *(fixed size, stored on the faster SSD)*|
+| **Data Disk** | 1 x dynamically expanding virtual disk *(stored on the slower SSD)* | 1 x dynamically expanding virtual disk *(stored on the slower SSD)* |
+| **OS** | Ubuntu Desktop 22.04 *(Support GUI)* | Ubuntu Desktop 22.04 *(Support GUI)* |
 
-- 8 virtual CPU Cores
-- 16GB RAM
-- 1x fixed size 128GB virtual disk (stored on the faster SSD)
-- 1x dynamically expanding virtual disk (stored on the slower SSD)
-- Operating System: Install Ubuntu Desktop 22.04 on the Virtual Machine (Desktop edition is chosen to provide a GUI for certain applications)
+> ⚠️ **Note on RAM Allocation**: The total RAM allocated to all Virtual Machines must not exceed the physical RAM available on the host server. For example, if the server has 32 GB RAM, you can allocate a maximum of 24–28 GB across all VMs (leaving some for the host OS).
+
+---
 
 > GPU Passthrough: Follow [these instructions to pass through the GPU](https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda?source=recommendations) to this VM if you have one.
 
@@ -72,6 +84,9 @@ Otherwise you will need to request the following locations to be whitelisted for
 - Docker
   - *.docker.io
   - *.docker.com
+- Portainer
+  - *.portainer.io
+  - *.portainer.com
 - GitHub
   - *.github.com
   - *.github.io

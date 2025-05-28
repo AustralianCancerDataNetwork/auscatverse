@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Federated Analysis" href="FEDERATED_ANALYSIS.html" /><link rel="prev" title="Examples" href="../examples.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
-        <title>Metric Computation - AusCAT documentation</title>
+        <title>AusCAT VM Setup on Windows Server - AusCAT documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -155,30 +155,30 @@
 </form>
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../guides/WORKFLOW.html">AusCAT Architecture and Workflow</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="WORKFLOW.html">AusCAT Architecture and Workflow</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../installation.html">Simulation Environment Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../host.html">Host Machine Setup</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="LOCAL_MACHINE.html">Local Machine</a></li>
-<li class="toctree-l3"><a class="reference internal" href="NECTAR.html">NECTAR Virtual Machine Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/LOCAL_MACHINE.html">Local Machine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../simulation/NECTAR.html">NECTAR Virtual Machine Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="DOCKER_PORTAINER.html">Docker &amp; Portainer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SIMULATION.html">Simulation Environment Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/DOCKER_PORTAINER.html">Docker &amp; Portainer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/SIMULATION.html">Simulation Environment Deployment</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="../examples.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Metric Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="FEDERATED_ANALYSIS.html">Federated Analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../examples.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/METRICS.html">Metric Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../simulation/FEDERATED_ANALYSIS.html">Federated Analysis</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../guides/SUMMARY-STEPS.html">AusCAT Node Setup Summary</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/INFRASTRUCTURE.html">AusCAT Infrastructure Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/PRODUCTION.html">Production Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/AUTH.html">Authentication &amp; Authorisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SUMMARY-STEPS.html">AusCAT Node Setup Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="INFRASTRUCTURE.html">AusCAT Infrastructure Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PRODUCTION.html">Production Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AUTH.html">Authentication &amp; Authorisation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Components</span></p>
 <ul>
@@ -242,44 +242,154 @@
           </label>
         </div>
         <article role="main">
-          <section id="metric-computation">
-<h1>Metric Computation<a class="headerlink" href="#metric-computation" title="Permalink to this heading">#</a></h1>
-<p>An example Jupyter Notebook is provided which can be run to generate radiomic and dose metrics from the simulation environment data. Once the <a class="reference internal" href="SIMULATION.html"><span class="std std-doc">simulation environment has been deployed</span></a>, this example demonstrates how to query the CatDB for a cohort of patients, fetch their imaging data from the Orthanc, convert this to a format more suited for our research tools (NIfTI), prepare visualisation of the data and finally compute first-order radiomic features as well as Dose Volume Histograms (DVHs) and some dose metrics. These are saved off to a CSV file, ready for <a class="reference internal" href="FEDERATED_ANALYSIS.html"><span class="std std-doc">federated analysis</span></a>.</p>
-<section id="deploy-example-docker-image">
-<h2>Deploy Example Docker Image<a class="headerlink" href="#deploy-example-docker-image" title="Permalink to this heading">#</a></h2>
-<p>The easiest way to run this example is to use the Docker Image which contains the example Jupyter Notebook and everything needed to run a Jupyter instance. Modify your Simulation Docker Stack in Portainer by adding the following under <code class="docutils literal notranslate"><span class="pre">services:</span></code>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>  analysis_example:
-      image: &quot;auscat/etl:example&quot;
-      ports:
-      - 8888:8888
-      depends_on:
-      - etl
-      volumes:
-      - analysis-data:/data
-</pre></div>
-</div>
-<p>Also be sure to add the volume definition under <code class="docutils literal notranslate"><span class="pre">volumes:</span></code> at the end of the stack:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="nt">analysis-data</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>Re-deploy the stack.</p>
+          <section id="auscat-vm-setup-on-windows-server">
+<h1>AusCAT VM Setup on Windows Server<a class="headerlink" href="#auscat-vm-setup-on-windows-server" title="Permalink to this heading">#</a></h1>
+<p>This guide provides a step-by-step process to configure and install Virtual Machines (VMs) on a <strong>Windows Server</strong> using <strong>Hyper-V</strong>. These VMs are essential for hosting the AusCAT software stack, including the KeyDB and CatDB components.</p>
+<hr class="docutils" />
+<section id="installing-hyper-v-if-not-already-enabled">
+<h2>Installing Hyper-V (if not already enabled)<a class="headerlink" href="#installing-hyper-v-if-not-already-enabled" title="Permalink to this heading">#</a></h2>
+<p>If Hyper-V is not yet enabled on the Windows Server, follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Right-click on the <strong>Windows Start</strong> button and select <strong>Apps and Features</strong>.</p></li>
+<li><p>Select <strong>Programs and Features</strong> under <strong>Related Settings</strong>.</p></li>
+<li><p>Select <strong>Turn Windows Features on or off</strong>.</p></li>
+<li><p>Check the <strong>Hyper-V</strong> option (including <strong>Hyper-V Management Tools</strong> and <strong>Hyper-V Platform</strong>).</p></li>
+<li><p>Click <strong>OK</strong> and restart the server when prompted.</p></li>
+</ol>
 </section>
-<section id="running-the-example-notebook">
-<h2>Running the Example Notebook<a class="headerlink" href="#running-the-example-notebook" title="Permalink to this heading">#</a></h2>
-<p>Once the Docker image is up and running, you can access the Jupyter instance at: <code class="docutils literal notranslate"><span class="pre">http://[YOUR-HOST-IP]:8888</span></code>. You will be prompted for a password which has been set to a default of <code class="docutils literal notranslate"><span class="pre">password</span></code> (Note using this password is only suitable in a simulation environment).</p>
-<p>Once logged in, you can navigate to <code class="docutils literal notranslate"><span class="pre">work</span></code> folder and find the <code class="docutils literal notranslate"><span class="pre">Compute_Metrics.ipynb</span></code> notebook. Open this Jupyter Notebook and follow the instructions within.</p>
-<blockquote>
-<div><p>Tip: You can quickly execute the cells within the Jupyter Notebook by pressing <code class="docutils literal notranslate"><span class="pre">Shift+Enter</span></code>.</p>
-</div></blockquote>
+<hr class="docutils" />
+<section id="creating-a-new-virtual-machine">
+<h2>1. Creating a New Virtual Machine<a class="headerlink" href="#creating-a-new-virtual-machine" title="Permalink to this heading">#</a></h2>
+<section id="step-1-open-hyper-v-manager">
+<h3>Step 1: Open Hyper-V Manager<a class="headerlink" href="#step-1-open-hyper-v-manager" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Press <code class="docutils literal notranslate"><span class="pre">Win</span> <span class="pre">+</span> <span class="pre">R</span></code>, type <strong>virtmgmt.msc</strong>, and hit <strong>Enter</strong>.</p></li>
+<li><p>Alternatively, search for <strong>Hyper-V Manager</strong> in the Start Menu.</p></li>
+</ul>
 </section>
-<section id="analysing-metrics">
-<h2>Analysing Metrics<a class="headerlink" href="#analysing-metrics" title="Permalink to this heading">#</a></h2>
-<p>The output of this example notebook is a file named <code class="docutils literal notranslate"><span class="pre">metrics.csv</span></code> which is stored in the <code class="docutils literal notranslate"><span class="pre">working</span></code> directory. This directory is mapped to the <code class="docutils literal notranslate"><span class="pre">analysis-data</span></code> volume we defined in the Docker stack above. Using this volume you can proceed with a <a class="reference internal" href="FEDERATED_ANALYSIS.html"><span class="std std-doc">federated analysis</span></a> using the metrics computed in this example.</p>
+<section id="step-2-create-a-new-vm">
+<h3>Step 2: Create a New VM<a class="headerlink" href="#step-2-create-a-new-vm" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>In the left pane, right-click on your server name and select <strong>New</strong> &gt; <strong>Virtual Machine</strong>.</p></li>
+<li><p>Click <strong>Next</strong> in the wizard to proceed.</p></li>
+</ol>
 </section>
-<section id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading">#</a></h2>
-<p><strong>Problem</strong>: The Jupyter Notebook crashed during conversion of the imaging data.</p>
-<p><strong>Solution</strong>: This may happen when insufficient memory is available. Ensure you have at least 4GB RAM to run the example. Before re-running the notebook, delete the <code class="docutils literal notranslate"><span class="pre">working</span></code> folder within the <code class="docutils literal notranslate"><span class="pre">data</span></code> directory. To do this you may need to open a Terminal by choosing <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Launcher</span></code> then press <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> and run <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-r</span> <span class="pre">work/data/working</span></code>.</p>
+<section id="step-3-specify-vm-name-and-location">
+<h3>Step 3: Specify VM Name and Location<a class="headerlink" href="#step-3-specify-vm-name-and-location" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Enter a <strong>Name</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">KeyDB-VM</span></code> or <code class="docutils literal notranslate"><span class="pre">CatDB-VM</span></code>).</p></li>
+<li><p>Specify the <strong>location</strong> for VM files or keep the default.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+</ul>
+</section>
+<section id="step-4-specify-generation">
+<h3>Step 4: Specify Generation<a class="headerlink" href="#step-4-specify-generation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Select <strong>Generation 2</strong> for modern features (recommended for Windows Server 2016/2019/2022).</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+</ul>
+</section>
+<section id="step-5-assign-memory">
+<h3>Step 5: Assign Memory<a class="headerlink" href="#step-5-assign-memory" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Allocate <strong>RAM</strong> according to the specifications:</p>
+<ul>
+<li><p>KeyDB VM: <strong>8 GB</strong></p></li>
+<li><p>CatDB VM: <strong>16 GB</strong></p></li>
+</ul>
+</li>
+<li><p>Enable <strong>Dynamic Memory</strong> if necessary.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+</ul>
+</section>
+<section id="step-6-configure-networking-attach-virtual-switch">
+<h3>Step 6: Configure Networking (Attach Virtual Switch)<a class="headerlink" href="#step-6-configure-networking-attach-virtual-switch" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Choose an existing <strong>Virtual Switch</strong> (e.g., <code class="docutils literal notranslate"><span class="pre">Default</span> <span class="pre">Switch</span></code>).</p></li>
+<li><p>This step simply <strong>attaches</strong> the VM to a virtual switch but does not finalize the network configuration.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+</ul>
+</section>
+<section id="step-7-attach-boot-media-iso-file">
+<h3>Step 7: Attach Boot Media (ISO File)<a class="headerlink" href="#step-7-attach-boot-media-iso-file" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>This step is about connecting the VM to the installation media, not the actual OS installation.</p></li>
+<li><p>Choose <strong>Install an operating system from a bootable image file</strong>.</p></li>
+<li><p>Browse to your <strong>Ubuntu 22.04 ISO</strong>.</p></li>
+<li><p>Click <strong>Next</strong>.</p></li>
+</ul>
+</section>
+<section id="step-8-complete-the-wizard">
+<h3>Step 8: Complete the Wizard<a class="headerlink" href="#step-8-complete-the-wizard" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Review the settings and click <strong>Finish</strong>.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="configuring-vm-settings">
+<h2>2. Configuring VM Settings<a class="headerlink" href="#configuring-vm-settings" title="Permalink to this heading">#</a></h2>
+<p>Before configuring the VM settings, please refer to the <a class="reference internal" href="INFRASTRUCTURE.html"><span class="std std-doc">Infrastructure Requirements</span></a> page to ensure the VM is configured with consistent settings for vCPUs, RAM, disk size, etc. based on the recommended specifications.</p>
+<section id="step-1-access-settings">
+<h3>Step 1: Access Settings<a class="headerlink" href="#step-1-access-settings" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Right-click on the created VM and select <strong>Settings</strong>.</p></li>
+</ul>
+</section>
+<section id="step-2-adjust-cpu-configuration">
+<h3>Step 2: Adjust CPU Configuration<a class="headerlink" href="#step-2-adjust-cpu-configuration" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Navigate to <strong>Processor</strong>.</p></li>
+<li><p>Increase the <strong>Number of Virtual Processors</strong> to <strong>4</strong> for KeyVM and <strong>8</strong> or higher for CatVM.</p></li>
+</ul>
+</section>
+<section id="step-3-enable-virtualization-extensions">
+<h3>Step 3: Enable Virtualization Extensions<a class="headerlink" href="#step-3-enable-virtualization-extensions" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Go to <strong>Processor</strong> &gt; <strong>Compatibility</strong>.</p></li>
+<li><p>Check <strong>Migrate to a physical computer with a different processor</strong> (if needed).</p></li>
+</ul>
+</section>
+<section id="step-4-finalize-network-adapter-configuration-connect-to-virtual-switch">
+<h3>Step 4: Finalize Network Adapter Configuration (Connect to Virtual Switch)<a class="headerlink" href="#step-4-finalize-network-adapter-configuration-connect-to-virtual-switch" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In the previous VM creation step, you attached the VM to a virtual switch. Here, you can verify and adjust this configuration.</p></li>
+<li><p>Go to <strong>Network Adapter</strong>.</p></li>
+<li><p>Ensure the correct <strong>Virtual Switch</strong> is selected (e.g., <strong>ExternalSwitch</strong> or <strong>Default Switch</strong>).</p></li>
+</ul>
+</section>
+<section id="step-5-finalize-settings">
+<h3>Step 5: Finalize Settings<a class="headerlink" href="#step-5-finalize-settings" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Apply and close the settings window.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="power-on-and-install-the-operating-system">
+<h2>3. Power On and Install the Operating System<a class="headerlink" href="#power-on-and-install-the-operating-system" title="Permalink to this heading">#</a></h2>
+<p>This is the step where the actual operating system installation occurs, using the ISO you attached earlier.</p>
+<section id="step-1-start-the-vm">
+<h3>Step 1: Start the VM<a class="headerlink" href="#step-1-start-the-vm" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Right-click the VM and select <strong>Connect</strong>.</p></li>
+<li><p>Click <strong>Start</strong> from the Virtual Machine Connection window.</p></li>
+</ul>
+</section>
+<section id="step-2-install-the-os">
+<h3>Step 2: Install the OS<a class="headerlink" href="#step-2-install-the-os" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Follow the standard installation process for <strong>Windows Server</strong> or <strong>Ubuntu Desktop</strong>.</p></li>
+<li><p>Configure basic settings: <strong>Language</strong>, <strong>Region</strong>, <strong>Keyboard Layout</strong>.</p></li>
+<li><p>Set a <strong>strong admin password</strong>.</p></li>
+</ul>
+</section>
+<section id="step-3-network-configuration">
+<h3>Step 3: Network Configuration<a class="headerlink" href="#step-3-network-configuration" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Verify that the VM is connected to the internet.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -288,26 +398,8 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="FEDERATED_ANALYSIS.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Federated Analysis</div>
-              </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
-            </a>
-          <a class="prev-page" href="../examples.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
-              <div class="page-info">
-                <div class="context">
-                  <span>Previous</span>
-                </div>
-                
-                <div class="title">Examples</div>
-                
-              </div>
-            </a>
+          
+          
         </div>
         <div class="bottom-of-page">
           <div class="left-details">
@@ -340,11 +432,33 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Metric Computation</a><ul>
-<li><a class="reference internal" href="#deploy-example-docker-image">Deploy Example Docker Image</a></li>
-<li><a class="reference internal" href="#running-the-example-notebook">Running the Example Notebook</a></li>
-<li><a class="reference internal" href="#analysing-metrics">Analysing Metrics</a></li>
-<li><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li><a class="reference internal" href="#">AusCAT VM Setup on Windows Server</a><ul>
+<li><a class="reference internal" href="#installing-hyper-v-if-not-already-enabled">Installing Hyper-V (if not already enabled)</a></li>
+<li><a class="reference internal" href="#creating-a-new-virtual-machine">1. Creating a New Virtual Machine</a><ul>
+<li><a class="reference internal" href="#step-1-open-hyper-v-manager">Step 1: Open Hyper-V Manager</a></li>
+<li><a class="reference internal" href="#step-2-create-a-new-vm">Step 2: Create a New VM</a></li>
+<li><a class="reference internal" href="#step-3-specify-vm-name-and-location">Step 3: Specify VM Name and Location</a></li>
+<li><a class="reference internal" href="#step-4-specify-generation">Step 4: Specify Generation</a></li>
+<li><a class="reference internal" href="#step-5-assign-memory">Step 5: Assign Memory</a></li>
+<li><a class="reference internal" href="#step-6-configure-networking-attach-virtual-switch">Step 6: Configure Networking (Attach Virtual Switch)</a></li>
+<li><a class="reference internal" href="#step-7-attach-boot-media-iso-file">Step 7: Attach Boot Media (ISO File)</a></li>
+<li><a class="reference internal" href="#step-8-complete-the-wizard">Step 8: Complete the Wizard</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuring-vm-settings">2. Configuring VM Settings</a><ul>
+<li><a class="reference internal" href="#step-1-access-settings">Step 1: Access Settings</a></li>
+<li><a class="reference internal" href="#step-2-adjust-cpu-configuration">Step 2: Adjust CPU Configuration</a></li>
+<li><a class="reference internal" href="#step-3-enable-virtualization-extensions">Step 3: Enable Virtualization Extensions</a></li>
+<li><a class="reference internal" href="#step-4-finalize-network-adapter-configuration-connect-to-virtual-switch">Step 4: Finalize Network Adapter Configuration (Connect to Virtual Switch)</a></li>
+<li><a class="reference internal" href="#step-5-finalize-settings">Step 5: Finalize Settings</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#power-on-and-install-the-operating-system">3. Power On and Install the Operating System</a><ul>
+<li><a class="reference internal" href="#step-1-start-the-vm">Step 1: Start the VM</a></li>
+<li><a class="reference internal" href="#step-2-install-the-os">Step 2: Install the OS</a></li>
+<li><a class="reference internal" href="#step-3-network-configuration">Step 3: Network Configuration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

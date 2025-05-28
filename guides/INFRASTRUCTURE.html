@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Production Deployment" href="PRODUCTION.html" /><link rel="prev" title="Federated Analysis" href="../simulation/FEDERATED_ANALYSIS.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Production Deployment" href="PRODUCTION.html" /><link rel="prev" title="AusCAT Node Setup Summary" href="SUMMARY-STEPS.html" />
 
     <meta name="generator" content="sphinx-5.0.2, furo 2022.06.04.1"/>
         <title>AusCAT Infrastructure Requirements - AusCAT documentation</title>
@@ -156,6 +156,7 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="WORKFLOW.html">AusCAT Architecture and Workflow</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../installation.html">Simulation Environment Installation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../host.html">Host Machine Setup</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../simulation/LOCAL_MACHINE.html">Local Machine</a></li>
@@ -174,6 +175,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Installation</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SUMMARY-STEPS.html">AusCAT Node Setup Summary</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">AusCAT Infrastructure Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PRODUCTION.html">Production Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AUTH.html">Authentication &amp; Authorisation</a></li>
@@ -245,49 +247,138 @@
 <p>This document outlines a typical AusCAT setup. These requirements are flexible and the system can be run outside of these recommendations. For more information please discuss with your centre’s AusCAT contact.</p>
 <section id="server-hardware">
 <h2>Server Hardware<a class="headerlink" href="#server-hardware" title="Permalink to this heading">#</a></h2>
-<section id="minimal-specs">
-<h3>Minimal Specs<a class="headerlink" href="#minimal-specs" title="Permalink to this heading">#</a></h3>
-<p>The minimum specifications we recommend for a centre’s server hardware to be installed and run in-house are:</p>
-<ul class="simple">
-<li><p>8 core CPU</p></li>
-<li><p>16 GB RAM</p></li>
-<li><p>1x 512GB SSD Disk (Usually faster, to run the operating system and software)</p></li>
-<li><p>1x 1TB SSD Disk (Might be slower and will store data)</p></li>
-</ul>
-<p>This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2019 where you can then create one or more Virtual Machines to run AusCAT.</p>
+<blockquote>
+<div><p>Note: please read the machine setup and workflow <a class="reference internal" href="WORKFLOW.html"><span class="std std-doc">guide</span></a> first before continuing with this guide, to understand the machines required for an AusCAT node.</p>
+</div></blockquote>
+<section id="minimal-specs-updated-2025">
+<h3>Minimal Specs (Updated 2025)<a class="headerlink" href="#minimal-specs-updated-2025" title="Permalink to this heading">#</a></h3>
+<p>This specification outlines the <strong>recommended entry-level or minimum hardware</strong> for centres participating in AusCAT projects. The setup is suitable for running virtual machines that handle data processing, conversion, segmentation, and other machine learning tasks.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Recommendation</strong></p></th>
+<th class="head"><p><strong>Vendor Example</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CPU</strong></p></td>
+<td><p>12 cores</p></td>
+<td><p>Intel Core i7-14700 (20 threads)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RAM</strong></p></td>
+<td><p>32 GB DDR4 or DDR5</p></td>
+<td><p>Crucial Pro</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Primary Storage (OS &amp; Software)</strong></p></td>
+<td><p>1x 1 TB NVMe SSD</p></td>
+<td><p>Samsung 980 Pro</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data Storage</strong></p></td>
+<td><p>1x 2 TB SSD</p></td>
+<td><p>Seagate IronWolf</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GPU</strong></p></td>
+<td><p>A CUDA-enable GPU, suitable for computationally intensive medical imaging tasks is highly recommended</p></td>
+<td><p>NVIDIA RTX 4090</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Host OS</strong></p></td>
+<td><p>Preferred for long-term security and virtualization support</p></td>
+<td><p>Microsoft Windows Server 2022</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Typical cost</strong> (note this can vary significantly over time and by vendor): <strong>$3,000–$5,000 AUD</strong></p>
+</div></blockquote>
 </section>
-<section id="optimal-specs">
-<h3>Optimal Specs<a class="headerlink" href="#optimal-specs" title="Permalink to this heading">#</a></h3>
+<hr class="docutils" />
+<section id="optimal-specs-updated-2025">
+<h3>Optimal Specs (Updated 2025)<a class="headerlink" href="#optimal-specs-updated-2025" title="Permalink to this heading">#</a></h3>
 <p>A typical centre’s server hardware to be installed and run in-house has approximately the following specification:</p>
-<ul class="simple">
-<li><p>24 core CPU (e.g. 2x Intel Xeon Silver 4214R &#64;2.4Ghz 12 Cores)</p></li>
-<li><p>128-256GB RAM</p></li>
-<li><p>2x 512GB SSD Disk (Usually faster, to run the operating system and software)</p></li>
-<li><p>4x 4TB SSD Disk (Might be slower and will store data)</p></li>
-<li><p>1x NVIDIA Quadro RTX 6000-8000 (Optional GPU, required for deep-learning/auto-segmentation projects)</p></li>
-</ul>
-<p>Typical cost (note this can vary significantly over time): $20,000-$30,000</p>
-<p>This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2019 where you can then create one or more Virtual Machines to run AusCAT.</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Recommendation</strong></p></th>
+<th class="head"><p><strong>Vendor Example</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>CPU</strong></p></td>
+<td><p>24 cores (dual CPU setup &#64;2.4Ghz 12 Cores)</p></td>
+<td><p>2x Intel Xeon Silver 4314</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RAM</strong></p></td>
+<td><p>128–256 GB ECC DDR4/DDR5</p></td>
+<td><p>Kingston Server Premier</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Primary Storage (OS &amp; Software)</strong></p></td>
+<td><p>2x 2 TB NVMe SSD (RAID 1)</p></td>
+<td><p>Samsung 980 Pro</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data Storage</strong></p></td>
+<td><p>4x 8 TB SATA SSD OR 8x 4 TB HDD (RAID 5/6)</p></td>
+<td><p>Seagate Exos</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GPU</strong></p></td>
+<td><p>High-end CUDA-enabled GPU for large-scale deep learning</p></td>
+<td><p>NVIDIA RTX 6000 Ada Generation</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Host OS</strong></p></td>
+<td><p>Recommended for security, virtualization, and lifecycle</p></td>
+<td><p>Microsoft Windows Server 2022</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p><strong>Typical cost</strong> (note this can vary significantly over time): <strong>$20,000–$30,000 AUD</strong></p>
+</div></blockquote>
+<p>This hardware will typically be installed and managed by your IT department. They will usually install Microsoft Windows Server 2022 where you can then create one or more Virtual Machines to run AusCAT services.</p>
 </section>
 </section>
-<section id="virtual-machine">
-<h2>Virtual Machine<a class="headerlink" href="#virtual-machine" title="Permalink to this heading">#</a></h2>
-<p>A Virtual Machine with the following specifications is typically recommended:</p>
-<ul class="simple">
-<li><p>24 virtual CPU Cores</p></li>
-<li><p>128GB RAM</p></li>
-<li><p>1x fixed size 256GB virtual disk (stored on the faster SSD)</p></li>
-<li><p>1x dynamically expanding virtual disk (stored on the slower SSD)</p></li>
-<li><p>Operating System: Install Ubuntu Desktop 22.04 on the Virtual Machine (Desktop edition is chosen to provide a GUI for certain applications)</p></li>
-</ul>
-<p>As a minimum, the following is suggested:</p>
-<ul class="simple">
-<li><p>8 virtual CPU Cores</p></li>
-<li><p>16GB RAM</p></li>
-<li><p>1x fixed size 128GB virtual disk (stored on the faster SSD)</p></li>
-<li><p>1x dynamically expanding virtual disk (stored on the slower SSD)</p></li>
-<li><p>Operating System: Install Ubuntu Desktop 22.04 on the Virtual Machine (Desktop edition is chosen to provide a GUI for certain applications)</p></li>
-</ul>
+<hr class="docutils" />
+<section id="virtual-machine-vm-configuration">
+<h2>Virtual Machine (VM) Configuration<a class="headerlink" href="#virtual-machine-vm-configuration" title="Permalink to this heading">#</a></h2>
+<p>The server will host <strong>one or more Ubuntu-based VMs</strong> that will run the AusCAT pipelines and tools (e.g., data setup, pre-processing, analytics etc.). The following specifications are typically recommended:</p>
+<div class="table-wrapper colwidths-auto docutils container">
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Component</strong></p></th>
+<th class="head"><p><strong>Minimum-Specs VM</strong></p></th>
+<th class="head"><p><strong>Optimised VM</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>vCPUs</strong></p></td>
+<td><p>4/8 virtual CPU Cores</p></td>
+<td><p>24 virtual CPU Cores</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>RAM</strong></p></td>
+<td><p>8/16 GB <em>(depends on server capacity)</em></p></td>
+<td><p>64–128 GB <em>(depends on server capacity)</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Primary Disk</strong></p></td>
+<td><p>128–256 GB <em>(fixed size, stored on the faster SSD)</em></p></td>
+<td><p>512 GB <em>(fixed size, stored on the faster SSD)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Data Disk</strong></p></td>
+<td><p>1 x dynamically expanding virtual disk <em>(stored on the slower SSD)</em></p></td>
+<td><p>1 x dynamically expanding virtual disk <em>(stored on the slower SSD)</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>OS</strong></p></td>
+<td><p>Ubuntu Desktop 22.04 <em>(Support GUI)</em></p></td>
+<td><p>Ubuntu Desktop 22.04 <em>(Support GUI)</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<div><p>⚠️ <strong>Note on RAM Allocation</strong>: The total RAM allocated to all Virtual Machines must not exceed the physical RAM available on the host server. For example, if the server has 32 GB RAM, you can allocate a maximum of 24–28 GB across all VMs (leaving some for the host OS).</p>
+</div></blockquote>
+<hr class="docutils" />
 <blockquote>
 <div><p>GPU Passthrough: Follow <a class="reference external" href="https://docs.microsoft.com/en-us/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda?source=recommendations">these instructions to pass through the GPU</a> to this VM if you have one.</p>
 </div></blockquote>
@@ -318,6 +409,12 @@
 <ul>
 <li><p>*.docker.io</p></li>
 <li><p>*.docker.com</p></li>
+</ul>
+</li>
+<li><p>Portainer</p>
+<ul>
+<li><p>*.portainer.io</p></li>
+<li><p>*.portainer.com</p></li>
 </ul>
 </li>
 <li><p>GitHub</p>
@@ -424,14 +521,14 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="../simulation/FEDERATED_ANALYSIS.html">
+          <a class="prev-page" href="SUMMARY-STEPS.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Federated Analysis</div>
+                <div class="title">AusCAT Node Setup Summary</div>
                 
               </div>
             </a>
@@ -469,11 +566,11 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class=
             <ul>
 <li><a class="reference internal" href="#">AusCAT Infrastructure Requirements</a><ul>
 <li><a class="reference internal" href="#server-hardware">Server Hardware</a><ul>
-<li><a class="reference internal" href="#minimal-specs">Minimal Specs</a></li>
-<li><a class="reference internal" href="#optimal-specs">Optimal Specs</a></li>
+<li><a class="reference internal" href="#minimal-specs-updated-2025">Minimal Specs (Updated 2025)</a></li>
+<li><a class="reference internal" href="#optimal-specs-updated-2025">Optimal Specs (Updated 2025)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#virtual-machine">Virtual Machine</a></li>
+<li><a class="reference internal" href="#virtual-machine-vm-configuration">Virtual Machine (VM) Configuration</a></li>
 <li><a class="reference internal" href="#cloud-solution">Cloud Solution</a></li>
 <li><a class="reference internal" href="#network-proxy">Network Proxy</a></li>
 <li><a class="reference internal" href="#vm-proxy-configuration">VM Proxy Configuration</a><ul>
